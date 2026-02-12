@@ -1,0 +1,1070 @@
+ArticleID,Authors,Year,Study_design,Ecoregion,Spatial_Scale,Spatial_res,Continent_Ocean,country_eez
+25370,Rímalová_etal,2014,Observational,Freshwater,National,,europe,Czech Republic
+23013,Abade_etal,2018,Observational,Terrestrial,Local,,africa,Tanzania
+23018,Abrahms_etal,2019,Observational,Marine,Local,0.1,north pacific,United States
+23019,Abram_etal,2015,Observational,Terrestrial,Local,1,asia,Indonesia
+23020,Abreo_etal,2019,Observational,Marine,Sub-national,,south china sea,Philippines
+23022,Acevedo_etal,2007,Observational,Terrestrial,Sub-national,1,europe,Spain
+23030,Adams and Setterfield,2015,Observational,Terrestrial,Sub-national,250,australasia,Australia
+23046,Ahmad_etal,2015,Observational,Terrestrial,Local,,asia,India
+23047,Ahmadi_etal,2019,Observational,Terrestrial,Multi-national,1,asia,Azerbaijan
+23061,Albouy_etal,2017,Observational,Marine,Global,1,Unknown,Unknown
+23062,Albright_etal,2017,Observational,Terrestrial,Sub-national,0.125,north america,United States
+23063,Alcaraz_etal,2015,Observational,Freshwater,Sub-national,10,europe,Spain
+23051,Al-Chokhachy_etal,2014,Observational,Freshwater,Local,,north america,Canada
+23064,Alexander and Waters,2000,Observational,Terrestrial,Local,,north america,Canada
+23068,Alfred_etal,2010,Observational,Terrestrial,Sub-national,2.5,asia,Malaysia
+23071,Allan_etal,2017,Observational,Terrestrial,Global,,Unknown,Unknown
+23072,Allan_etal,2019,Observational,Terrestrial,Global,30,Unknown,Unknown
+23073,Almeida_etal,2014,Observational,Freshwater,Sub-national,10,europe,United Kingdom
+23074,Almodóvar_etal,2012,Observational,Freshwater,Local,,europe,Spain
+23052,Al-Nasrawi_etal,2018,Observational,Terrestrial,Local,0.8,australasia,Australia
+23080,Álvarez,2003,Observational,Terrestrial,National,,south america,Colombia
+23082,Alvarez-Berastegui_etal,2014,Observational,Marine,Sub-national,300,mediterranean,Spain
+23083,Alvarez-Berrios and Mitchell,2015,Observational,Terrestrial,Multi-national,250,south america,Brazil
+23085,Alvarez-Filip_etal,2019,Observational,Marine,Sub-national,,north atlantic,Mexico
+23086,Alvarez-Romero_etal,2013,Observational,Marine,Sub-national,500,south pacific,Australia
+23087,Alves_etal,2014,Observational,Terrestrial,Multi-national,0.16,north america,Canada
+25335,Amano_etal,2020,Observational,Terrestrial,Global,1,Unknown,Unknown
+23091,Ambastha_etal,2010,Observational,Terrestrial,Local,250,asia,India
+23100,Andersen_etal,2020,Observational,Marine,National,2,north atlantic,Denmark
+W26591,Anderson_etal,2017,Observational,Marine,Local,,north atlantic,Belize
+23105,Andrade-Díaz_etal,2019,Observational,Terrestrial,Sub-national,,south america,Argentina
+23106,Andréfouët_etal,2015,Observational,Marine,Multi-national,30,south pacific,Cook Islands
+23114,Anjos_etal,2018,Observational,Terrestrial,Continental,6,south america,Unknown
+23117,Ansari and Golabi,2019,Observational,Terrestrial,Local,,asia,Iran
+23128,Araújo and Wang,2015,Observational,Freshwater,Sub-national,,south america,Brazil
+23125,Araújo_etal,2008,Observational,Terrestrial,Continental,50,europe,Unknown
+23135,Arkema_etal,2014,Observational,Marine,National,500,north atlantic,Belize
+23138,Armenteras_etal,2013,Observational,Terrestrial,Local,,south america,Colombia
+23142,Arroyave_etal,2020,Observational,Terrestrial,National,,south america,Colombia
+23146,Asharfi_etal,2020,Observational,Terrestrial,Local,20,asia,Iran
+23147,Ashcroft_etal,2009,Observational,Terrestrial,Local,ha,australasia,Australia
+23151,Asner_etal,2009,Observational,Terrestrial,Global,500,Unknown,Unknown
+23150,Asner_etal,2008,Observational,Terrestrial,Local,3,north america,United States
+23154,Assuncao_etal,2019,Observational,Terrestrial,Sub-national,0.5,south america,Brazil
+23155,Astiaso_etal,2013,Observational,Terrestrial,National,,europe,Italy
+23160,Atkore_etal,2020,Observational,Freshwater,Sub-national,,asia,India
+23163,Aubrecht_etal,2008,Observational,Marine,Global,km,Unknown,Unknown
+23164,Auerbach_etal,2014,Observational,Terrestrial,Sub-national,25,australasia,Australia
+23169,Avila_etal,2018,S_Review,Marine,Global,0.5,Unknown,Unknown
+23170,Awkerman_etal,2016,Observational,Marine,Local,90,north atlantic,United States
+23171,Ayele_etal,2016,Observational,Terrestrial,Local,30,africa,Ethiopia
+23177,Bacigalupe_etal,2019,Observational,Terrestrial,National,1,south america,Chile
+23185,Bahaa-El-Din_etal,2016,Observational,Terrestrial,Local,,africa,Gabon
+23188,Baig and Aldosari,2012,Observational,Terrestrial,Local,,asia,Pakistan
+23190,Bailey_etal,2017,Observational,Terrestrial,Sub-national,25,north america,United States
+23196,Balasingham_etal,2018,Observational,Freshwater,Local,,north america,Canada
+23197,Baláž_etal,2014,Observational,Freshwater,Continental,,europe,Unknown
+23200,Balotari-Chiebao_etal,2018,Observational,Terrestrial,National,25,europe,Finland
+23202,Balzotti_etal,2016,Observational,Terrestrial,Sub-national,,north america,United States
+23207,Bangs_etal,2018,Observational,Freshwater,Local,,north america,United States
+23211,Barbarossa_etal,2020,Observational,Freshwater,Global,,Unknown,Unknown
+23222,Baret_etal,2006,Observational,Terrestrial,Local,500,africa,Mauritius
+23223,Barilani_etal,2007,Observational,Terrestrial,Multi-national,,europe,France
+23232,Barthelmess,2014,Observational,Terrestrial,Local,30,north america,United States
+23234,Bartolino_etal,2012,Observational,Marine,Sub-national,1369,north pacific,Alaska
+23236,Bartz_etal,2015,Observational,Freshwater,Local,30,north america,United States
+23237,Barve_etal,2005,Observational,Terrestrial,Local,30,asia,India
+23242,Bass_etal,2010,Observational,Terrestrial,Sub-national,100,south america,Ecuador
+23247,Battiston_etal,2012,Observational,Terrestrial,Local,0.5,europe,France
+23249,Bax_etal,2019,Observational,Terrestrial,Sub-national,,south america,Peru
+23252,Baynard_etal,2017,Observational,Terrestrial,Sub-national,1,north america,United States
+23256,Beaudry_etal,2008,Observational,Terrestrial,Local,,north america,United States
+23258,Bebbington_etal,2018,Observational,Terrestrial,Multi-national,,asia,Brazil
+23261,Becker and Zamudio,2011,Observational,Terrestrial,National,1,north america,Costa Rica
+23262,Bedrosian_etal,2020,Observational,Terrestrial,Sub-national,1,north america,United States
+23266,Bejaoui_etal,2020,Observational,Freshwater,Local,,africa,Tunisia
+23276,Bellard_etal,2016,Observational,Terrestrial,Global,10,Unknown,Unknown
+23278,Belpaire_etal,2015,Observational,Freshwater,Sub-national,,europe,Belgium
+23280,Ben Rais_etal,2016,Observational,Marine,Sub-national,0.1,mediterranean,Tunisia
+23282,Bendell and Wan,2011,Observational,Marine,Local,,north pacific,Canada
+23285,Bennett_etal,2010,Observational,Freshwater,Sub-national,,north america,Canada
+23290,Benslimane_etal,2019,Observational,Freshwater,Local,,africa,Algeria
+23293,Berthon_etal,2018,Observational,Terrestrial,National,1,australasia,Australia
+23301,Bezeng_etal,2020,Observational,Terrestrial,National,1,africa,South Africa
+23303,Bhatt_etal,2016,Observational,Freshwater,National,,asia,India
+23304,Bhola_etal,2012,Observational,Terrestrial,Local,25,africa,Kenya
+23306,Bi_etal,2020,Observational,Marine,Multi-national,,north atlantic,United States
+23313,Binothman,2016,Observational,Terrestrial,Sub-national,,asia,Saudi Arabia
+23315,Birkmanis_etal,2020,Observational,Marine,National,81,indian ocean,Australia
+23318,Bisi_etal,2019,Observational,Terrestrial,Local,m,asia,Myanmar
+23330,Böhm_etal,2013,Observational,Marine,Global,7770,Unknown,Unknown
+23331,Böhm_etal,2016,Observational,Marine,Global,7770,Unknown,Unknown
+23337,Bonesi_etal,2007,Observational,Freshwater,Local,25,europe,United Kingdom
+23340,Borah_etal,2016,Observational,Terrestrial,Sub-national,100,asia,India
+23343,Borrelli_etal,2015,Observational,Terrestrial,Local,500,south america,Colombia
+23345,Bose_etal,2020,Observational,Terrestrial,Sub-national,100,europe,Germany
+23350,Bouchard_etal,2015,Observational,Terrestrial,Local,,africa,South Africa
+23353,Boulanger_etal,2014,Observational,Terrestrial,Sub-national,,north america,Canada
+23355,Bourgoin_etal,2020,Observational,Terrestrial,Sub-national,10,asia,Thailand
+23357,Bozkaya_etal,2015,Observational,Terrestrial,Local,30,asia,Turkey
+23361,Bradley,2010,Observational,Terrestrial,Sub-national,30,north america,United States
+23362,Bradley_etal,2020,Observational,Freshwater,Sub-national,,north america,United States
+23364,Braunisch_etal,2011,Observational,Terrestrial,Local,25,europe,Switzerland
+23365,Breen_etal,2017,Observational,Marine,Sub-national,48,north atlantic,United Kingdom
+23368,Bright_etal,2008,Observational,Terrestrial,National,1,europe,United Kingdom
+23371,Briscoe_etal,2014,Observational,Terrestrial,Sub-national,1.44,asia,Malaysia
+23374,Brito_etal,2018,Observational,Terrestrial,Multi-national,,africa,Mauritania
+23378,Bröker_etal,2015,Observational,Marine,Sub-national,1,north pacific,Russia
+23384,Brown and Hamilton,2018,Observational,Marine,Local,,south pacific,Solomon Islands
+23383,Brown_etal,2014,Observational,Marine,National,,indian ocean,Australia
+23390,Bruschi_etal,2015,Observational,Terrestrial,National,250,europe,Italy
+23391,Bryce_etal,2002,Observational,Terrestrial,Local,,europe,United Kingdom
+23398,Buckland_etal,2014,Observational,Terrestrial,National,30,africa,Mauritius
+23399,Buckley_etal,2016,Observational,Terrestrial,National,1,asia,China
+23402,Buma_etal,2017,Observational,Terrestrial,Sub-national,,north america,United States
+23404,Bungnamei and Saikia,2020,Observational,Terrestrial,Local,60,asia,India
+23405,Burdett_etal,2010,Observational,Terrestrial,Sub-national,100,north america,United States
+23407,Burgess_etal,2016,Observational,Marine,Sub-national,90,north pacific,United States
+23409,Burivalova_etal,2020,Observational,Terrestrial,Sub-national,30,asia,Indonesia
+23412,Burton_etal,2012,Observational,Terrestrial,Local,500,africa,Ghana
+23418,Butsic_etal,2015,Observational,Terrestrial,National,,africa,DRC
+23424,Cadima_etal,2014,Observational,Terrestrial,National,5,south america,Bolivia
+23428,Callan_etal,2020,Observational,Terrestrial,Local,2.5,asia,China
+23429,Calle-Rendón_etal,2018,Observational,Terrestrial,National,0.1,south america,Colombia
+23430,Calvert_etal,2005,Observational,Terrestrial,Sub-national,,north america,Canada
+23438,Campana_etal,2018,Observational,Marine,Multi-national,25,mediterranean,Spain
+23448,Cao_etal,2020,Observational,Terrestrial,Sub-national,0.25,asia,China
+23449,Caorsi_etal,2014,Observational,Freshwater,Local,,south america,Brazil
+23452,Carassou_etal,2013,Observational,Marine,National,,south pacific,New Caledonia
+23454,Cardoso_etal,2018,Observational,Terrestrial,Sub-national,0.2,south america,Brazil
+23456,Carle_etal,2019,Observational,Marine,Sub-national,,south pacific,Chile
+23461,Caro_etal,2020,Observational,Terrestrial,Sub-national,,africa,Tanzania
+23464,Carrasco_etal,2020,Observational,Terrestrial,National,25,africa,Madagascar
+23466,Carrete_etal,2012,Experimental,Terrestrial,Sub-national,,europe,Spain
+W26579,Carroll,2018,Observational,Terrestrial,Multi-national,,asia,Myanmar
+23473,Carvajal-Quintero_etal,2017,Observational,Freshwater,Local,,south america,Colombia
+23477,Carvalho_etal,2019,Observational,Terrestrial,Sub-national,100,south america,Brazil
+23487,Cavalcante,2012,Observational,Marine,Local,,north atlantic,Canada
+23489,Ceballos-Mago_etal,2010,Observational,Terrestrial,National,,south america,Venezuela
+23490,Ceia-Hasse_etal,2017,Observational,Terrestrial,Global,10000,Unknown,Unknown
+W26584,Chanchani P._etal,2014,Observational,Terrestrial,Multi-national,15,asia,India
+W22911,Charity_etal,2016,Observational,Freshwater,Multi-national,,south america,Brazil
+23509,Chaudhary and Brooks,2019,Observational,Terrestrial,Global,,Unknown,Unknown
+23507,Chaudhary and Kastner,2016,Observational,Terrestrial,Global,,Unknown,Unknown
+23508,Chaudhary_etal,2017,Observational,Terrestrial,Global,,Unknown,Unknown
+23513,Chaves_etal,2020,Observational,Freshwater,Local,,south america,Brazil
+23515,Chee_etal,2017,Observational,Terrestrial,Local,,indian ocean,Malaysia
+23517,Chen,2014,Observational,Terrestrial,Local,,asia,China
+23518,Chen and Koprowski,2015,Observational,Terrestrial,Local,50,north america,United States
+23523,Cheng,2017,Observational,Terrestrial,Sub-national,,north america,United States
+23527,Chettri_etal,2013,Observational,Terrestrial,Local,,asia,Nepal
+23528,Chevaldonné and Lejeusne,2003,Observational,Marine,Local,,mediterranean,France
+23530,Chirichella_etal,2013,Observational,Terrestrial,Local,,europe,Italy
+23531,Choe and Thorne,2019,Observational,Terrestrial,Multi-national,,asia,China
+23534,Choquette Jonathan_etal,2020,Observational,Terrestrial,Local,0.3,north america,Canada
+23537,Chowdhury and Maiti,2016,Observational,Freshwater,Local,,asia,India
+23543,Chu_etal,2003,Observational,Freshwater,National,,north america,Canada
+23547,Chun_etal,2020,Observational,Terrestrial,National,1,asia,South Korea
+23552,Chytry_etal,2009,Observational,Terrestrial,Continental,250,europe,Unknown
+W26593,Cinner_etal,2018,Observational,Marine,Global,,Unknown,Unknown
+23559,Clare_etal,2019,Observational,Terrestrial,Local,250,north america,United States
+23560,Clark and Tittensor,2010,Observational,Marine,Global,1,Unknown,Unknown
+23565,Clarke_etal,2015,Observational,Marine,Sub-national,,north pacific,Canada
+23566,Clarke_etal,2018,Observational,Marine,National,,north pacific,Costa Rica
+23571,Clavero and García-Berthou,2006,Observational,Freshwater,Multi-national,,europe,France
+23572,Clavero_etal,2010,Observational,Freshwater,Multi-national,100,europe,Andorra
+23573,Clay_etal,2019,Observational,Marine,Global,5,Unknown,Unknown
+23576,Clements_etal,2014,Observational,Terrestrial,Local,1,asia,Malaysia
+23581,Codato_etal,2019,Observational,Terrestrial,Multi-national,,south america,Brazil
+23582,Coll_etal,2012,Observational,Marine,Multi-national,0.1,mediterranean,Bosnia and Herzegovina
+23583,Coll_etal,2015,Observational,Marine,Multi-national,0.1,mediterranean,Bosnia and Herzegovina
+23588,Compa_etal,2019,Observational,Marine,Multi-national,0.2,mediterranean,Bosnia and Herzegovina
+23591,Comte and Olden,2017,Observational,Freshwater,Global,0.1,Unknown,Unknown
+23594,Coppes and Braunisch,2013,Observational,Terrestrial,Local,10,europe,Germany
+23595,Coppes_etal,2017,Observational,Terrestrial,Local,10,europe,Germany
+23598,Coristine and Kerr,2015,Observational,Terrestrial,Multi-national,5,north america,United States
+23599,Coristine_etal,2016,Observational,Terrestrial,Multi-national,5,north america,Canada
+23602,Correa_etal,2020,Observational,Terrestrial,National,300,south america,Colombia
+23603,Cosandey-Godin_etal,2014,Observational,Marine,Sub-national,1,arctic ocean,Canada
+23609,Courtois_etal,2015,Observational,Terrestrial,National,,south america,French Guiana
+23612,Cowburn_etal,2018,Observational,Marine,National,,south atlantic,Comoros
+23613,Cowles_etal,2012,Observational,Freshwater,Sub-national,,north america,United States
+23614,Craig_etal,2019,Observational,Terrestrial,National,,africa,Namibia
+23616,Crano,2016,Observational,Terrestrial,Local,10,north america,United States
+23620,Critchell_etal,2019,Observational,Marine,Local,,south pacific,Australia
+23623,Croquer_etal,2016,Observational,Marine,Local,,north atlantic,Venezuela
+23626,Crosti_etal,2017,Observational,Marine,Local,,mediterranean,Italy
+23631,Cubero-Pardo_etal,2011,Observational,Marine,Sub-national,22.2,north pacific,Mexico
+23633,Cuevas_etal,2019,Observational,Marine,Sub-national,1,north atlantic,Mexico
+23639,Cunningham_etal,2013,Observational,Terrestrial,National,,africa,South Africa
+23641,Curatola_etal,2015,Observational,Terrestrial,Local,,south america,Ecuador
+23649,D’amico_etal,2019,Observational,Terrestrial,Multi-national,10,europe,Portugal
+23651,Dahdouh-Guebas_etal,2002,Observational,Terrestrial,Local,,indian ocean,Sri Lanka
+23652,Dalle_etal,2019,Observational,Terrestrial,Local,,south america,Brazil
+23653,Dalu_etal,2017,Observational,Freshwater,Local,,africa,Zimbabwe
+23654,Daly_etal,2018,Observational,Marine,Multi-national,5,indian ocean,South Africa
+23647,D'amico_etal,2015,Observational,Terrestrial,Local,,europe,Spain
+23656,Dang_etal,2019,Observational,Terrestrial,Global,30,Unknown,Unknown
+23657,Dang_etal,2020,Observational,Terrestrial,Sub-national,1,asia,China
+23660,Darwall_etal,2011,Observational,Freshwater,Continental,,africa,Unknown
+23663,Das_etal,2020,Observational,Freshwater,Local,,asia,India
+23664,Dasgupta and Ghosh,2015,Observational,Terrestrial,Local,,asia,India
+23666,Dávalos_etal,2011,Observational,Terrestrial,National,1,south america,Colombia
+23669,De Abreu_etal,2011,Observational,Terrestrial,Local,,south america,Brazil
+23670,De Alban_etal,2020,Observational,Terrestrial,Local,30,asia,Myanmar
+23674,De Castro_etal,2017,Observational,Terrestrial,Sub-national,km2,south america,Brazil
+23682,De Luna_etal,2018,Observational,Terrestrial,Local,,south america,Colombia
+23684,De Noronha_etal,2013,Observational,Terrestrial,Local,,europe,Portugal
+23685,De Oliveira_etal,2020,Observational,Freshwater,Sub-national,25,south america,Brazil
+23689,De Solan_etal,2019,Observational,Terrestrial,Sub-national,1,europe,France
+23691,De Sousa_etal,2011,Observational,Freshwater,Local,,south america,Brazil
+23694,De Thoisy_etal,2010,Observational,Terrestrial,National,1,south america,French Guiana
+23698,Death_etal,2019,Observational,Terrestrial,Local,,australasia,Australia
+23700,Deb_etal,2019,Observational,Terrestrial,Continental,1,asia,Unknown
+23699,Deb_etal,2014,Observational,Terrestrial,Local,,asia,India
+23701,Deb_etal,2020,Observational,Terrestrial,Sub-national,,asia,India
+23704,Deith and Brodie,2020,Observational,Terrestrial,Sub-national,,asia,Malaysia
+23706,Delefosse_etal,2018,Observational,Marine,Sub-national,,north atlantic,Denmark
+23710,Delsen,2020,Observational,Terrestrial,Continental,9,europe,Unknown
+23713,Deribew,2019,Observational,Terrestrial,Local,10,africa,Ethiopia
+23714,Desta and Fetene,2020,Observational,Freshwater,Local,57,africa,Ethiopia
+23718,Deudero and Alomar,2015,S_Review,Marine,Multi-national,,mediterranean,Bosnia and Herzegovina
+23726,Di_etal,2018,Observational,Terrestrial,Global,1,Unknown,Unknown
+23727,Di_etal,2019,Observational,Terrestrial,Global,30,Unknown,Unknown
+23722,Di_etal,2019,Observational,Terrestrial,Continental,,europe,Unknown
+23728,Di_etal,2013,Observational,Terrestrial,Sub-national,200,africa,South Africa
+23730,Di_etal,2016,Observational,Marine,Local,1,south atlantic,Brazil
+23737,"Dignan, S.P.,",2014,Observational,Marine,Local,1,north atlantic,United Kingdom
+23738,Dillon Whalen_etal,2013,Observational,Terrestrial,Sub-national,1,north america,United States
+23739,Dimitrakopoulos_etal,2017,Observational,Terrestrial,National,,europe,Greece
+23740,Dimobe_etal,2015,Observational,Terrestrial,Sub-national,30,africa,Sudan
+23743,Diwediga_etal,2015,Observational,Terrestrial,Local,,africa,Togo
+23744,Diwediga_etal,2017,Observational,Terrestrial,Multi-national,,africa,Burkina Faso
+23753,Doherty,2008,Observational,Terrestrial,Sub-national,,north america,United States
+23754,Doherty_etal,2017,Observational,Terrestrial,Global,,Unknown,Unknown
+23759,Dong_etal,2018,Observational,Terrestrial,National,,asia,China
+23760,Dorcas_etal,2012,Observational,Terrestrial,Local,,north america,United States
+23771,Dransfield_etal,2014,Observational,Marine,Local,1,north pacific,United States
+23773,Duan_etal,2020,Observational,Freshwater,National,30,asia,China
+23779,Dulvy_etal,2014,Observational,Marine,Global,,Unknown,Unknown
+23780,Duncan_etal,2014,Observational,Terrestrial,Multi-national,,africa,Algeria
+23782,Duncan_etal,2018,Observational,Terrestrial,Multi-national,62.5,south atlantic,Bangladesh
+23785,Duran,2008,Observational,Marine,Local,,north atlantic,Spain
+23787,Durango-Cordero_etal,2018,Observational,Freshwater,Sub-national,25,south america,Ecuador
+23788,Dutta_etal,2017,Observational,Terrestrial,Local,m,asia,India
+23790,Duvall and Barron,2000,Experimental,Freshwater,Local,,north america,United States
+23791,Dwyer_etal,2016,Observational,Terrestrial,Sub-national,1,north america,United States
+23793,Dzialak_etal,2011,Observational,Terrestrial,Local,,north america,United States
+23795,Easterday_etal,2016,Observational,Terrestrial,Sub-national,1,north america,United States
+23796,Ebdon_etal,2020,Observational,Marine,Sub-national,250,south pacific,New Zealand
+23804,Eguchi_etal,2017,Observational,Marine,Sub-national,0.5,north pacific,United States
+23816,Elleouet_etal,2014,Observational,Marine,Multi-national,0.1,mediterranean,Bosnia and Herzegovina
+23823,Enrichetti_etal,2019,Observational,Marine,Multi-national,,mediterranean,Italy
+23824,Enríquez-Andrade_etal,2005,Observational,Marine,Sub-national,,north pacific,United States
+23825,Epa and Mohotti,2016,Observational,Freshwater,Local,,asia,Sri Lanka
+23828,Erbe_etal,2014,Observational,Marine,Sub-national,25,north pacific,Canada
+23832,Escobar_etal,2015,Observational,Terrestrial,Continental,21.16,asia,Unknown
+23833,Esetlili_etal,2014,Observational,Terrestrial,Local,15,asia,Turkey
+23836,Espinoza-Tenorio_etal,2010,Observational,Marine,Local,,north pacific,United States
+23838,Esselman and Allan,2011,Observational,Freshwater,Multi-national,,north america,Mexico
+23841,Estoque and Murayama,2012,Observational,Terrestrial,Local,30,asia,Philippines
+23845,Etter_etal,2011,Observational,Terrestrial,National,1,south america,Colombia
+23847,Evans_etal,2011,Observational,Terrestrial,National,,australasia,Australia
+23848,Evans_etal,2011,Observational,Freshwater,National,,australasia,Australia
+23854,Fa_etal,2013,Observational,Terrestrial,Multi-national,,africa,Cameroon
+W26589,Fabian C. Kyne_etal,2020,Observational,Marine,Multi-national,,north atlantic,Anguilla
+23855,Fabrizio_etal,2019,Observational,Terrestrial,Sub-national,40,europe,Italy
+23856,Fabrizio_etal,2019,Observational,Terrestrial,Sub-national,1,europe,Italy
+23858,Fakarayi_etal,2015,Observational,Terrestrial,Local,,africa,Zimbabwe
+23864,Farella_etal,2020,Observational,Marine,Local,250,mediterranean,Italy
+23865,Farfán_etal,2019,Observational,Terrestrial,Local,0.25,africa,Cameroon
+23866,Fargione_etal,2012,Observational,Terrestrial,Sub-national,200,north america,United States
+23867,Farizal_etal,2020,Observational,Terrestrial,Local,,asia,Indonesia
+23868,Fasola and Roesler,2018,Observational,Terrestrial,Sub-national,2500,south america,Argentina
+23869,Fassnacht_etal,2015,Observational,Terrestrial,Sub-national,30,asia,China
+23870,Fauzi_etal,2019,Observational,Terrestrial,Multi-national,1,south china sea,Myanmar
+23871,Favilli_etal,2018,Observational,Terrestrial,Sub-national,,europe,Italy
+23877,Feist_etal,2011,Observational,Marine,Local,30,north pacific,United States
+23879,Feitosa_etal,2018,Observational,Marine,Sub-national,,north atlantic,Brazil
+23881,Felton Annika_etal,2013,Observational,Terrestrial,Multi-national,,south america,Bolivia
+23888,Fernandes_etal,2017,Observational,Marine,National,25,north atlantic,Portugal
+23889,Fernandes_etal,2020,Observational,Marine,National,,north atlantic,Portugal
+23891,Fernández-Bellon,2020,S_Review,Terrestrial,Global,,Unknown,Unknown
+25210,Ferrarini_etal,2021,Observational,Terrestrial,Sub-national,,europe,Italy
+23893,Ferreguetti Á_etal,2018,Observational,Terrestrial,Local,,south america,Brazil
+23903,Filius_etal,2020,Observational,Terrestrial,Local,,south america,Ecuador
+23904,Findlay_etal,2018,Observational,Marine,Sub-national,25,north atlantic,United Kingdom
+23905,Finer_etal,2008,Observational,Terrestrial,Multi-national,,south america,Brazil
+23906,Fiorini_etal,2017,Observational,Terrestrial,Sub-national,,europe,Italy
+23909,Flechas_etal,2017,Observational,Terrestrial,Sub-national,,south america,Colombia
+23912,Flory_etal,2012,Observational,Terrestrial,Sub-national,,north america,United States
+23913,Floyd_etal,2006,Observational,Terrestrial,Local,,north america,United States
+23915,Focardi_etal,2006,Observational,Freshwater,Multi-national,,africa,Kenya
+23917,Foden_etal,2013,Observational,Freshwater,Global,1,Unknown,Unknown
+23920,Fonnesbeck_etal,2008,Observational,Marine,Local,16,north atlantic,United States
+23922,Foo and Numata,2019,Observational,Terrestrial,Local,30,asia,Malaysia
+23927,Fort_etal,2013,Observational,Marine,Multi-national,,arctic ocean,Greenland
+23929,Fortini Lucas_etal,2019,Observational,Terrestrial,Sub-national,500,north america,United States
+23932,Foveau_etal,2017,Observational,Marine,Sub-national,0.03,north atlantic,United Kingdom
+23936,Foxcroft_etal,2007,Observational,Freshwater,Sub-national,,africa,South Africa
+23937,Foxcroft_etal,2009,Observational,Freshwater,Sub-national,25,africa,South Africa
+23938,Francesco_etal,2019,Observational,Terrestrial,Local,,europe,Italy
+23941,Fraschetti_etal,2016,Observational,Marine,Local,,mediterranean,Italy
+23946,Fremout_etal,2020,Observational,Terrestrial,Multi-national,30,south america,Ecuador
+23951,Fryxell_etal,2020,Observational,Terrestrial,Sub-national,,north america,Canada
+23953,Fuentes_etal,2016,Observational,Terrestrial,Sub-national,m,north atlantic,United States
+23955,Fugère_etal,2018,Observational,Freshwater,Local,,africa,Uganda
+23957,Furlan_etal,2018,Observational,Marine,Multi-national,100,mediterranean,Italy
+23958,Furlan_etal,2019,Observational,Marine,Multi-national,,mediterranean,Italy
+23960,Gabriel_etal,2012,Observational,Terrestrial,Sub-national,,north america,United States
+23964,Gaines_etal,2005,Observational,Freshwater,Local,10,north america,United States
+23967,Gairola_etal,2016,Observational,Terrestrial,Local,0.5,africa,South Africa
+23968,Gaisberger_etal,2017,Observational,Terrestrial,Sub-national,2.5,africa,Burkina Faso
+23969,Gaisberger_etal,2020,Observational,Terrestrial,Multi-national,30,asia,Kyrgyzstan
+23977,Gallagher_etal,2019,Observational,Terrestrial,Continental,10000,australasia,Australia
+23975,Gallagher_etal,2008,Observational,Terrestrial,Local,10,north america,United States
+23978,Gallão and Bichuette,2018,Observational,Terrestrial,Sub-national,,south america,Brazil
+23979,Gallardo and Aldridge,2013,Observational,Freshwater,Continental,16,europe,Unknown
+23980,Gallardo_etal,2017,Observational,Freshwater,Continental,30,europe,Unknown
+23982,Gallego-Zamorano_etal,2020,Observational,Terrestrial,Global,30,Unknown,Unknown
+23985,Gaoue and Ticktin,2007,Observational,Terrestrial,National,,africa,Benin
+23988,Garcês_etal,2019,Observational,Terrestrial,Sub-national,,europe,Portugal
+23989,Garcia_etal,2014,Observational,Freshwater,Multi-national,1,africa,Angola
+23991,García-Barcelona_etal,2010,Observational,Marine,Sub-national,,mediterranean,Spain
+23992,Garcia-Carrasco_etal,2020,Observational,Terrestrial,Local,,south america,Ecuador
+23993,Garcia-De-Vinuesa_etal,2018,Observational,Marine,Local,1,mediterranean,Spain
+23997,Gargan_etal,2011,Observational,Freshwater,Local,,europe,Ireland
+24000,Garrard_etal,2016,Observational,Terrestrial,Local,200,asia,Nepal
+24001,Garratt_etal,2019,Observational,Terrestrial,Local,6,north atlantic,United Kingdom
+24003,Garrote_etal,2018,Observational,Terrestrial,Sub-national,,europe,Spain
+24013,Genovart_etal,2017,Observational,Marine,Multi-national,0.1,mediterranean,Spain
+24016,Gerlach,2002,Observational,Terrestrial,Local,,north america,United States
+24024,Ghorbani_etal,2014,Observational,Terrestrial,Sub-national,,asia,Iran
+24025,Ghulam_etal,2015,Observational,Terrestrial,Local,30,africa,Madagascar
+24029,Gibson_etal,2018,Observational,Terrestrial,Local,,north america,United States
+24030,Giersch_etal,2015,Observational,Terrestrial,Local,,north america,United States
+24034,Gillen and Kiviat,2012,Observational,Terrestrial,Sub-national,,north america,United States
+24036,Gilman_etal,2008,Experimental,Marine,Local,,north pacific,Hawaii
+24038,Gimpel_etal,2013,Observational,Marine,Local,5,north atlantic,Germany
+24039,Giordano_etal,2008,Observational,Terrestrial,Local,,south america,Argentina
+24042,Girardet_etal,2015,Observational,Terrestrial,Sub-national,10,europe,France
+24050,Goldberg_etal,2020,Observational,Marine,Global,30,Unknown,Unknown
+24053,Gomez_etal,2014,Observational,Freshwater,Local,0.05,south america,Argentina
+24055,Gomez_etal,2017,Observational,Marine,Sub-national,1,north atlantic,Canada
+24060,González-Andrés_etal,2020,Observational,Marine,Local,0.03,north pacific,Costa Rica
+24062,Gonzalez-Quevedo_etal,2014,Observational,Terrestrial,Sub-national,,europe,Spain
+24064,Gonzalez-Suarez_etal,2013,Observational,Marine,Global,2,Unknown,Unknown
+24065,González-Suárez_etal,2018,Observational,Terrestrial,National,1,south america,Brazil
+24067,Good_etal,2020,Observational,Marine,Sub-national,4.8,north pacific,United States
+24078,Graham_etal,2016,Observational,Terrestrial,Global,1,Unknown,Unknown
+24079,Grainger_etal,2018,Observational,Terrestrial,Multi-national,1,asia,Myanmar
+24086,Grecchi_etal,2014,Observational,Freshwater,Sub-national,,south america,Brazil
+24088,Grech and Marsh,2008,Observational,Marine,Sub-national,,south pacific,Australia
+24087,Grech_etal,2008,Observational,Marine,Sub-national,,south pacific,Australia
+24094,Grenouillet and Comte,2014,Observational,Freshwater,National,64,europe,France
+24096,Grigolato_etal,2018,Observational,Terrestrial,Local,,europe,Italy
+24101,Guerra_etal,2017,Observational,Terrestrial,Local,,south america,Brazil
+24104,Guerrini_etal,2019,Observational,Marine,Sub-national,,europe,Italy
+24107,Gül and Griffen,2018,Observational,Marine,Local,,north america,United States
+24108,Gumbs_etal,2020,Observational,Terrestrial,Global,1,Unknown,Unknown
+24110,Gunson_etal,2012,Observational,Terrestrial,Local,15,north america,Canada
+24113,Guo_etal,2018,Observational,Terrestrial,Global,0.5,Unknown,Unknown
+24112,Guo_etal,2005,Observational,Terrestrial,Sub-national,1,north america,United States
+24114,Gutiérrez_etal,2020,Observational,Terrestrial,Local,1,europe,Spain
+24120,Hager_etal,2013,Observational,Terrestrial,Local,,north america,United States
+24122,Haines_etal,2010,Observational,Terrestrial,Sub-national,90,north america,United States
+24123,Hajiahmadi and Amanollahi,2018,Observational,Terrestrial,Local,,asia,Indonesia
+24125,Halpern_etal,2008,Observational,Marine,Global,,Unknown,Unknown
+24126,Halpern_etal,2009,Observational,Marine,Global,,Unknown,Unknown
+24128,Halpern_etal,2015,Observational,Marine,Global,1,Unknown,Unknown
+24127,Halpern_etal,2009,Observational,Marine,Sub-national,1,north pacific,United States
+24129,Hamilton_etal,2016,Observational,Marine,Local,,south pacific,Solomon Islands
+24133,Hammouda_etal,2019,Observational,Terrestrial,Local,,africa,Algeria
+24138,Han_etal,2019,Observational,Freshwater,Sub-national,16,asia,China
+24139,Han_etal,2019,Observational,Terrestrial,Sub-national,km2,asia,China
+24140,Handley_etal,2020,Observational,Marine,Sub-national,,southern ocean,South Georgia and the South Sandwich Islands
+24145,Hao_etal,2018,Observational,Terrestrial,Sub-national,1,asia,China
+24149,Hari_etal,2014,Observational,Terrestrial,Sub-national,500,asia,India
+24150,Harik_etal,2017,Observational,Terrestrial,Local,15,africa,France
+24153,Harris_etal,2014,Observational,Terrestrial,Local,30,asia,Indonesia
+24154,Harris_etal,2017,Observational,Marine,Multi-national,5,indian ocean,South Africa
+24155,Harrison_etal,2011,Observational,Terrestrial,Sub-national,,asia,Indonesia
+24156,Harsch and Hillerislambers,2016,Observational,Terrestrial,Sub-national,,north america,Canada
+24158,Hart_etal,2014,Observational,Marine,Sub-national,100,north atlantic,United States
+24159,Hart_etal,2018,Observational,Marine,Sub-national,100,north atlantic,United States
+24160,Hassan_etal,2018,Observational,Terrestrial,Local,10,asia,Bangladesh
+24162,Hauser_etal,2018,Observational,Marine,Multi-national,,arctic ocean,Canada
+24163,Hausmann_etal,2019,Observational,Terrestrial,Global,1,Unknown,Unknown
+24167,Hayashi_etal,2018,Observational,Terrestrial,Sub-national,5,south america,Brazil
+24169,Hayes_etal,2015,Observational,Terrestrial,Multi-national,1,north america,Canada
+24170,Haywood_etal,2016,Observational,Marine,Local,,south pacific,Papua New Guinea
+24174,He_etal,2018,Observational,Freshwater,Global,10,Unknown,Unknown
+24175,Heard_etal,2015,Observational,Freshwater,Local,,australasia,Australia
+24177,Hedd_etal,2016,Observational,Marine,Sub-national,10000,arctic ocean,Canada
+24180,Hegland and Hamre,2018,Observational,Terrestrial,Sub-national,,europe,Norway
+24184,Hein_etal,2015,Observational,Marine,Local,,south china sea,Thailand
+24186,Heinemeyer_etal,2019,Observational,Terrestrial,Sub-national,,north america,United States
+24188,Heinrich_etal,2019,Observational,Marine,Local,,south pacific,Chile
+24192,Helldin,2019,Observational,Terrestrial,National,,europe,Sweden
+24194,Hemami_etal,2018,Observational,Marine,Local,4,indian ocean,Iran
+24195,Henriques_etal,2014,Observational,Marine,National,1,north atlantic,Portugal
+24197,Herder_etal,2012,Observational,Freshwater,Local,,asia,Indonesia
+24199,Hermoso_etal,2015,Observational,Freshwater,Sub-national,,australasia,Australia
+24202,Hernández-Lambraño_etal,2018,Observational,Terrestrial,Sub-national,20,europe,Spain
+24203,Hernández-Matías_etal,2020,Observational,Terrestrial,Sub-national,100,europe,Spain
+24205,Hernout_etal,2018,Observational,Terrestrial,National,100,europe,United Kingdom
+24206,Herr_etal,2009,Observational,Marine,Sub-national,36,north atlantic,Germany
+24208,Hervé_etal,2016,Observational,Freshwater,Sub-national,100,europe,France
+24211,Hiddink_etal,2015,Observational,Marine,Multi-national,0.2,north atlantic,United Kingdom
+24212,Hierink_etal,2020,Observational,Terrestrial,Global,,Unknown,Unknown
+24215,Hillers_etal,2008,Observational,Terrestrial,Local,m,africa,Guinea
+24222,Hogan_etal,2012,Observational,Freshwater,Sub-national,30,north america,United States
+W26586,Hogg_etal,2010,Observational,Marine,Sub-national,,arctic ocean,Canada
+24227,Holon_etal,2015,Observational,Marine,Sub-national,20,mediterranean,France
+24228,Holon_etal,2015,Observational,Marine,Local,25,mediterranean,France
+24229,Holon_etal,2018,Observational,Marine,Multi-national,50,mediterranean,France
+24232,Hornseth_etal,2018,Observational,Terrestrial,Sub-national,1,north america,United States
+24242,Howard_etal,2018,Observational,Freshwater,Sub-national,,north america,United States
+24247,Hu_etal,2018,Observational,Marine,Sub-national,30,north atlantic,United States
+24253,Hughes,2019,Observational,Terrestrial,Global,,Unknown,Unknown
+24256,Hui_etal,2020,Observational,Terrestrial,Local,,asia,China
+24257,Hull_etal,2011,Observational,Terrestrial,Local,,asia,China
+24258,Hull_etal,2014,Observational,Terrestrial,Local,m,asia,China
+W26592,Humber_etal,2014,S_Review,Marine,Global,,Unknown,Unknown
+24262,Hurley_etal,2019,Observational,Marine,Sub-national,25,north atlantic,Canada
+24265,Hyde_etal,2018,Observational,Terrestrial,Sub-national,30,south america,Brazil
+24266,Iacona_etal,2014,Observational,Terrestrial,Sub-national,30,south america,Brazil
+24267,Iacona_etal,2016,Observational,Terrestrial,Sub-national,,north america,United States
+24268,Ibanez_etal,2019,Observational,Terrestrial,National,,australasia,New Caledonia
+24269,Ibharim_etal,2015,Observational,Terrestrial,Local,,asia,Malaysia
+24270,Ibouroi_etal,2019,Observational,Terrestrial,Local,,africa,Comoros
+24274,Iglesias-Merchan_etal,2015,Observational,Terrestrial,Local,100,europe,Spain
+24288,Ioki_etal,2019,Observational,Terrestrial,Local,,asia,Malaysia
+24290,Issaris_etal,2012,Observational,Marine,Sub-national,,mediterranean,Greece
+24291,Isunju and Kemp,2016,Observational,Freshwater,Local,,africa,Uganda
+24295,Jackson_etal,2020,Observational,Terrestrial,Global,1,Unknown,Unknown
+25557,Jacoby_etal,2020,Observational,Marine,Local,0.01,indian ocean,Chagos Archipelago
+24297,Jalali_etal,2015,Observational,Marine,Local,,indian ocean,Australia
+24299,Janik_etal,2020,Observational,Terrestrial,Local,0.25,europe,Czech Republic
+24302,Jaric_etal,2019,Observational,Freshwater,Continental,,europe,Unknown
+24304,Jarvis_etal,2010,Observational,Terrestrial,Continental,1,south america,Unknown
+24307,Jenkins_etal,2016,Observational,Marine,Global,2500,Unknown,Unknown
+24310,Jensen_etal,2019,Observational,Terrestrial,Global,,Unknown,Unknown
+24313,Jézéquel_etal,2020,Observational,Freshwater,Multi-national,,south america,Brazil
+24314,"Jia,S.",2016,Observational,Terrestrial,Sub-national,1,north america,United States
+24315,Jiang_etal,2020,Observational,Terrestrial,Continental,30,africa,Unknown
+24328,Jones Alice_etal,2018,Observational,Marine,Sub-national,250,indian ocean,Australia
+24322,Jones and Power,2012,Observational,Terrestrial,Sub-national,5,europe,United Kingdom
+24321,Jones_etal,2009,Observational,Freshwater,National,,africa,Madagascar
+24326,Jones_etal,2017,Observational,Marine,National,25,north atlantic,United Kingdom
+24329,Jongsomjit_etal,2013,Observational,Terrestrial,Sub-national,800,north america,United States
+24341,Kahler_etal,2012,Observational,Terrestrial,Local,10,africa,Namibia
+24345,Kamino_etal,2020,Observational,Freshwater,Sub-national,,south america,Brazil
+24346,Kamp_etal,2015,Observational,Terrestrial,Continental,degrees,asia,Unknown
+24347,Kamrowski_etal,2014,Observational,Marine,National,,indian ocean,Australia
+24352,Kano_etal,2016,Observational,Freshwater,Multi-national,km2,asia,Cambodia
+24353,Kantola_etal,2019,Observational,Terrestrial,Sub-national,30,north america,United States
+24358,Karimi and Jones,2020,Observational,Terrestrial,National,100,asia,Iran
+24364,Katsis_etal,2018,Observational,Terrestrial,Local,,africa,Kenya
+24365,Katzner_etal,2020,Observational,Terrestrial,Sub-national,,north america,United States
+24366,Kauano É_etal,2017,Observational,Freshwater,Sub-national,,south america,Brazil
+24368,Kehoe_etal,2015,Observational,Terrestrial,Global,12100,Unknown,Unknown
+24372,Keith_etal,2012,Observational,Terrestrial,Local,25,australasia,Australia
+24375,Kelly and Meentemeyer,2002,Observational,Terrestrial,Sub-national,5,north america,United States
+24381,Khaliq_etal,2014,Observational,Terrestrial,Global,,Unknown,Unknown
+24389,Kidane_etal,2012,Observational,Terrestrial,Local,2.5,africa,Ethiopia
+24391,Kilshaw_etal,2016,Observational,Terrestrial,Sub-national,500,europe,United Kingdom
+24392,Kim_etal,2020,Observational,Marine,National,0.5,north pacific,South Korea
+24395,Kirk_etal,2019,Observational,Terrestrial,Local,,africa,Tunisia
+24396,Kirkman_etal,2019,Observational,Marine,Multi-national,km2,south atlantic,Angola
+24397,Kirol_etal,2015,Observational,Terrestrial,Local,30,north america,United States
+24400,Kitzes and Shirley,2016,Observational,Freshwater,Sub-national,,asia,Malaysia
+24401,Kitzes_etal,2017,Observational,Terrestrial,Global,,Unknown,Unknown
+24404,Klarenberg_etal,2019,Observational,Freshwater,Sub-national,,south america,Brazil
+24411,Knouft and Chu,2015,Observational,Freshwater,Local,30,north america,United States
+24415,Koen_etal,2018,Observational,Freshwater,Global,400,Unknown,Unknown
+24416,Koerner_etal,2017,Observational,Terrestrial,Multi-national,,africa,Gabon
+24417,Kokkonen_etal,2010,Observational,Marine,Local,1,arctic ocean,Finland
+24418,Kolbe_etal,2016,Observational,Terrestrial,Sub-national,,north america,United States
+24420,Kominoski_etal,2018,Observational,Freshwater,Sub-national,,north america,United States
+24421,Konstantopoulos_etal,2020,Observational,Terrestrial,National,100,europe,Cyprus
+24422,Kooistra_etal,2005,Observational,Terrestrial,Local,,europe,Netherlands
+24423,Kope?_etal,2020,Observational,Terrestrial,Local,1,europe,Poland
+24426,Korpilo_etal,2018,Observational,Freshwater,Local,,europe,Finland
+24428,Kostoski_etal,2010,Observational,Freshwater,Local,,europe,Albania
+24431,Kovach_etal,2017,Observational,Freshwater,Local,,north america,Canada
+24436,Kraus_etal,2012,Observational,Terrestrial,Sub-national,,north america,United States
+24437,Krawczyk_etal,2019,Observational,Terrestrial,Local,,europe,Greece
+24443,Kuemmerle_etal,2014,Observational,Terrestrial,Sub-national,10,asia,Russia
+24446,Kumagai_etal,2018,Observational,Marine,Sub-national,1,north pacific,Japan
+24450,Kurekin_etal,2019,Observational,Marine,National,20,north atlantic,Ghana
+24451,Kurland_etal,2018,Observational,Terrestrial,Local,1,north america,United States
+24455,Kwak_etal,2019,Observational,Freshwater,Local,,north america,United States
+24460,Lagabrielle_etal,2009,Observational,Terrestrial,Local,25,africa,Reunion
+24461,Lagabrielle_etal,2018,Observational,Marine,Sub-national,10,indian ocean,South Africa
+24465,Laneri_etal,2010,Observational,Marine,Multi-national,,mediterranean,Morocco
+24471,Lasky_etal,2011,Observational,Terrestrial,Multi-national,,north america,United States
+24472,Laslo,2017,Observational,Freshwater,Local,,europe,Romania
+24473,Lasram_etal,2016,Observational,Marine,National,0.1,mediterranean,Tunisia
+24474,Latrubesse_etal,2020,Observational,Freshwater,Multi-national,,south america,Bolivia
+24475,Lattuada_etal,2020,Observational,Marine,Multi-national,,caspian sea,Russia
+24481,Lavorel_etal,2020,Observational,Terrestrial,Local,10,europe,France
+24483,Lawler_etal,2003,Observational,Terrestrial,Sub-national,1,north america,United States
+W26587,Leach_etal,2016,Observational,Terrestrial,Continental,10000,africa,Unknown
+24500,Leclerc_etal,2018,Observational,Freshwater,Global,,Unknown,Unknown
+24502,Lee and Jetz,2008,Observational,Terrestrial,Global,0.5,Unknown,Unknown
+24503,Lee_etal,2016,Observational,Marine,Sub-national,1,north pacific,United States
+24507,Leeney_etal,2008,Observational,Marine,Sub-national,400,north atlantic,United Kingdom
+24511,Lehnert_etal,2014,Observational,Terrestrial,Sub-national,,europe,Germany
+24516,Leprieur_etal,2008,Observational,Freshwater,Global,0.5,Unknown,Unknown
+24518,Lessmann_etal,2019,Observational,Freshwater,Sub-national,0.25,south america,Ecuador
+24525,Lewis_etal,2020,Observational,Terrestrial,Global,,Unknown,Unknown
+24536,Li_etal,2016,Observational,Terrestrial,Global,10,Unknown,Unknown
+24527,Li_etal,2011,Observational,Terrestrial,Sub-national,1,australasia,Australia
+24531,Li_etal,2011,Observational,Terrestrial,Local,,asia,China
+24540,Li_etal,2017,Observational,Terrestrial,Local,,north america,United States
+24544,Li_etal,2018,Observational,Terrestrial,Sub-national,1,asia,China
+24545,Li_etal,2018,Observational,Terrestrial,Sub-national,,asia,China
+24548,Li_etal,2019,Observational,Terrestrial,Local,,asia,China
+24551,Li_etal,2019,Observational,Terrestrial,Sub-national,,asia,China
+26547,Li_etal,2010,Observational,Freshwater,Local,100,asia,China
+24553,Licata_etal,2019,Observational,Terrestrial,Local,,africa,Madagascar
+24556,Liermann_etal,2012,Observational,Freshwater,Global,,Unknown,Unknown
+24557,Lieske_etal,2014,Observational,Marine,Sub-national,1,north atlantic,Canada
+24558,Lieske_etal,2020,Observational,Marine,Sub-national,400,north atlantic,Canada
+24565,Lin_etal,2008,Observational,Terrestrial,Local,,asia,China
+24566,Lin_etal,2019,Observational,Terrestrial,National,km,asia,Taiwan
+24567,Lin_etal,2020,Observational,Terrestrial,Local,,asia,Taiwan
+24574,Lindsey_etal,2016,Observational,Terrestrial,Continental,,africa,Angola
+24573,Lindsey_etal,2011,Observational,Terrestrial,Local,1,africa,Zimbabwe
+24576,Linke_etal,2013,Observational,Terrestrial,Local,,north america,Canada
+24579,Lipp-Nissinen_etal,2018,Observational,Terrestrial,Local,,south america,Brazil
+24582,Liu_etal,2008,Observational,Terrestrial,Sub-national,,asia,China
+24585,Liu_etal,2012,Observational,Terrestrial,Local,,north america,United States
+24590,Liu_etal,2018,Observational,Terrestrial,Local,,asia,China
+24595,Liu_etal,2020,Observational,Freshwater,Sub-national,,asia,China
+24597,Livingston_etal,2017,Observational,Terrestrial,Sub-national,,north america,United States
+24600,Loerzel_etal,2017,Observational,Marine,Local,1,north atlantic,United States Virgin Islands
+24601,Löfvenhaft_etal,2004,Observational,Terrestrial,Local,,europe,Sweden
+24605,Lohse_etal,2008,Observational,Freshwater,Local,,north america,United States
+24606,Loosen_etal,2019,Observational,Terrestrial,Sub-national,,north america,Canada
+24612,López-Sánchez_etal,2014,Observational,Terrestrial,Sub-national,,north america,United States
+24619,Loveridge_etal,2017,Observational,Terrestrial,Sub-national,500,africa,Zimbabwe
+24620,Loveridge_etal,2020,Observational,Terrestrial,Sub-national,,africa,Zimbabwe
+24622,Lozano_etal,2017,Observational,Freshwater,Continental,,south america,Unknown
+24624,Lucifora_etal,2016,Observational,Freshwater,Multi-national,0.5,south america,Brazil
+24627,Luizza_etal,2016,Observational,Freshwater,Sub-national,,north america,United States
+24628,Lunn and Moreau,2004,Observational,Marine,Sub-national,,south china sea,Indonesia
+24633,Lyon_etal,2011,Observational,Terrestrial,Local,100,europe,Finland
+24636,Macdonald_etal,2013,Observational,Terrestrial,Global,1,Unknown,Unknown
+24642,Mach_etal,2017,Observational,Marine,Sub-national,,north pacific,United States
+24646,Maclean_etal,2014,Observational,Freshwater,Multi-national,4,africa,DRC
+24648,Macnearney_etal,2016,Observational,Terrestrial,Sub-national,,north america,Canada
+24654,Magioli_etal,2019,Observational,Terrestrial,Local,,south america,Brazil
+24655,Magliozzi_etal,2020,Observational,Freshwater,Continental,100,europe,Unknown
+24656,Magness_etal,2011,Observational,Terrestrial,National,,north america,United States
+24659,Magris_etal,2019,Observational,Freshwater,Sub-national,,south atlantic,Brazil
+24660,Mahmood_etal,2019,Observational,Terrestrial,Sub-national,,asia,Pakistan
+24661,Mahmoud_etal,2019,Observational,Terrestrial,Sub-national,60,africa,Cameroon
+24663,Maiorano_etal,2019,Observational,Terrestrial,Sub-national,,europe,Italy
+24667,Malavasi_etal,2016,Observational,Terrestrial,Sub-national,,europe,Italy
+24673,Malherbe_etal,2019,Observational,Terrestrial,Local,,africa,South Africa
+24674,Mali?-Limari_etal,2017,Observational,Terrestrial,National,50,europe,Croatia
+24676,Malik and Rai,2019,Observational,Freshwater,Sub-national,,asia,India
+24677,Malinowski,2019,Observational,Marine,Sub-national,,north atlantic,United States
+24682,Manenti_etal,2014,Observational,Freshwater,Local,,europe,Italy
+24692,Mao_etal,2018,Observational,Freshwater,National,,asia,China
+24693,Marega-Imamura_etal,2020,S_Review,Marine,National,,south atlantic,Brazil
+24694,Marignani_etal,2017,Observational,Marine,Multi-national,1,mediterranean,France
+24695,Markham and Sangermano,2018,Observational,Freshwater,Local,,south america,Peru
+24696,Marotta_etal,2011,Observational,Marine,Sub-national,,mediterranean,Italy
+24698,Marques_etal,2019,Observational,Terrestrial,Local,100,europe,Spain
+24699,Márquez_etal,2013,Observational,Terrestrial,Sub-national,,europe,Spain
+24700,Martin_etal,2009,Observational,Marine,Sub-national,25,north atlantic,United Kingdom
+24705,Martínez-Freiría and Brito,2012,Observational,Terrestrial,Local,100,europe,Spain
+24706,Martinez-Gutierrez and Ruiz-Saenz,2016,S_Review,Terrestrial,Global,,Unknown,Unknown
+24710,Martins_etal,2013,Observational,Marine,Sub-national,,south atlantic,Brazil
+24713,Martinuzzi_etal,2018,Observational,Terrestrial,Sub-national,1,south america,Argentina
+24716,Marzolf_etal,2018,Observational,Freshwater,Local,,north america,United States
+24717,Maseko_etal,2017,Observational,Terrestrial,Sub-national,,africa,South Africa
+24718,Masocha and Dube,2018,Observational,Terrestrial,Global,,Unknown,Unknown
+24720,Mateo-Tomás_etal,2012,Observational,Terrestrial,Sub-national,1,europe,Spain
+24723,"Mati Bancy, M.",2005,Observational,Terrestrial,Multi-national,,africa,Kenya
+24728,Mazaris,2017,Observational,Marine,Global,,Unknown,Unknown
+24730,Mazor_etal,2017,Observational,Marine,National,0.01,south pacific,Australia
+24736,Mccauley_etal,2013,Observational,Terrestrial,Sub-national,,north america,United States
+24739,Mcclanahan,2015,Observational,Marine,Multi-national,,indian ocean,Comoros
+24740,Mcclanahan and Muthiga,2017,Observational,Marine,National,,indian ocean,Mozambique
+24738,Mcclanahan_etal,2011,Observational,Marine,Multi-national,,indian ocean,Comoros
+24742,Mcclellan,2009,Observational,Marine,Sub-national,,north atlantic,United States
+24741,Mcclellan_etal,2009,Observational,Marine,Sub-national,,north atlantic,United States
+24743,Mcclintock_etal,2015,Observational,Terrestrial,Sub-national,,north america,United States
+24745,Mccullough_etal,2017,Observational,Terrestrial,Sub-national,,north america,United States
+24747,Mccune_etal,2019,Observational,Freshwater,National,100,north america,Canada
+24748,Mcdonald_etal,2008,Observational,Terrestrial,Global,,Unknown,Unknown
+24750,Mcfadden-Hiller_etal,2016,Observational,Terrestrial,Sub-national,250,north america,United States
+24752,Mcgowan_etal,2013,Observational,Marine,Local,,north pacific,United States
+24754,Mcintyre_etal,2016,Observational,Freshwater,Global,100,Unknown,Unknown
+24761,Meager_etal,2012,Observational,Terrestrial,Local,0.25,australasia,Australia
+24765,Meentemeyer_etal,2011,Observational,Terrestrial,Local,250,north america,United States
+24766,Mehri_etal,2019,Observational,Freshwater,Sub-national,30,asia,Iran
+24769,Meijaard_etal,2011,Observational,Terrestrial,Sub-national,,asia,Indonesia
+24772,Mellin_etal,2016,Observational,Marine,Continental,81,indian ocean,Unknown
+24773,Mellin_etal,2019,Observational,Marine,Sub-national,0.01,south pacific,Australia
+24776,Menegon_etal,2018,Observational,Marine,Multi-national,500,mediterranean,Italy
+24777,Menegon_etal,2018,Observational,Marine,Sub-national,400,mediterranean,Italy
+24785,Metzger_etal,2010,Observational,Terrestrial,Sub-national,25,africa,Tanzania
+24788,Meynecke and Meager,2016,Observational,Marine,Sub-national,,south pacific,Australia
+24789,Mezgebu and Workineh,2017,Observational,Terrestrial,Local,30,africa,Ethiopia
+24790,Micheli_etal,2013,Observational,Marine,Multi-national,1,mediterranean,Bosnia and Herzegovina
+24796,Mijele_etal,2013,Observational,Terrestrial,Local,,africa,Kenya
+24806,Milne_etal,2015,Observational,Terrestrial,Sub-national,0.5,africa,South Africa
+24811,Miranda_etal,2020,Observational,Terrestrial,Sub-national,,south america,Chile
+24812,Miranda_etal,2020,Observational,Terrestrial,Local,,south america,Brazil
+24813,Mirrasooli_etal,2019,Observational,Marine,Multi-national,,caspian sea,Iran
+24819,Mo_etal,2017,Observational,Terrestrial,Sub-national,m,asia,China
+24821,Mockrin_etal,2008,Observational,Terrestrial,Local,,africa,Congo
+24822,Mockrin_etal,2011,Observational,Terrestrial,Local,,africa,Congo
+24825,Mohammadi and Kaboli,2016,Observational,Terrestrial,Local,,asia,Iran
+24826,Mohammadi_etal,2018,Observational,Terrestrial,Local,30,asia,Iran
+24829,Mojica_etal,2016,Observational,Terrestrial,Sub-national,1,north america,United States
+24832,Molinario_etal,2020,Observational,Terrestrial,Sub-national,30,africa,DRC
+24839,Monahan and Fisichelli,2014,Observational,Terrestrial,National,,north america,United States
+24842,Mondal and Zhang,2018,Observational,Terrestrial,Sub-national,,asia,India
+24841,Mondal_etal,2017,Observational,Freshwater,Local,,asia,India
+W26572,Moneron_etal,2017,Observational,Terrestrial,Global,,africa,Unknown
+24843,Monette Dean,2014,Observational,Freshwater,Local,,north america,United States
+24847,Monteiro_etal,2018,Observational,Terrestrial,Local,100,south america,Brazil
+24849,Montevecchi_etal,2012,Observational,Marine,Sub-national,,north atlantic,Canada
+24853,Moody_etal,2017,Observational,Freshwater,Sub-national,,north america,United States
+24856,Mora,2018,Observational,Terrestrial,National,1,north america,Mexico
+24857,Moraes_etal,2017,Observational,Terrestrial,Local,m,south america,Brazil
+24858,Moraes_etal,2019,Observational,Terrestrial,National,1,south america,Brazil
+24862,Moran and Kanemoto,2016,Observational,Freshwater,Global,,Unknown,Unknown
+24863,Moran_etal,2019,Observational,Freshwater,Global,5,Unknown,Unknown
+24867,Moreira_etal,2018,Observational,Terrestrial,Local,5,europe,Portugal
+24868,Morelli_etal,2020,Observational,Terrestrial,Continental,2500,europe,Unknown
+24871,Morgan_etal,2013,Observational,Terrestrial,Sub-national,,africa,Cameroon
+24875,Morrison_etal,2018,Experimental,Terrestrial,Local,30,africa,Kenya
+24877,Morton_etal,2011,Observational,Marine,Local,,north pacific,Canada
+24878,Mosbahi_etal,2019,Observational,Marine,Local,,mediterranean,Tunisia
+24879,Moullec_etal,2019,Observational,Marine,Multi-national,400,africa,Bosnia and Herzegovina
+24881,Mozumder_etal,2014,Observational,Freshwater,Local,,asia,India
+24885,Mucientes_etal,2009,Observational,Marine,Continental,5,north pacific,Unknown
+24886,Mucova_etal,2018,Observational,Terrestrial,Local,60,africa,Mozambique
+24888,Muhlfeld_etal,2016,Observational,Freshwater,Local,,north america,United States
+24892,Mullet_etal,2017,Observational,Terrestrial,Local,,north america,United States
+24894,Munanura_etal,2013,Observational,Terrestrial,Local,,africa,Rwanda
+24895,Munguía_etal,2016,Observational,Terrestrial,National,1,south america,Mexico
+24897,Muñoz_etal,2018,Observational,Marine,Multi-national,1,mediterranean,Spain
+24900,Munteanu_etal,2018,Observational,Terrestrial,Multi-national,2,europe,Austria
+24901,Murguía_etal,2016,Observational,Terrestrial,Global,,Unknown,Unknown
+26902,Murillo_et al,2008,Observational,Marine,Multi-national,,arctic ocean,Greenland
+24903,Murray_etal,2011,Observational,Freshwater,National,250,australasia,Australia
+24912,Mutnale_etal,2018,Observational,Freshwater,Multi-national,,asia,India
+24913,Mwendwa_etal,2020,Observational,Terrestrial,Local,,africa,Tanzania
+24917,Naderi_etal,2018,Observational,Terrestrial,National,,asia,Iran
+24902,Nagabhatla,2007,Observational,Freshwater,Global,500,asia,India
+24920,Nagarajan_etal,2016,Observational,Terrestrial,Local,,asia,India
+24929,Nath_etal,2019,Observational,Terrestrial,Local,1,asia,India
+24930,Naura_etal,2016,Observational,Freshwater,National,1,europe,United Kingdom
+24935,Nazaro_etal,2020,Observational,Terrestrial,Multi-national,441,south america,Argentina
+24937,Negret_etal,2019,Observational,Terrestrial,National,10,south america,Colombia
+24944,Nelson and Burnside,2019,Observational,Marine,Local,1,north atlantic,United Kingdom
+24943,Nelson_etal,2015,Observational,Terrestrial,Local,,north america,Canada
+24945,Nematollahi_etal,2020,Observational,Terrestrial,Sub-national,1,asia,Iran
+24951,Neumann_etal,2017,Observational,Marine,National,400,north atlantic,Germany
+24956,Newell,2011,Observational,Terrestrial,Local,,australasia,Australia
+24959,Nguyen,2017,Observational,Terrestrial,Local,0.5,asia,Brunei
+24962,Nickel Barry_etal,2020,Observational,Terrestrial,Local,1,north america,United States
+24963,Nielsen_etal,2004,Observational,Terrestrial,Sub-national,,north america,Canada
+24966,Nieman_etal,2019,Observational,Terrestrial,Local,,africa,South Africa
+24971,Niphadkar_etal,2017,Observational,Terrestrial,Local,2,asia,India
+24974,Nituch_etal,2011,Observational,Terrestrial,Sub-national,,north america,Canada
+24977,Noble_etal,2020,Observational,Marine,Local,,south pacific,Australia
+24978,Nogueira_etal,2010,Observational,Freshwater,National,,south america,Brazil
+24991,Northrup_etal,2019,Observational,Terrestrial,Sub-national,,north america,United States
+W26573,Nowell_etal,2016,Observational,Terrestrial,Multi-national,,asia,Afghanistan
+25005,O’leary_etal,2019,S_Review,Marine,Multi-national,,indian ocean,Gibraltar
+25008,Obusan_etal,2016,Observational,Marine,National,,south china sea,Philippines
+25010,Ochoa-Ochoa_etal,2011,Observational,Freshwater,National,,north america,Mexico
+25012,O'farrell_etal,2010,Observational,Terrestrial,Sub-national,,africa,South Africa
+25026,Ondei_etal,2019,Observational,Terrestrial,National,,australasia,Australia
+25028,Onmu? and Siki,2013,Observational,Freshwater,Local,1,asia,Turkey
+25030,Onyia_etal,2018,Experimental,Terrestrial,Local,,africa,Nigeria
+W26582,Opperman_etal,2019,Observational,Freshwater,Multi-national,,asia,Myanmar
+25033,Orgiazzi_etal,2016,Observational,Terrestrial,Continental,500,europe,Unknown
+25037,Ortiz Andrea,2019,Observational,Terrestrial,National,,asia,Philippines
+25042,Overmars_etal,2014,Observational,Freshwater,Continental,2500,europe,Unknown
+25049,Padalia and Bahuguna,2017,Observational,Terrestrial,Sub-national,km2,asia,India
+25051,Paffetti_etal,2018,Observational,Terrestrial,Local,1,europe,Italy
+25052,Pairaud_etal,2014,Observational,Marine,Multi-national,100,mediterranean,France
+25054,Palacios-Torres_etal,2020,Observational,Freshwater,Sub-national,,south america,Colombia
+25058,Paniw_etal,2015,Observational,Terrestrial,Multi-national,250,africa,Spain
+25059,Panlasigui_etal,2018,Observational,Freshwater,National,,north america,United States
+25061,Paredes_etal,2019,Observational,Freshwater,Local,,europe,Spain
+25065,Parmenter_etal,2003,Observational,Terrestrial,Sub-national,2.25,north america,United States
+25066,Parnell_etal,2010,Observational,Marine,Local,,north atlantic,United States
+25067,Parravicini_etal,2012,Observational,Marine,Local,250,mediterranean,Italy
+25068,Parry_etal,2009,Observational,Terrestrial,Local,,south america,Brazil
+25071,Parsons_etal,2014,Observational,Terrestrial,Local,,africa,Tanzania
+25072,Partelow_etal,2015,Observational,Marine,Global,,Unknown,Unknown
+25073,Paschoalini_etal,2020,Observational,Freshwater,Local,,south america,Brazil
+25075,Pascual-Rico_etal,2020,Observational,Terrestrial,Local,,europe,Spain
+25076,Pasha_etal,2020,Observational,Terrestrial,Sub-national,23.5,asia,India
+25077,Pasher_etal,2013,Observational,Terrestrial,Sub-national,30,north america,Canada
+25078,Pasqualini_etal,2011,Observational,Terrestrial,Local,,europe,France
+25080,Patino and Estupinan-Suarez,2016,Observational,Freshwater,National,100,south america,Colombia
+25082,Patrizzi and Dobrovolski,2018,Observational,Marine,National,5,north atlantic,Brazil
+25084,Pattanaik_etal,2011,Observational,Terrestrial,Local,80,asia,India
+25083,Pattanaik_etal,2008,Observational,Terrestrial,Local,57,asia,India
+25086,Patthey_etal,2008,Experimental,Terrestrial,Local,625,europe,Switzerland
+25088,Pauchard_etal,2003,Observational,Terrestrial,Local,,north america,United States
+25089,Paudel,2012,Observational,Terrestrial,Local,,asia,Nepal
+25099,Peck_etal,2011,Observational,Terrestrial,Sub-national,,south america,Ecuador
+25101,Pedroni ,2010,Observational,Terrestrial,Multi-national,,north america,Ecuador
+25112,Penney and Guinotte,2013,Observational,Marine,Sub-national,1,south pacific,New Zealand
+25114,Pennino_etal,2017,Observational,Marine,Sub-national,16,mediterranean,Italy
+25118,Peregrym_etal,2020,Observational,Marine,Multi-national,,mediterranean,Italy
+25120,Pereira_etal,2020,Observational,Terrestrial,Local,,south america,Brazil
+25122,Pérez-García_etal,2017,Observational,Terrestrial,Sub-national,1,europe,Spain
+25123,Périquet_etal,2018,Observational,Terrestrial,National,,africa,South Africa
+25124,Peristeraki_etal,2020,Observational,Marine,Multi-national,,mediterranean,Turkey
+25127,Pertierra_etal,2017,Observational,Terrestrial,National,2500,antarctica,Antarctica
+25130,Peterson_etal,2006,Observational,Terrestrial,Sub-national,,north america,United States
+25133,Petit and Elbersen,2006,Observational,Terrestrial,Continental,25,europe,Unknown
+25137,Petrossian,2015,Observational,Marine,Global,,Unknown,Unknown
+25138,Petrozzi_etal,2018,Observational,Terrestrial,Multi-national,100,africa,Algeria
+25139,Petz_etal,2014,Observational,Terrestrial,Global,30,Unknown,Unknown
+25145,Phipps_etal,2013,Observational,Terrestrial,Multi-national,,africa,Botswana
+25146,Phoenix_etal,2006,Observational,Terrestrial,Global,5,Unknown,Unknown
+25150,Pidgeon_etal,2015,Observational,Terrestrial,Multi-national,,south america,Bolivia
+25153,Pierre_etal,2018,Observational,Terrestrial,Sub-national,1,north america,United States
+25156,Pikesley_etal,2015,Observational,Marine,Multi-national,81,north atlantic,Cape Verde
+25157,Pikesley_etal,2016,Observational,Marine,Sub-national,200,north atlantic,United Kingdom
+25158,Pilcher_etal,2017,Observational,Marine,National,,south china sea,Thailand
+25159,Pilot_etal,2018,Observational,Terrestrial,Continental,,asia,Unknown
+25162,Pinho_etal,2018,Observational,Terrestrial,National,,europe,Portugal
+25165,Pinto_etal,2020,Observational,Terrestrial,Continental,10000,south america,Unknown
+25166,Piqueray_etal,2008,Observational,Terrestrial,National,,europe,Belgium
+25169,Pirotta_etal,2018,Observational,Marine,Sub-national,30,arctic ocean,Canada
+25172,Pitman_etal,2015,Observational,Terrestrial,Sub-national,,africa,South Africa
+25175,Plaza_etal,2019,Observational,Terrestrial,Global,,Unknown,Unknown
+25178,Plumptre_etal,2014,Observational,Terrestrial,Multi-national,62500,africa,Burundi
+25182,Polaina_etal,2016,Observational,Terrestrial,Global,1,Unknown,Unknown
+25188,Ponnampalam_etal,2015,Observational,Marine,Local,,south china sea,Malaysia
+25189,Pontius_etal,2008,Observational,Terrestrial,Sub-national,1,north america,United States
+25190,Poor_etal,2019,Observational,Terrestrial,Local,30,asia,Indonesia
+25191,Poos_etal,2010,Observational,Freshwater,Sub-national,,north america,Canada
+25193,Porobic_etal,2019,Observational,Marine,Sub-national,,south pacific,Chile
+25200,Potter_etal,2019,Observational,Terrestrial,National,,north america,United States
+25211,Preece,2007,Observational,Terrestrial,Local,500,australasia,Australia
+25216,Pretorius_etal,2019,Observational,Terrestrial,Sub-national,,africa,South Africa
+25221,Price_etal,2011,Observational,Freshwater,Sub-national,,north america,Canada
+25223,Proctor_etal,2015,Observational,Terrestrial,Sub-national,,north america,Canada
+25225,Prosser_etal,2016,Observational,Terrestrial,National,1,asia,China
+25229,Pullanikkatil_etal,2016,Observational,Freshwater,Local,,africa,Malawi
+25230,Pullanikkatil_etal,2020,Observational,Freshwater,Local,,africa,Malawi
+25232,Pupina_etal,2018,Observational,Freshwater,National,arc-minutes,europe,Latvia
+25233,Purroy_etal,2014,Observational,Marine,Local,500,mediterranean,Spain
+25234,Pusparini_etal,2018,Observational,Terrestrial,Local,,asia,Indonesia
+25240,Qiuqin and Tianzhu,2018,Observational,Terrestrial,Local,,asia,China
+25241,Qu_etal,2018,Observational,Terrestrial,Sub-national,1,asia,China
+25242,Quadroni_etal,2017,Observational,Freshwater,Local,,europe,Italy
+25246,Queiroz_etal,2016,Observational,Marine,Global,1,Unknown,Unknown
+25247,Queiroz_etal,2019,Observational,Marine,Global,1,Unknown,Unknown
+25266,Rahman_etal,2020,S_Review,Freshwater,Continental,,asia,Unknown
+25268,Raimondo_etal,2019,Observational,Freshwater,Sub-national,,north america,United States
+25270,Rajah_etal,2020,Observational,Terrestrial,Local,20,africa,South Africa
+25274,Ramachandra_etal,2016,Observational,Terrestrial,Sub-national,,asia,India
+25275,Ramachandra_etal,2018,Observational,Terrestrial,Local,,asia,India
+25276,Ramachandran_etal,2018,Observational,Terrestrial,Sub-national,,asia,India
+25278,Ramirez_etal,2018,Observational,Marine,Multi-national,0.25,mediterranean,Bosnia and Herzegovina
+25283,Ramirez-Villegas_etal,2012,Observational,Terrestrial,Continental,0.5,south america,Unknown
+25286,Ramos-Merchante and Prenda,2018,Observational,Freshwater,Sub-national,,europe,Spain
+25287,Ramp_etal,2006,Observational,Terrestrial,Local,300,australasia,Australia
+25292,Rao and Pant,2001,Observational,Freshwater,Local,,asia,India
+25296,Rashid_etal,2013,Observational,Terrestrial,Sub-national,,asia,India
+25297,Rashid_etal,2020,Observational,Terrestrial,Local,30,asia,Bangladesh
+25298,Rashidi_etal,2016,Observational,Terrestrial,Sub-national,,africa,Kenya
+25299,Rasmussen_etal,2013,Observational,Freshwater,Local,,europe,Denmark
+W26590,Ratsimbazafy_etal,2016,Observational,Marine,Local,,indian ocean,Madagascar
+25304,Rattner_etal,2000,S_Review,Terrestrial,Sub-national,,north atlantic,United States
+25308,Rayan and Linkie,2015,Observational,Terrestrial,Local,4,asia,Malaysia
+25309,Razgour_etal,2018,Observational,Terrestrial,Multi-national,1,europe,United Kingdom
+25313,Reddy_etal,2014,Observational,Terrestrial,Sub-national,25,asia,India
+25315,Redfern_etal,2012,Observational,Marine,Sub-national,4,north pacific,United States
+25317,Reece_etal,2013,Observational,Terrestrial,Local,,north atlantic,United States
+25324,Reina-Rodríguez and Soriano,2008,Observational,Marine,Local,,mediterranean,Spain
+25327,Reisland and Lambert,2016,Observational,Terrestrial,Local,,asia,Indonesia
+25336,Revuelta_etal,2018,Observational,Marine,Local,,mediterranean,Spain
+25337,Rey_etal,2015,Observational,Freshwater,National,,europe,France
+25350,Ribeiro and Sá-Sousa,2018,Observational,Terrestrial,Local,,europe,Portugal
+25349,Ribeiro_etal,2018,Observational,Freshwater,Sub-national,30,south america,Brazil
+25352,Ribeiro_etal,2019,Observational,Terrestrial,Sub-national,,south america,Brazil
+25355,Richards and Friess,2016,Observational,Terrestrial,Multi-national,1,asia,Indonesia
+25361,Rifaie_etal,2015,Observational,Terrestrial,Sub-national,,asia,Indonesia
+25365,Rija_etal,2020,S_Review,Terrestrial,Global,,Unknown,Unknown
+25369,Rimal_etal,2018,Observational,Terrestrial,Local,,asia,Nepal
+25371,Riolo,2006,Observational,Marine,National,km,south pacific,American Samoa
+25372,Ripple_etal,2016,Observational,Terrestrial,Global,,Unknown,Unknown
+25374,Riskas_etal,2016,Observational,Marine,National,1,indian ocean,Australia
+W26588,Robert I. Mcdonald_etal,2018,Observational,Terrestrial,Global,,Unknown,Unknown
+25381,Robertson_etal,2004,Observational,Terrestrial,Multi-national,1,africa,South Africa
+25384,Robillard and Kerr,2016,Observational,Terrestrial,Sub-national,,north america,Canada
+25390,Roder_etal,2015,Observational,Terrestrial,Multi-national,30,africa,Namibia
+25392,Rodrigues_etal,2014,Observational,Terrestrial,Global,,Unknown,Unknown
+25391,Rodrigues_etal,2012,Observational,Terrestrial,Sub-national,,europe,Spain
+25393,Rodrigues_etal,2014,Observational,Terrestrial,National,1,europe,Spain
+25400,Rodriguez-Merino_etal,2017,Observational,Freshwater,Multi-national,5,europe,Spain
+25402,Rodríguez-Rodríguez and Bomhard,2012,Observational,Terrestrial,Global,1,Unknown,Unknown
+25405,Rodríguez-Teijeiro_etal,2009,Observational,Terrestrial,National,,europe,Spain
+25407,Roe_etal,2014,Observational,Marine,Continental,5,north pacific,Unknown
+25409,Roger_etal,2011,Observational,Terrestrial,Local,100,australasia,Australia
+25410,Roger_etal,2012,Observational,Terrestrial,Local,,australasia,Australia
+25411,Rogers_etal,2010,Observational,Terrestrial,National,km,africa,Madagascar
+25413,Román-Palacios and Valencia-Zuleta,2018,Observational,Freshwater,National,0.5,south america,Colombia
+25416,Romero-Muñoz_etal,2019,Observational,Terrestrial,Multi-national,1,south america,Bolivia
+25417,Romero-Muñoz_etal,2020,Observational,Terrestrial,Multi-national,1,south america,Argentina
+25419,Ropert-Coudert_etal,2019,Observational,Terrestrial,Local,,north america,Mexico
+25420,Rorabaugh_etal,2018,Observational,Freshwater,Sub-national,,north america,Mexico
+25422,Roscioni_etal,2013,Observational,Terrestrial,Local,,europe,Italy
+25431,Rowden_etal,2019,Observational,Marine,National,1,south pacific,New Zealand
+25435,Ruiz-Orejón_etal,2019,Observational,Marine,Sub-national,,mediterranean,Spain
+25437,Rushton_etal,2006,Observational,Terrestrial,Local,100,europe,United Kingdom
+25438,Russo_etal,2020,Observational,Terrestrial,National,,europe,Italy
+25442,Sainsbury_etal,2008,Observational,Terrestrial,National,,europe,United Kingdom
+25443,Saito_etal,2016,Observational,Terrestrial,Local,,asia,Japan
+25444,Sajeev and Subramanian,2003,Observational,Freshwater,Local,,asia,India
+25447,Sales Naiara_etal,2018,Observational,Freshwater,Sub-national,,south america,Brazil
+25449,Salgado_etal,2018,Observational,Marine,Sub-national,289,north pacific,United States
+25454,Samhouri and Levin,2012,Observational,Marine,Local,,north pacific,United States
+25461,Sanchez-Mercado_etal,2008,Observational,Terrestrial,Sub-national,20,south america,Venezuela
+25464,Sangil_etal,2013,Observational,Marine,Local,,north atlantic,Canary Islands
+25469,Santora_etal,2017,Observational,Marine,Sub-national,4500,north pacific,United States
+25470,Santora_etal,2020,Observational,Marine,Sub-national,25,north pacific,United States
+25473,Santos_etal,2013,Observational,Terrestrial,Local,m,europe,Portugal
+25474,Santos_etal,2013,Observational,Terrestrial,Sub-national,m,europe,Portugal
+25482,Scabin_etal,2011,Observational,Terrestrial,Local,,south america,Brazil
+25488,Scheele_etal,2019,Observational,Freshwater,Global,,Unknown,Unknown
+25487,Scheele_etal,2015,Observational,Freshwater,Local,,europe,Romania
+25493,Schinegger_etal,2013,Observational,Freshwater,Continental,,europe,Unknown
+25496,Schlacher_etal,2016,S_Review,Marine,Global,,Unknown,Unknown
+25499,Schmeller_etal,2007,Observational,Freshwater,Multi-national,,europe,France
+25507,Schuette_etal,2016,Observational,Terrestrial,Local,,africa,Kenya
+25511,Schurmann_etal,2020,Observational,Terrestrial,Local,,africa,Kenya
+25512,Schuyler_etal,2014,S_Review,Marine,Global,,Unknown,Unknown
+25513,Schwartz_etal,2010,Observational,Terrestrial,Sub-national,,north america,United States
+25515,Sciarretta_etal,2016,Observational,Terrestrial,Sub-national,,europe,Italy
+25516,Scolozzi and Geneletti,2011,Observational,Terrestrial,Local,,europe,Italy
+25518,Seabrook_etal,2011,Observational,Terrestrial,Sub-national,,australasia,Australia
+25520,Seidel_etal,2018,Observational,Terrestrial,Sub-national,,europe,Germany
+25521,Seidler_etal,2015,Observational,Terrestrial,Local,10,north america,United States
+25523,Seiler,2005,Observational,Terrestrial,Sub-national,,europe,Sweden
+25524,Seim_etal,2016,Observational,Terrestrial,Multi-national,,asia,Kyrgyzstan
+25525,Seimon_etal,2013,Observational,Terrestrial,Sub-national,,asia,China
+25526,Seimon_etal,2015,Observational,Freshwater,Multi-national,,africa,Tanzania
+25529,Selkoe_etal,2009,Observational,Marine,Sub-national,0.01,north pacific,Hawaii
+25530,Selman_etal,2013,Experimental,Freshwater,Local,,north america,United States
+25531,Selvalakshmi,2014,Observational,Terrestrial,Local,,asia,India
+25535,Semper-Pascual_etal,2020,Observational,Terrestrial,Sub-national,30,south america,Argentina
+25539,Senn Helen_etal,2019,Observational,Terrestrial,Sub-national,,europe,United Kingdom
+25542,Serieys_etal,2019,Observational,Terrestrial,Local,,africa,South Africa
+25543,Serra-Varela_etal,2017,Observational,Terrestrial,National,1,europe,Spain
+25551,Shalders_etal,2018,Observational,Marine,Sub-national,1500,indian ocean,Australia
+25559,Sharma_etal,2018,Observational,Terrestrial,Sub-national,,asia,Nepal
+25560,Sharma_etal,2020,Observational,Terrestrial,National,,asia,Nepal
+25565,Shester,2008,Observational,Marine,Local,0.0001,north pacific,Mexico
+25567,Shilling and Waetjen,2015,Observational,Terrestrial,Sub-national,,north america,United States
+25574,Short_etal,2018,Observational,Marine,Global,,Unknown,Unknown
+25575,Shrestha_etal,2019,Observational,Freshwater,Local,500,asia,India
+25577,Sieber_etal,2013,Observational,Terrestrial,Sub-national,,asia,Russia
+25582,Sigaud_etal,2020,Observational,Terrestrial,Local,,north america,Canada
+25585,Silcock_etal,2019,Observational,Terrestrial,Sub-national,,australasia,Australia
+25588,Silva_etal,2014,Observational,Terrestrial,Sub-national,,europe,Portugal
+25589,Silva_etal,2018,Observational,Terrestrial,Local,0.5,south america,Brazil
+25591,Silva_etal,2020,Observational,Terrestrial,Local,200,asia,Thailand
+25593,Silva-Rodríguez and Sieving,2012,Observational,Terrestrial,Multi-national,,south america,Chile
+25598,Simon_etal,2019,Observational,Freshwater,Local,,africa,South Africa
+25600,Singh_etal,2009,Observational,Terrestrial,Local,,asia,India
+25601,Singh_etal,2017,Observational,Terrestrial,Local,,asia,India
+25607,Sini_etal,2019,Observational,Marine,Sub-national,,mediterranean,Greece
+25614,Skaer,2015,Observational,Terrestrial,Sub-national,,north america,United States
+25618,Sloan_etal,2018,Observational,Terrestrial,Sub-national,,asia,Indonesia
+25619,Smeraldo_etal,2020,Observational,Terrestrial,National,,europe,Italy
+25628,Smith Joshua_etal,2020,Observational,Marine,Sub-national,100,south pacific,Australia
+25622,Smith_etal,2014,Observational,Terrestrial,Local,30,north america,United States
+25625,Smith_etal,2017,Observational,Terrestrial,Local,,north america,United States
+25629,Smolinski and Calkiewicz,2015,Observational,Marine,Sub-national,,north atlantic,Poland
+25630,Snyder_etal,2011,Observational,Terrestrial,Local,,north america,United States
+25633,Soh_etal,2014,Observational,Terrestrial,Local,,asia,China
+25636,Soiret_etal,2019,Observational,Terrestrial,Local,,africa,Ivory Coast
+25640,Songer,2006,Observational,Terrestrial,Sub-national,m,asia,Myanmar
+25642,Songhurst_etal,2016,Observational,Terrestrial,Local,,africa,Botswana
+25643,Sonricker_etal,2012,Observational,Freshwater,Global,,Unknown,Unknown
+25645,Soriano_etal,2019,Observational,Freshwater,Local,500,asia,Philippines
+25646,Soroye_etal,2020,Observational,Terrestrial,Continental,0.5,europe,Unknown
+25651,Sousa_etal,2019,Observational,Marine,Local,,north atlantic,Portugal
+25654,Spanowicz_etal,2020,Observational,Terrestrial,Multi-national,,north america,Canada
+25656,Spitzen-Van Der_etal,2016,Observational,Terrestrial,Multi-national,,europe,Germany
+25664,Stafford_etal,2017,S_Review,Terrestrial,Continental,,south america,Mexico
+25671,Steinke and Saito,2013,Observational,Freshwater,Multi-national,,south america,Brazil
+25674,Steizenmuller_etal,2010,Observational,Marine,Sub-national,,north atlantic,United Kingdom
+25676,Stelzenmuller_etal,2015,Observational,Marine,National,31,north atlantic,Germany
+25675,Stelzenmüller_etal,2009,Observational,Marine,Local,50,mediterranean,Spain
+25679,Stephens_etal,2016,Observational,Terrestrial,Continental,2500,north america,Unknown
+25680,Stephenson_etal,2017,Observational,Marine,Local,100,north atlantic,United Kingdom
+25682,Steven and Castley,2013,Observational,Terrestrial,Global,,Unknown,Unknown
+25684,Stewart_etal,2010,Observational,Marine,Continental,1,indian ocean,Unknown
+25686,Stock_etal,2018,Observational,Marine,Global,5,Unknown,Unknown
+25687,Stock_etal,2018,Observational,Marine,Sub-national,,north pacific,United States
+25688,Stoica_etal,2017,Observational,Terrestrial,Local,0.5,europe,Romania
+W26583,Stoner and Pervushina,2013,Observational,Terrestrial,Multi-national,,asia,India
+25692,Stortini_etal,2015,Observational,Marine,Sub-national,,north atlantic,Canada
+25695,Stroud_etal,2017,Observational,Terrestrial,Local,,north america,Bermuda
+25696,Strubbe_etal,2010,Observational,Terrestrial,National,5,europe,Belgium
+25697,Struebig_etal,2018,Observational,Terrestrial,Sub-national,,asia,Indonesia
+25709,Swan_etal,2017,Observational,Freshwater,Sub-national,,south america,Brazil
+25711,Swartz_etal,2010,Observational,Marine,Global,0.5,Unknown,Unknown
+W26581,Sylvia_etal,2019,Observational,Marine,Global,,Unknown,Unknown
+25712,Symes_etal,2018,Observational,Terrestrial,Sub-national,,asia,Indonesia
+25713,Syphard_etal,2007,Observational,Terrestrial,Sub-national,1,north america,United States
+25714,Syphard_etal,2009,Observational,Terrestrial,Multi-national,225,mediterranean,Spain
+25716,Syxaiyakhamthor_etal,2019,Observational,Terrestrial,Local,1,asia,Laos
+25717,Szabo_etal,2009,Observational,Terrestrial,Sub-national,0.5,australasia,Australia
+25724,Talukdar_etal,2020,Observational,Terrestrial,Local,30,asia,India
+25726,Tamario_etal,2019,Observational,Freshwater,Sub-national,,europe,Sweden
+25732,Tancell_etal,2016,Observational,Marine,National,,southern ocean,South Georgia and the South Sandwich Islands
+25734,Tapia-Armijos_etal,2017,Observational,Terrestrial,Sub-national,100,south america,Ecuador
+25737,Tarrant_etal,2013,Observational,Freshwater,National,,africa,South Africa
+25740,Taylor_etal,2018,Observational,Freshwater,Sub-national,,north america,United States
+25745,Tello_etal,2020,Observational,Terrestrial,Sub-national,100,europe,Spain
+25751,Thapa_etal,2017,Observational,Terrestrial,Local,5,asia,Nepal
+25753,Thaxter_etal,2019,Observational,Terrestrial,Multi-national,400,europe,United Kingdom
+25754,Thellmann_etal,2018,Observational,Terrestrial,Local,30,asia,China
+25755,Theodorakis_etal,2017,Observational,Terrestrial,Local,,north america,United States
+25757,Thiault_etal,2020,Observational,Marine,Sub-national,50,south pacific,Australia
+25761,Thiebot_etal,2014,Observational,Marine,Multi-national,,indian ocean,Australia
+25766,Thonfeld_etal,2020,Observational,Freshwater,Sub-national,30,africa,Tanzania
+25767,Thongmanivong_etal,2005,Observational,Terrestrial,Local,,asia,Laos
+25781,Tingley_etal,2019,Observational,Terrestrial,National,,australasia,Australia
+25784,To_etal,2017,Observational,Terrestrial,Multi-national,,africa,Benin
+25796,Tolotti_etal,2015,Observational,Marine,Multi-national,degrees,south atlantic,Brazil
+25798,Topp-Jorgensen_etal,2009,Observational,Terrestrial,Local,,africa,Tanzania
+25802,Tovar_etal,2012,Observational,Terrestrial,Local,,south america,Peru
+25803,Tracy_etal,2019,Observational,Terrestrial,Multi-national,100,north america,United States
+25806,Trebilco_etal,2011,Observational,Marine,Global,5,Unknown,Unknown
+25805,Trebilco_etal,2008,Observational,Marine,Sub-national,50,south pacific,Macquarie Island
+25808,Treves_etal,2006,Observational,Terrestrial,Multi-national,,africa,Uganda
+25813,Trew_etal,2019,Observational,Marine,National,16,north atlantic,Equatorial Guinea
+25820,Trochine_etal,2018,Observational,Freshwater,Continental,,europe,Unknown
+25821,Troia and Mcmanamay,2020,Observational,Freshwater,Sub-national,,north america,United States
+25824,Troy,2013,Observational,Terrestrial,Local,,north america,United States
+25826,Trull_etal,2017,Observational,Terrestrial,Global,,Unknown,Unknown
+25830,Tucker_etal,2018,Observational,Terrestrial,Global,1,Unknown,Unknown
+25833,Tulloch_etal,2020,Observational,Marine,Global,km2,Unknown,Unknown
+25832,Tulloch_etal,2020,Observational,Marine,National,0.5,south pacific,Australia
+25837,Tursi_etal,2018,Observational,Marine,Local,,mediterranean,Italy
+25838,Twumasi,2006,Observational,Freshwater,Sub-national,30,africa,Nigeria
+25846,Underwood_etal,2011,Observational,Terrestrial,Sub-national,m,north america,United States
+W26577,Uryu_etal,2008,Observational,Terrestrial,Sub-national,1000,asia,Indonesia
+25850,Vacchiano_etal,2018,Observational,Terrestrial,Local,1,europe,Italy
+25856,Valliere,2016,Observational,Terrestrial,Local,1,north america,United States
+25857,Valliere_etal,2020,Observational,Terrestrial,Local,km2,north america,United States
+25865,Van Den_etal,2018,Observational,Terrestrial,Local,,south america,Suriname
+25866,Van Der_etal,2018,Observational,Marine,Multi-national,,north atlantic,United Kingdom
+25874,Van_etal,2018,Observational,Terrestrial,Continental,,south america,Unknown
+25858,Van_etal,2015,Observational,Terrestrial,Multi-national,arc-minutes,africa,Benin
+25862,Van_etal,2015,Observational,Terrestrial,Multi-national,900,africa,Kenya
+25870,Van_etal,2017,Experimental,Terrestrial,Local,,north america,United States
+25875,Vanderlaan_etal,2009,Observational,Marine,Sub-national,5,north atlantic,United States
+25877,Vanderpost,2007,Observational,Terrestrial,Local,,africa,Botswana
+25878,Vangansbeke_etal,2017,Observational,Terrestrial,Local,,europe,Belgium
+25879,Vanthomme_etal,2017,Observational,Terrestrial,Local,25,africa,Gabon
+25880,Vardarman_etal,2018,Observational,Terrestrial,Local,,europe,Czech Republic
+25884,Vasapollo_etal,2019,Observational,Marine,Sub-national,,mediterranean,Italy
+25888,Vasilakis_etal,2016,Observational,Terrestrial,Multi-national,,europe,Bulgaria
+25889,Vasilakis_etal,2017,Observational,Terrestrial,Multi-national,,europe,Bulgaria
+25891,Vasyliuk_etal,2015,Observational,Terrestrial,National,,europe,Ukraine
+25892,Veach_etal,2017,Observational,Terrestrial,Global,1,Unknown,Unknown
+25894,Velado-Alonso_etal,2020,Observational,Terrestrial,National,100,europe,Spain
+25896,Velho_etal,2012,S_Review,Terrestrial,National,,asia,India
+25901,Vendramin_etal,2013,Observational,Marine,Sub-national,,mediterranean,Italy
+25903,Venegas-Li_etal,2019,Observational,Marine,Global,0.5,Unknown,Unknown
+25904,Venkataraman_etal,2002,Observational,Terrestrial,Sub-national,,asia,India
+25908,Vergara-Tabares_etal,2020,Observational,Terrestrial,Continental,0.5,africa,Unknown
+25911,Verones_etal,2017,Observational,Terrestrial,Global,12100,Unknown,Unknown
+25912,Versluijs_etal,2020,Experimental,Terrestrial,Sub-national,,europe,Sweden
+25913,Verutes_etal,2020,Observational,Marine,Multi-national,,south china sea,Malaysia
+25925,Vimal_etal,2012,Observational,Terrestrial,Sub-national,100,europe,France
+25926,Vinitpornsawar,2013,Observational,Terrestrial,Local,1,asia,Thailand
+25930,Visintin_etal,2018,Observational,Terrestrial,Sub-national,1,australasia,Australia
+25933,Vogel,2007,Experimental,Freshwater,Sub-national,,north america,United States
+25934,Vojar_etal,2017,Observational,Freshwater,Multi-national,,europe,Montenegro
+25936,Vörösmarty_etal,2010,Observational,Freshwater,Global,0.5,Unknown,Unknown
+25942,Wakeel_etal,2005,Observational,Terrestrial,Local,,asia,India
+25944,Walentowitz_etal,2019,Observational,Terrestrial,Local,500,europe,Spain
+25948,Walker_etal,2020,Observational,Terrestrial,Local,,north america,United States
+25952,Wallace_etal,2011,Observational,Marine,Global,,Unknown,Unknown
+25953,Wallace_etal,2013,Observational,Marine,Global,,Unknown,Unknown
+25957,Walston and Hartmann,2018,Observational,Terrestrial,Sub-national,90,north america,United States
+25959,Waltham and Sheaves,2015,Observational,Marine,Sub-national,,south pacific,Australia
+25960,Wamelink_etal,2013,Observational,Terrestrial,National,250,europe,Netherlands
+25970,Wang_etal,2017,Observational,Terrestrial,National,2.5,asia,China
+25973,Wanghe_etal,2020,Observational,Terrestrial,Sub-national,,asia,China
+25978,Wasser_etal,2008,Observational,Terrestrial,Multi-national,,africa,Angola
+25980,Watson_etal,2015,Observational,Terrestrial,Sub-national,,africa,Zambia
+25986,Weimerskirch_etal,2018,Observational,Marine,Continental,,indian ocean,Unknown
+25988,Weinzettel_etal,2018,Observational,Terrestrial,Global,,Unknown,Unknown
+25991,Weir_etal,2011,Observational,Marine,Local,,south atlantic,Angola
+25997,Wessels_etal,2000,Observational,Terrestrial,Sub-national,15,africa,South Africa
+25998,Wessels_etal,2003,Observational,Terrestrial,Sub-national,700,africa,South Africa
+26001,White,2018,Observational,Terrestrial,Sub-national,,south america,Brazil
+26002,Whitty,2016,Observational,Marine,Local,,south atlantic,Philippines
+26006,Wiemeyer_etal,2017,Observational,Terrestrial,Continental,,south america,Unknown
+26011,Wiley_etal,2011,Observational,Marine,Sub-national,,north atlantic,United States
+26214,Williams,2017,Observational,Marine,Sub-national,1,north pacific,Alaska
+26015,Williams and O'hara,2010,Observational,Marine,Sub-national,25,north pacific,Canada
+26017,Williams_etal,2014,Observational,Terrestrial,Continental,,africa,Unknown
+26016,Williams_etal,2011,Observational,Marine,Sub-national,25,north pacific,Canada
+26032,Winchell_etal,2012,Observational,Freshwater,Sub-national,,north america,United States
+26033,Winchell_etal,2014,Observational,Freshwater,Sub-national,,north america,United States
+26036,Winemiller_etal,2016,Observational,Freshwater,Multi-national,,africa,Brazil
+26042,Winters_etal,2017,Observational,Marine,Local,,mediterranean,Israel
+26044,Witt and Godley,2007,Observational,Marine,Multi-national,9,north atlantic,United Kingdom
+26047,Wittig_etal,2007,Observational,Terrestrial,National,,africa,Burkina Faso
+26049,Woinarski_etal,2018,Observational,Terrestrial,National,,australasia,Australia
+26050,Wolaver_etal,2018,Observational,Terrestrial,Sub-national,1,north america,United States
+W26585,Wong,2019,Observational,Terrestrial,Global,,Unknown,Unknown
+26053,Wong_etal,2018,Observational,Marine,Sub-national,,arctic ocean,Canada
+26054,Woodcock_etal,2013,Observational,Terrestrial,Sub-national,,asia,Malaysia
+26057,Wraith and Pickering,2019,Observational,Terrestrial,National,,australasia,Australia
+26060,Wu,2016,Observational,Terrestrial,National,0.5,asia,China
+26063,Wu_etal,2020,Observational,Terrestrial,Multi-national,30,asia,China
+W26574,Wwf,2016,Observational,Terrestrial,Multi-national,,asia,Myanmar
+W26575,Wwf,2017,Observational,Terrestrial,Sub-national,,asia,Indonesia
+W26580,Wwf,2016,Observational,Terrestrial,Local,,north america,Mexico
+W26578,Wwf,2014,Observational,Marine,National,,north pacific,Russia
+W26576,Wwf-Indonesia,2013,Observational,Terrestrial,Local,,asia,Indonesia
+26067,Wyatt_etal,2017,Observational,Marine,Sub-national,1,north atlantic,United States
+26068,Xavier Da_etal,2018,Observational,Terrestrial,Local,,south america,Argentina
+26074,Xofis and Poirazidis,2018,Observational,Terrestrial,Local,0.5,europe,Greece
+26076,Xu_etal,2016,Observational,Terrestrial,National,0.5,asia,China
+26078,Xu_etal,2019,Observational,Terrestrial,Sub-national,30,asia,China
+26080,Yackulic_etal,2011,Observational,Terrestrial,Continental,2500,africa,Unknown
+26081,Yadav_etal,2020,Observational,Terrestrial,Local,m,asia,India
+26084,Yang_etal,2017,Observational,Freshwater,Local,,asia,China
+26086,Yang_etal,2019,Observational,Terrestrial,Sub-national,30,asia,China
+26089,Ye_etal,2015,Observational,Terrestrial,Sub-national,30,asia,China
+26090,Yee and Barron,2010,Observational,Marine,Global,,Unknown,Unknown
+26092,Yin_etal,2020,Observational,Terrestrial,Sub-national,1,asia,China
+26094,Young_etal,2011,Observational,Terrestrial,Local,,north america,United States
+26096,Yu_etal,2001,Observational,Freshwater,Sub-national,,asia,China
+26098,Yu_etal,2020,Observational,Freshwater,Multi-national,1,asia,Uzbekistan
+26102,Yumnam_etal,2014,Observational,Terrestrial,Sub-national,100,asia,India
+26103,Zacharias and Gregr,2005,Observational,Marine,Sub-national,,north pacific,Canada
+26104,Zafra-Calvo_etal,2010,Observational,Terrestrial,Local,1,africa,Equatorial Guinea
+26111,Zampiglia_etal,2013,Observational,Freshwater,National,,europe,Italy
+26112,Zapata-Ríos_etal,2009,Observational,Terrestrial,Local,,south america,Ecuador
+26117,Zhai_etal,2012,Observational,Terrestrial,Local,10,asia,China
+26127,Zhang and Vincent,2019,Observational,Marine,Global,1,Unknown,Unknown
+26120,Zhang_etal,2007,Observational,Terrestrial,Local,30,asia,China
+26131,Zhao_etal,2020,Observational,Terrestrial,Sub-national,,asia,China
+26135,Zhu_etal,2019,Observational,Terrestrial,National,1,asia,China
+26137,Ziegler_etal,2016,Observational,Terrestrial,Multi-national,1,africa,Central African Republic
+26140,Zimkus_etal,2020,S_Review,Freshwater,Continental,1,africa,Unknown
+26141,Zingraff-Hamed_etal,2018,Observational,Freshwater,Local,,europe,Germany
+26142,Zomer_etal,2014,Observational,Terrestrial,Multi-national,1,asia,China
+26145,Žydelis_etal,2009,S_Review,Marine,Multi-national,,north atlantic,United Kingdom
