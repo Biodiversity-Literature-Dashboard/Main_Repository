@@ -1,5 +1,5 @@
 import pandas as pd
-from .data_loader import df1,df2
+from utils.data_loader import df1,df2
 
 def get_authors(df):
     return df['Authors']
