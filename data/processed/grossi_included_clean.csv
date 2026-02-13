@@ -1,0 +1,16 @@
+Article_ID,Authors,Study_design,Ecoregion,Continent_Ocean,Country,Threat_metric,Threat_data,Threat,Quantity_threats,Threat_precision,Threat_database
+93.0,Abram_etal,Observational,Terrestrial,asia,Indonesia,expert,Quantitative,6.3:Other,1.0,level2,na
+108.0,Birkmanis_etal,Observational,Marine,indian ocean,Australia,database,Quantitative,5.1:UseAnimals,1.0,level2,AustalianBureauofAgricultural and ResourceEconomicsandSciences_ABARES
+61.0,Chu_etal,Observational,Freshwater,north america,Canada,database,Quantitative,2.1:AgNTC;2.2:AgWood;9.1:PollDWW;9.4:PollGarbSW;3.1:OilGas;4.1:RoadRail,6.0,cumulative,AgricultureAndAgri-FoodCanada_1997
+90.0,Desta and Fetene,Observational,Freshwater;Terrestrial,africa,Ethiopia,rs,Qualitative,1.1:DevResid;2.1:AgNTC;2.2:AgWood;2.3:AgLivestock,4.0,level2,na
+112.0,Di Fulvio_etal,Observational,Terrestrial,europe,na,modelled,Quantitative,2.1:AgNTC;3.3:Renew,1.0,level2,na
+41.0,Enrichetti_etal,Observational,Marine,mediterranean,Italy,modelled;survey,Quantitative,4.3:ShipLane;5.4:UseAquatic;9.7:PollUnspec,3.0,cumulative,na
+94.0,Hoang_etal,Observational,Terrestrial,na,na,database,Quantitative,2.1:AgNTC,1.0,level2,GBIF;EORA
+62.0,Kamino_etal,Observational,Freshwater,south america,Brazil,database,Qualitative,9.2:PollIndMil,1.0,level2,ANM; FEAM
+65.0,Micheli_etal,Observational,Marine,mediterranean,Bosnia and Herzegovina; France; Italy; Greece; Croatia; Macedonia; Monaco;Montenegro; Spain;Slovenia;San Marino;Albania;Malta;Cyprus;Turkey;Morocco;Algeria;Tunisia;Libya;Egypt;Israel;Syria;Lebanon;Georgia;Turkey;Bulgaria;Ukraine;Romania;Russia,modelled,Quantitative,1.1:DevResid;1.2:DevComInd;3.1:OilGas;4.3:ShipLane;5.4:UseAquatic;8.1:SDAlienInv;9.3:PollAgrFor;9.2:PollIndMil;9.5:PollAir;11.1:CC_Habitat;9.1:PollDWW;9.6:PollEnergy,12.0,cumulative,na
+84.0,Moran and Kanemoto,Observational,Freshwater;Marine;Terrestrial,na,na,database,Quantitative,1.1:DevResid;1.2:DevComInd;2.2:AgWood;2.5:AgUnspec;4.1:RoadRail;9.7:PollUnspec,6.0,cumulative,IUCN;EORA
+101.0,SchulteToBuehne_etal,Observational,Terrestrial,africa,Benin;Burkina Faso;Niger,rs,Qualitative,2.1:AgNTC,1.0,level2,na
+10.0,Selkoe_etal,Observational,Marine,north pacific,Hawaii,database,Quantitative,8.1:SDAlienInv;5.4:UseAquatic;9.6:PollEnergy;9.4:PollGarbSW;6.3:Other;11.1:CC_Habitat;11.3:CC_Temp;9.5:PollAir;4.3:ShipLane;9.2:PollIndMil,10.0,cumulative,Various
+74.0,Sun_etal,Observational,Terrestrial,na,na,database,Quantitative,1.4:DevUnspec;2.5:AgUnspec;3.4:EnergUnspec;4.5:UnspecLine;5.5:UseUnspec,5.0,cumulative,FABIO;EXIOBASE
+60.0,Symes_etal,Observational,Terrestrial,asia,Indonesia,modelled,Qualitative,5.1:UseAnimals,1.0,level2,na
+82.0,Weinzettel_etal,Experimental,Freshwater;Marine;Terrestrial,na,na,database;modelled,Quantitative,2.1:AgNTC,1.0,level2,na
