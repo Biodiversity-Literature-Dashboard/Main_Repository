@@ -43,7 +43,7 @@ df2 = df_ridley
 
 # Test if run directly
 if __name__ == "__main__":
-    print(f"✅ Grossi: {len(df_grossi)} rows, {len(df_grossi.columns)} columns")
+    print(f"Grossi: {len(df_grossi)} rows, {len(df_grossi.columns)} columns")
     print(f"   Columns: {df_grossi.columns.tolist()[:5]}")
-    print(f"\n✅ Ridley: {len(df_ridley)} rows, {len(df_ridley.columns)} columns")
+    print(f"\nRidley: {len(df_ridley)} rows, {len(df_ridley.columns)} columns")
     print(f"   Columns: {df_ridley.columns.tolist()[:5]}")

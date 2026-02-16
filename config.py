@@ -27,7 +27,7 @@ FILTER_DEFAULTS = {
 }
 
 # App settings
-APP_TITLE = "Biodiversity Threats Evidence Map"
+APP_TITLE = "Biodiversity Interactive Dashboard"
 DEBUG_MODE = True
 
 
