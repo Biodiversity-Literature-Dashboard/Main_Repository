@@ -5,17 +5,16 @@ import os
 
 # Data paths
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
-GROSSI_CSV = os.path.join(DATA_DIR, 'Grossi_et_al_Piloted_data_extraction_strategy.csv')
-RIDLEY_CSV = os.path.join(DATA_DIR, 'Ridley_et_al_13750_2022_279_MOESM4_ESM.csv')
+PROCESSED_DIR = os.path.join(DATA_DIR, 'processed')
+GROSSI_CSV = os.path.join(PROCESSED_DIR, 'grossi_included_clean.csv')
+RIDLEY_CSV = os.path.join(PROCESSED_DIR, 'ridley_articles_dashboard.csv')
 
-# Key columns for Grossi dataset
+# Key columns for Grossi processed dataset
 GROSSI_COLUMNS = {
     'location': ['Continent_Ocean', 'Country'],
-    'threats': ['Threat', 'Threat_metric', 'Threat_data'],
-    'taxonomy': ['Plant_group', 'Animal_group'],
-    'ecology': ['Ecological_level', 'Ecoregion', 'Spatial_Scale'],
+    'threats': ['Threat', 'Threat_metric', 'Threat_data', 'Quantity_threats', 'Threat_precision', 'Threat_database'],
     'study': ['Study_design', 'Authors', 'Article_ID'],
-    'drivers': ['Direct_driver', 'Indirect_driver']
+    'ecology': ['Ecoregion']
 }
 
 # Filter options (will populate from data)
@@ -25,6 +24,14 @@ FILTER_DEFAULTS = {
     'study_design': 'All',
     'ecological_level': 'All'
 }
+
+# Load threat code mappings from JSON
+import json
+THREAT_CODES_JSON = os.path.join(PROCESSED_DIR, 'threat_codes.json')
+with open(THREAT_CODES_JSON, 'r', encoding='utf-8') as f:
+    _threat_data = json.load(f)
+    THREAT_CODES = _threat_data['threat_codes']
+    THREAT_CATEGORIES = _threat_data['threat_categories']
 
 # App settings
 APP_TITLE = "Biodiversity Interactive Dashboard"

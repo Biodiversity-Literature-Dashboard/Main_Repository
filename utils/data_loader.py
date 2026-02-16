@@ -11,23 +11,14 @@ from config import GROSSI_CSV, RIDLEY_CSV
 
 
 def load_grossi_data():
-    """Load Grossi dataset with proper header handling"""
-    # Skip first row if it contains numbers (like in Excel version)
+    """Load processed Grossi dataset (cleaned, included articles only)"""
     df = pd.read_csv(GROSSI_CSV)
-    
-    # Clean column names (remove trailing spaces)
     df.columns = df.columns.str.strip()
-    
-    # Check if first row is the actual header (contains 'Article_ID')
-    if 'Article_ID' not in df.columns:
-        df = pd.read_csv(GROSSI_CSV, skiprows=1)
-        df.columns = df.columns.str.strip()
-    
     return df
 
 
 def load_ridley_data():
-    """Load Ridley dataset"""
+    """Load processed Ridley dataset (article-level data for dashboard)"""
     df = pd.read_csv(RIDLEY_CSV)
     df.columns = df.columns.str.strip()
     return df
