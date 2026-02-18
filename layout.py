@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
 from config import APP_TITLE
 from utils.data_loader import df_grossi, get_threat_categories
-from visualizations.search_and_filters import create_search_bar
+from visualizations.navigation import create_navbar
 
 
 def create_empty_map(): # we have to create create_map() later
@@ -46,18 +46,10 @@ def create_layout():
     """Create the main dashboard layout"""
     
     # Navbar at top
-    navbar = dbc.NavbarSimple(
-        brand=APP_TITLE,
-        brand_style={"fontSize": "1.5rem", "fontWeight": "bold"},
-        color="primary",
-        dark=True,
-        fluid=True,
-        className="mb-3"
-    )
+    navbar = create_navbar()
     
     # Filter sidebar (left side)
     filter_sidebar = dbc.Card([
-        create_search_bar(),
         dbc.CardHeader("Filters", style={"fontWeight": "bold"}),
         dbc.CardBody([
             # Continent filter
