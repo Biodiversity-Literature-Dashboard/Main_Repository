@@ -4,6 +4,7 @@
 from dash import Dash
 import dash_bootstrap_components as dbc
 from layout import create_layout
+from callbacks import register_callbacks
 from config import DEBUG_MODE
 
 # Initialize Dash app
@@ -11,6 +12,9 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Set layout
 app.layout = create_layout()
+
+# Register callbacks
+register_callbacks(app)
 
 # Run server
 if __name__ == "__main__":

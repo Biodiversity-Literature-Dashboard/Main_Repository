@@ -5,7 +5,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
 from config import APP_TITLE
-from utils.data_loader import df_grossi
+from utils.data_loader import df_grossi, get_threat_categories
 
 
 def create_empty_map(): # we have to create create_map() later
@@ -70,14 +70,62 @@ def create_layout():
                 className="mb-3"
             ),
             
+            # Ecoregion filter (checkboxes - can select multiple)
+            html.Label("Ecoregion:", className="fw-bold mb-2 mt-3"),
+            dcc.Checklist(
+                id='ecoregion-filter',
+                options=[
+                    {'label': ' Terrestrial', 'value': 'Terrestrial'},
+                    {'label': ' Marine', 'value': 'Marine'},
+                    {'label': ' Freshwater', 'value': 'Freshwater'}
+                ],
+                value=['Terrestrial', 'Marine', 'Freshwater'],  # All selected by default
+                className="mb-3"
+            ),
+            
+            # Study Design filter (checkboxes)
+            html.Label("Study Design:", className="fw-bold mb-2 mt-3"),
+            dcc.Checklist(
+                id='study-design-filter',
+                options=[
+                    {'label': ' Observational', 'value': 'Observational'},
+                    {'label': ' Experimental', 'value': 'Experimental'}
+                ],
+                value=['Observational', 'Experimental'],  # All selected by default
+                className="mb-3"
+            ),
+            
+            # Threat Category filter (dropdown for main categories)
+            # Note: Currently shows 11 main threat categories
+            # TODO: Add option for detailed 48 subcategory filtering in future
+            html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
+            dcc.Dropdown(
+                id='threat-category-filter',
+                options=[{'label': 'All Categories', 'value': 'all'}] + 
+                        [{'label': f"{cat[0]}. {cat[1]}", 'value': cat[0]} 
+                         for cat in get_threat_categories()],
+                value='all',
+                clearable=False,
+                className="mb-3"
+            ),
+            
             # Apply button (will wire up in callbacks later)
-            dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100")
+            html.Hr(),
+            dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2")
         ])
     ], className="h-100")
     
     # Main content area (right side)
     main_content = dbc.Card([
         dbc.CardBody([
+            # Result counter
+            html.Div(
+                id='result-counter',
+                children="Showing 15 of 15 articles",
+                className="mb-2",
+                style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
+            ),
+            
             # Map section
             html.H5("Study Locations Map", className="mb-3"),
             dcc.Graph(
