@@ -6,6 +6,7 @@ import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
 from config import APP_TITLE
 from utils.data_loader import df_grossi, get_threat_categories
+from visualizations.search_and_filters import create_search_bar
 
 
 def create_empty_map(): # we have to create create_map() later
@@ -56,6 +57,7 @@ def create_layout():
     
     # Filter sidebar (left side)
     filter_sidebar = dbc.Card([
+        create_search_bar(),
         dbc.CardHeader("Filters", style={"fontWeight": "bold"}),
         dbc.CardBody([
             # Continent filter
