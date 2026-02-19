@@ -7,26 +7,17 @@ import sys
 # Add parent directory to path to import config
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from config import GROSSI_CSV, RIDLEY_CSV, THREAT_CATEGORIES, THREAT_CODES
+from config import GROSSI_CSV, RIDLEY_CSV, THREAT_CATEGORIES, THREAT_CODES, RIDLEY_BIB
 
-
-def load_grossi_data():
-    """Load processed Grossi dataset (cleaned, included articles only)"""
-    df = pd.read_csv(GROSSI_CSV)
+def load_csv_data(csv):
+    df = pd.read_csv(csv)
     df.columns = df.columns.str.strip()
     return df
-
-
-def load_ridley_data():
-    """Load processed Ridley dataset (article-level data for dashboard)"""
-    df = pd.read_csv(RIDLEY_CSV)
-    df.columns = df.columns.str.strip()
-    return df
-
 
 # Load datasets on import
-df_grossi = load_grossi_data()
-df_ridley = load_ridley_data()
+df_grossi = load_csv_data(GROSSI_CSV)
+df_ridley = load_csv_data(RIDLEY_CSV)
+df_ridley_bib = load_csv_data(RIDLEY_BIB)
 
 # Keep old names for backward compatibility
 df1 = df_grossi
