@@ -24,7 +24,8 @@ def create_ridley_bib_table():
     df= df_ridley_bib[['Authors','Year','Title']]
     df =clean_authors(df)
     return df
-    
+
+ridley_bib_table = create_ridley_bib_table()
 
 
 if __name__ == "__main__":

@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 from config import APP_TITLE
 from utils.data_loader import df_grossi, get_threat_categories
 from visualizations.navigation import create_navbar
+from visualizations.tables import articles_datatable
 
 
 def create_empty_map(): # we have to create create_map() later
@@ -151,7 +152,15 @@ def create_layout():
                         config={'displayModeBar': False}
                     )
                 ], width=6)
-            ])
+            ]),
+            html.H5("Articles table", className="mt-4 mb-3"),
+            dbc.Row([
+                dbc.Col([
+                    articles_datatable
+                ], ),
+
+            ]),
+
         ])
     ])
     
