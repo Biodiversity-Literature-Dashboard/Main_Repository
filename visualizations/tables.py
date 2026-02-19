@@ -6,14 +6,15 @@ import datetime
 
 from sections.dataframes import ridley_bib_table
 
-def articles_datatable():
+def articles_datatable(df):
     table = dash_table.DataTable(
+    id ='article_table',
     columns=[
         {'name': 'Authors', 'id': 'Authors', 'type': 'text'},
         {'name': 'Year', 'id': 'Year', 'type': 'numeric'},
         {'name': 'Title', 'id': 'Title', 'type': 'text'},
     ],
-    data=ridley_bib_table.to_dict('records'),
+    data=df.to_dict('records'),
     filter_action='native',
 
     style_table={
@@ -27,5 +28,5 @@ def articles_datatable():
     )
     return table
 
-articles_datatable = articles_datatable()
+articles_datatable = articles_datatable(ridley_bib_table)
 
