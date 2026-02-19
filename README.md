@@ -14,6 +14,19 @@ Building an interactive dashboard for indirect threats to biodiversity.
 
 ## Running unit tests for the backend
 
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Biodiversity-Literature-Dashboard/Main_Repository.git
+cd Main_Repository
+```
+
+2. Install Python dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Running unit tests for the frontend
 
 ## Running End-to-End tests
