@@ -3,7 +3,7 @@
 Project done for the Data Science Project course (DATA 11004) at the University of Helsinki.
 Building an interactive dashboard for indirect threats to biodiversity.
 - [In depth description]()
-- [Architecture]()
+- [Architecture](https://github.com/Biodiversity-Literature-Dashboard/Main_Repository/blob/64-code-cleanupreorganizing/documentation/ARCHITECTURE.md)
 - [Staging server]()
 - [Changelog]()
 - [Product backlog](https://github.com/orgs/Biodiversity-Literature-Dashboard/projects/2)
