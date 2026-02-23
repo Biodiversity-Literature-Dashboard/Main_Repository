@@ -1,53 +1,26 @@
 # Dashboard layout structure
 # Define the overall layout, navigation, tabs, and component arrangement
 
+# Pre-made packages
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
+
+
+# Local imports
 from config import APP_TITLE
 from utils.data_loader import df_grossi, get_threat_categories
-from visualizations.navigation import create_navbar
-from visualizations.tables import articles_datatable
-
-
-def create_empty_map(): # we have to create create_map() later
-    """Create an empty world map placeholder"""
-    fig = go.Figure(go.Scattergeo())
-    fig.update_geos(
-        showcountries=True,
-        showcoastlines=True,
-        projection_type="natural earth"
-    )
-    fig.update_layout(
-        title="Study Locations (Loading...)",
-        height=500,
-        margin={"r": 0, "t": 40, "l": 0, "b": 0}
-    )
-    return fig
-
-
-def create_empty_chart(title):
-    """Create an empty chart placeholder"""
-    fig = go.Figure()
-    fig.update_layout(
-        title=title,
-        height=300,
-        annotations=[{
-            'text': 'No data to display',
-            'xref': 'paper',
-            'yref': 'paper',
-            'showarrow': False,
-            'font': {'size': 14, 'color': 'gray'}
-        }]
-    )
-    return fig
-
+from layout.components.navigation import navigation_bar
+from layout.components.tables import articles_datatable
+from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
+from layout.components.maps import empty_map
+from layout.components.charts import create_empty_chart
 
 def create_layout():
     """Create the main dashboard layout"""
-    
+
     # Navbar at top
-    navbar = create_navbar()
+    navbar = navigation_bar
     
     # Filter sidebar (left side)
     filter_sidebar = dbc.Card([
@@ -55,54 +28,21 @@ def create_layout():
         dbc.CardBody([
             # Continent filter
             html.Label("Continent/Ocean:", className="fw-bold mb-2"),
-            dcc.Dropdown(
-                id='continent-filter',
-                options=[{'label': 'All', 'value': 'all'}] + 
-                        [{'label': cont.title(), 'value': cont} 
-                         for cont in sorted(df_grossi['Continent_Ocean'].dropna().unique())],
-                value='all',
-                clearable=False,
-                className="mb-3"
-            ),
+            continent_filter,
             
             # Ecoregion filter (checkboxes - can select multiple)
             html.Label("Ecoregion:", className="fw-bold mb-2 mt-3"),
-            dcc.Checklist(
-                id='ecoregion-filter',
-                options=[
-                    {'label': ' Terrestrial', 'value': 'Terrestrial'},
-                    {'label': ' Marine', 'value': 'Marine'},
-                    {'label': ' Freshwater', 'value': 'Freshwater'}
-                ],
-                value=['Terrestrial', 'Marine', 'Freshwater'],  # All selected by default
-                className="mb-3"
-            ),
+            ecoregion_filter,
             
             # Study Design filter (checkboxes)
             html.Label("Study Design:", className="fw-bold mb-2 mt-3"),
-            dcc.Checklist(
-                id='study-design-filter',
-                options=[
-                    {'label': ' Observational', 'value': 'Observational'},
-                    {'label': ' Experimental', 'value': 'Experimental'}
-                ],
-                value=['Observational', 'Experimental'],  # All selected by default
-                className="mb-3"
-            ),
+            study_design_filter,
             
             # Threat Category filter (dropdown for main categories)
             # Note: Currently shows 11 main threat categories
             # TODO: Add option for detailed 48 subcategory filtering in future
             html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
-            dcc.Dropdown(
-                id='threat-category-filter',
-                options=[{'label': 'All Categories', 'value': 'all'}] + 
-                        [{'label': f"{cat[0]}. {cat[1]}", 'value': cat[0]} 
-                         for cat in get_threat_categories()],
-                value='all',
-                clearable=False,
-                className="mb-3"
-            ),
+            threat_category_filter,
             
             # Apply button (will wire up in callbacks later)
             html.Hr(),
@@ -125,7 +65,7 @@ def create_layout():
             html.H5("Study Locations Map", className="mb-3"),
             dcc.Graph(
                 id='world-map',
-                figure=create_empty_map(),
+                figure=empty_map,
                 config={'displayModeBar': True, 'scrollZoom': True},
                 style={'height': '500px'}
             ),

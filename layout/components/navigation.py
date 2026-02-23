@@ -1,7 +1,7 @@
 
 import dash_bootstrap_components as dbc
 from dash import html
-from visualizations.search_and_filters import create_search_bar
+from layout.components.search_and_filters import create_search_bar
 
 
 LOGO = "https://placehold.co/100x100"
@@ -36,3 +36,5 @@ def create_navbar():
     dark=True,
     )
     return navbar
+
+navigation_bar = create_navbar()
