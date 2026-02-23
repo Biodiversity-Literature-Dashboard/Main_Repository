@@ -14,7 +14,7 @@ from layout.components.navigation import navigation_bar
 from layout.components.tables import articles_datatable
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
 from layout.components.maps import empty_map
-from layout.components.charts import create_empty_chart
+from layout.components.charts import create_empty_chart_column
 
 def create_layout():
     """Create the main dashboard layout"""
@@ -63,35 +63,18 @@ def create_layout():
             
             # Map section
             html.H5("Study Locations Map", className="mb-3"),
-            dcc.Graph(
-                id='world-map',
-                figure=empty_map,
-                config={'displayModeBar': True, 'scrollZoom': True},
-                style={'height': '500px'}
-            ),
+            empty_map,
             
             html.Hr(),
             
             # Charts section
             html.H5("Analysis Charts", className="mt-4 mb-3"),
             dbc.Row([
-                # Left chart: Threat Distribution
-                dbc.Col([
-                    dcc.Graph(
-                        id='threat-chart',
-                        figure=create_empty_chart("Threat Types Distribution"),
-                        config={'displayModeBar': False}
-                    )
-                ], width=6),
+                # Left chart: Threat Distribution (id, title)
+                create_empty_chart_column('threat-chart',"Threat Types Distribution"),
                 
-                # Right chart: Study Design
-                dbc.Col([
-                    dcc.Graph(
-                        id='study-design-chart',
-                        figure=create_empty_chart("Study Design Distribution"),
-                        config={'displayModeBar': False}
-                    )
-                ], width=6)
+                # Right chart: Study Design (id, title)
+                create_empty_chart_column('study-design-chart',"Study Design Distribution")
             ]),
             html.H5("Articles table", className="mt-4 mb-3"),
             dbc.Row([

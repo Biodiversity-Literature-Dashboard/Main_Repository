@@ -1,11 +1,22 @@
 # Visualization and chart creation functions
 # Functions to create various chart types using Plotly (bar charts, line charts, pie charts, etc.)
 
+#pre-made packages
+from dash import dcc
 import plotly.express as px
 import plotly.graph_objects as go
+import dash_bootstrap_components as dbc
 import pandas as pd
-from sections.dataframes import top_10_authors
+
+# local imports
+#from sections.dataframes import top_10_authors
 from utils.data_loader import extract_threat_category_from_code, get_threat_categories
+
+
+
+# EMPTY CHARTS
+
+
 
 def create_empty_chart(title):
     """Create an empty chart placeholder"""
@@ -24,9 +35,27 @@ def create_empty_chart(title):
     return fig
 
 
+def create_empty_chart_column(id,title):
+    chart_col = dbc.Col([
+        dcc.Graph(
+            id=id,
+            figure=create_empty_chart(title),
+            config={'displayModeBar': False}
+        )
+    ], width=6)
+    return chart_col
 
-def top_authors_chart():
-    return px.bar(top_10_authors(), x="Authors", y="Count")
+
+
+
+# BAR CHARTS
+
+
+
+
+
+# def top_authors_chart():
+#     return px.bar(top_10_authors(), x="Authors", y="Count")
 
 
 def create_threat_distribution_chart(df):
@@ -82,6 +111,13 @@ def create_threat_distribution_chart(df):
     )
     
     return fig
+
+
+
+
+# PIE CHARTS
+
+
 
 
 def create_study_design_chart(df):

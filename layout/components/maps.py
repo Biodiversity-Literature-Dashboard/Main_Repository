@@ -1,4 +1,7 @@
+from dash import dcc
 import plotly.graph_objects as go
+
+# EMPTY MAPS
 
 def create_empty_map(): # we have to create create_map() later
     """Create an empty world map placeholder"""
@@ -14,6 +17,23 @@ def create_empty_map(): # we have to create create_map() later
         margin={"r": 0, "t": 40, "l": 0, "b": 0}
     )
     return fig
+
+def create_empty_dcc_graph_map():
+    graph = dcc.Graph(
+        id='world-map',
+        figure=create_empty_map(),
+        config={'displayModeBar': True, 'scrollZoom': True},
+        style={'height': '500px'}
+    )
+    return graph
+
+empty_map = create_empty_dcc_graph_map()
+
+
+# NON-EMPTY MAPS
+
+
+
 
 def create_world_map(df):
     """
@@ -82,5 +102,4 @@ def create_world_map(df):
     
     return fig
 
-empty_map = create_empty_map()
-#world_map = create_world_map()
+
