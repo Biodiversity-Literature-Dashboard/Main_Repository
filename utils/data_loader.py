@@ -1,13 +1,23 @@
-# Data loading utilities
-# Functions to load and process data from various sources (CSV, Excel, databases)
+from pathlib import Path
 import pandas as pd
 
+BASE_DIR = Path(__file__).resolve().parents[1]
+PROCESSED_DIR = BASE_DIR / "data" / "processed"
 
-def load_data(file_path, sheet_name=0):
-    """Load data from csv file"""
-    return pd.read_csv(file_path)
+RIDLEY_PATH = PROCESSED_DIR / "ridley_articles_dashboard.csv"
+GROSSI_PATH = PROCESSED_DIR / "grossi_included_clean.csv"
 
 
-# Load datasets 
-df1 = load_data('data/Grossi_et_al_Piloted_data_extraction_strategy.csv')
-df2 = load_data('data/Ridley_et_al_13750_2022_279_MOESM4_ESM.csv')
+def _check_exists(path: Path) -> None:
+    if not path.exists():
+        raise FileNotFoundError(f"Missing file: {path}. Did you create it in data/processed?")
+
+
+def load_ridley() -> pd.DataFrame:
+    _check_exists(RIDLEY_PATH)
+    return pd.read_csv(RIDLEY_PATH)
+
+
+def load_grossi() -> pd.DataFrame:
+    _check_exists(GROSSI_PATH)
+    return pd.read_csv(GROSSI_PATH)

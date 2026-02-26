@@ -1,0 +1,3 @@
+Index(['ArticleID', 'Authors', 'Year', 'Study_design', 'Ecoregion',
+       'Spatial_Scale', 'Spatial_res', 'Continent_Ocean', 'country_eez'],
+      dtype='object')
