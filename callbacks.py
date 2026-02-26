@@ -1,53 +1,77 @@
-# callbacks.py
+# Dashboard callbacks - interactive functionality
+# Define Input/Output callbacks for chart updates, data filtering, and user interactions
+
 from dash import Input, Output
-import plotly.express as px
-
-from utils.data_loader import load_ridley
-
-RIDLEY_DF = load_ridley()
-
-
-def apply_filters_and_search(df, search_text=None, continent=None, country=None):
-    dff = df.copy()
-
-    # filter by continent
-    if continent and "Continent_Ocean" in dff.columns:
-        dff = dff[dff["Continent_Ocean"].astype(str) == str(continent)]
-
-    # filter by country/eez 
-    if country and "country_eez" in dff.columns:
-        dff = dff[dff["country_eez"].astype(str) == str(country)]
-
-    # search authors 
-    if search_text and str(search_text).strip():
-        q = str(search_text).strip().lower()
-        if "Authors" in dff.columns:
-            dff = dff[dff["Authors"].astype(str).str.lower().str.contains(q, na=False)]
-
-    return dff
+from utils.data_loader import df_grossi, filter_grossi_data
+from visualizations.charts import create_world_map, create_threat_distribution_chart, create_study_design_chart
+from sections.dataframes import ridley_bib_table
+from visualizations.tables import articles_datatable
 
 
 def register_callbacks(app):
+    """
+    Register all dashboard callbacks.
+    Call this function from app.py after layout is set.
+    """
+    
     @app.callback(
-        Output("top_authors_graph", "figure"),
-        Output("filtered-count", "children"),
-        Input("search-input", "value"),
-        Input("continent-dropdown", "value"),
-        Input("country-dropdown", "value"),
+        [
+            Output('result-counter', 'children'),
+            Output('world-map', 'figure'),
+            Output('threat-chart', 'figure'),
+            Output('study-design-chart', 'figure'),
+        ],
+        [
+            Input('apply-filters-btn', 'n_clicks')
+        ],
+        [
+            Input('continent-filter', 'value'),
+            Input('ecoregion-filter', 'value'),
+            Input('study-design-filter', 'value'),
+            Input('threat-category-filter', 'value')
+        ],
+        prevent_initial_call=False
     )
-    def update_dashboard(search_text, continent, country):
-        filtered_df = apply_filters_and_search(RIDLEY_DF, search_text, continent, country)
+    def update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category):
+        """
+        Main callback to filter data and update all visualizations.
+        Triggered by Apply Filters button click.
+        """
 
-        if "Authors" not in filtered_df.columns or filtered_df.empty:
-            return (
-                {"data": [], "layout": {"title": "Top Authors (Filtered)"}},
-                f"{len(filtered_df)} articles found",
-            )
 
-        top_authors = filtered_df["Authors"].value_counts().head(10).reset_index()
-        top_authors.columns = ["Author", "Count"]
+        # Apply filters
+        filtered_df = filter_grossi_data(
+            continent=continent,
+            ecoregions=ecoregions,
+            study_designs=study_designs,
+            threat_category=threat_category
+        )
+        
+        # Create result counter text
+        total_articles = len(df_grossi)
+        filtered_count = len(filtered_df)
+        counter_text = f"Showing {filtered_count} of {total_articles} articles"
+        
+        # Generate visualizations
+        map_fig = create_world_map(filtered_df)
+        threat_fig = create_threat_distribution_chart(filtered_df)
+        design_fig = create_study_design_chart(filtered_df)
+        
+        return counter_text, map_fig, threat_fig, design_fig
+    
+    @app.callback(
+        Output('article_table','data'),
+        Input('searchbar','value')
+    )
 
-        fig = px.bar(top_authors, x="Author", y="Count", title="Top Authors (Filtered)")
-        fig.update_layout(margin=dict(l=20, r=20, t=60, b=20))
-
-        return fig, f"{len(filtered_df)} articles found"
+    def update_search_bar(search_value):
+        if not search_value:
+            filtered_df = ridley_bib_table.to_dict('records')
+        else:
+            # Case-insensitive search across all columns
+            filtered_df = ridley_bib_table[ridley_bib_table.apply(
+                lambda row: row.astype(str).str.contains(search_value, case=False).any(),
+                axis=1
+            )].to_dict('records')
+        
+        return filtered_df
