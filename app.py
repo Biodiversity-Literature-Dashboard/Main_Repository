@@ -3,8 +3,8 @@
 
 from dash import Dash
 import dash_bootstrap_components as dbc
-from layout import create_layout
-from callbacks import register_callbacks
+from layout.layout import create_layout
+from callbacks.callbacks import register_callbacks
 from config import DEBUG_MODE
 
 # Initialize Dash app
