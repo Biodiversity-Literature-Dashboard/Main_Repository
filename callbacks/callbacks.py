@@ -1,11 +1,16 @@
 # Dashboard callbacks - interactive functionality
 # Define Input/Output callbacks for chart updates, data filtering, and user interactions
 
+# Pre-made packages
 from dash import Input, Output
+
+
+# local packages
 from utils.data_loader import df_grossi, filter_grossi_data
-from visualizations.charts import create_world_map, create_threat_distribution_chart, create_study_design_chart
+from layout.components.charts import create_threat_distribution_chart, create_study_design_chart
+from layout.components.maps import create_world_map
 from sections.dataframes import ridley_bib_table
-from visualizations.tables import articles_datatable
+from layout.components.tables import articles_datatable
 
 
 def register_callbacks(app):
