@@ -2,7 +2,7 @@
 # Define Input/Output callbacks for chart updates, data filtering, and user interactions
 
 # Pre-made packages
-from dash import Input, Output, State
+from dash import Input, Output
 
 
 # local packages

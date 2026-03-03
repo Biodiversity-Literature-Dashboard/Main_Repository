@@ -4,12 +4,9 @@
 # Pre-made packages
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-import plotly.graph_objects as go
 
 
 # Local imports
-from config import APP_TITLE
-from utils.data_loader import df_grossi, get_threat_categories
 from layout.components.navigation import navigation_bar
 from layout.components.tables import articles_datatable
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, reset_filters, year_range_slider
