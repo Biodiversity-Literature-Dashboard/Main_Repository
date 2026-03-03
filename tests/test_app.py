@@ -7,11 +7,11 @@ def test_app_starts(dash_duo):
 def test_title_present(dash_duo):
     from app import app
     dash_duo.start_server(app)
-    dash_duo.wait_for_text_to_equal("h1", "Biodiversity Dashboard")
+    dash_duo.wait_for_text_to_equal(".navbar-brand", "Interactive Biodiversity Dashboard")
 
 
 def test_graph_exists(dash_duo):
     from app import app
     dash_duo.start_server(app)
-    graph = dash_duo.find_element("#top_authors_graph")
+    graph = dash_duo.find_element("#threat-chart")
     assert graph is not None
