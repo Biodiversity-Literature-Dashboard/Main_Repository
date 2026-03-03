@@ -2,11 +2,12 @@
 # Define Input/Output callbacks for chart updates, data filtering, and user interactions
 
 # Pre-made packages
-from dash import Input, Output
+from dash import Input, Output, State
 
 
 # local packages
 from utils.data_loader import df_grossi, filter_grossi_data
+from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart
 from layout.components.maps import create_world_map
 from sections.dataframes import ridley_bib_table
@@ -64,6 +65,28 @@ def register_callbacks(app):
         
         return counter_text, map_fig, threat_fig, design_fig
     
+    @app.callback(
+        [
+            Output('continent-filter', 'value'),
+            Output('ecoregion-filter', 'value'),
+            Output('study-design-filter', 'value'),
+            Output('threat-category-filter', 'value'),
+        ],
+        Input('reset-filters-btn', 'n_clicks'),
+        prevent_initial_call=True
+    )
+    def reset_all_filters(n_clicks):
+        """
+        Reset all filters to their default values when the Reset Filters button is clicked.
+        """
+        defaults = reset_filters()
+        return (
+            defaults['continent-filter'],
+            defaults['ecoregion-filter'],
+            defaults['study-design-filter'],
+            defaults['threat-category-filter'],
+        )
+
     @app.callback(
         Output('article_table','data'),
         Input('searchbar','value')
