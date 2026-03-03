@@ -12,7 +12,7 @@ from config import APP_TITLE
 from utils.data_loader import df_grossi, get_threat_categories
 from layout.components.navigation import navigation_bar
 from layout.components.tables import articles_datatable
-from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
+from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, reset_filters
 from layout.components.maps import empty_map
 from layout.components.charts import create_empty_chart_column
 
@@ -46,7 +46,9 @@ def create_layout():
             
             # Apply button (will wire up in callbacks later)
             html.Hr(),
-            dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2")
+            dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),
+            #reset button
+            dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary", className="w-100 mt-2", n_clicks=0)
         ])
     ], className="h-100")
     
