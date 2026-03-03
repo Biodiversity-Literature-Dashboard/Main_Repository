@@ -8,7 +8,7 @@ from dash import Input, Output, State
 # local packages
 from utils.data_loader import df_grossi, filter_grossi_data
 from layout.components.search_and_filters import reset_filters
-from layout.components.charts import create_threat_distribution_chart, create_study_design_chart
+from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
 from layout.components.maps import create_world_map
 from sections.dataframes import ridley_bib_table
 from layout.components.tables import articles_datatable
@@ -26,6 +26,7 @@ def register_callbacks(app):
             Output('world-map', 'figure'),
             Output('threat-chart', 'figure'),
             Output('study-design-chart', 'figure'),
+            Output('wordcloud-chart', 'figure'),
         ],
         [
             Input('apply-filters-btn', 'n_clicks')
@@ -62,8 +63,9 @@ def register_callbacks(app):
         map_fig = create_world_map(filtered_df)
         threat_fig = create_threat_distribution_chart(filtered_df)
         design_fig = create_study_design_chart(filtered_df)
+        wordcloud_fig = create_wordcloud_chart()
         
-        return counter_text, map_fig, threat_fig, design_fig
+        return counter_text, map_fig, threat_fig, design_fig, wordcloud_fig
     
     @app.callback(
         [

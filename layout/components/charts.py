@@ -7,10 +7,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 import pandas as pd
+import io
+import base64
 
 # local imports
 #from sections.dataframes import top_10_authors
 from utils.data_loader import extract_threat_category_from_code, get_threat_categories
+from sections.dataframes import ridley_bib_table
 
 
 
@@ -35,14 +38,14 @@ def create_empty_chart(title):
     return fig
 
 
-def create_empty_chart_column(id,title):
+def create_empty_chart_column(id, title, width=6):
     chart_col = dbc.Col([
         dcc.Graph(
             id=id,
             figure=create_empty_chart(title),
             config={'displayModeBar': False}
         )
-    ], width=6)
+    ], width=width)
     return chart_col
 
 
@@ -90,26 +93,43 @@ def create_threat_distribution_chart(df):
     threat_counts = pd.Series(all_threats).value_counts().reset_index()
     threat_counts.columns = ['Category', 'Count']
     
-    # Add category names
+    # Add numbered labels and full names
     threat_cat_dict = dict(get_threat_categories())
     threat_counts['Name'] = threat_counts['Category'].map(
-        lambda x: f"{x}. {threat_cat_dict.get(x, 'Unknown')}"
+        lambda x: threat_cat_dict.get(x, 'Unknown')
     )
-    
+    threat_counts['Num'] = [str(i + 1) for i in range(len(threat_counts))]
+
+    # Build legend text for annotation
+    legend_text = '<br>'.join(
+        f"{row['Num']}. {row['Name']}" for _, row in threat_counts.iterrows()
+    )
+
     fig = px.bar(
         threat_counts,
-        x='Name',
+        x='Num',
         y='Count',
         title='Threat Category Distribution',
-        labels={'Name': 'Threat Category', 'Count': 'Number of Articles'}
+        labels={'Num': 'Category #', 'Count': 'Number of Articles'}
     )
-    
+
+    fig.add_annotation(
+        text=legend_text,
+        xref='paper', yref='paper',
+        x=1.02, y=1.0,
+        showarrow=False,
+        align='left',
+        font=dict(size=9),
+        xanchor='left',
+        yanchor='top'
+    )
+
     fig.update_layout(
         height=300,
-        xaxis_tickangle=-45,
+        margin=dict(r=230),
         showlegend=False
     )
-    
+
     return fig
 
 
@@ -154,4 +174,36 @@ def create_study_design_chart(df):
     
     fig.update_layout(height=300)
     
+    return fig
+
+
+# WORDCLOUD
+
+
+def create_wordcloud_chart():
+    """Generate a wordcloud from Ridley bibliography article titles."""
+    from wordcloud import WordCloud
+
+    titles = ' '.join(ridley_bib_table['Title'].dropna().tolist())
+    wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
+
+    buf = io.BytesIO()
+    wc.to_image().save(buf, format='PNG')
+    buf.seek(0)
+    img_b64 = base64.b64encode(buf.read()).decode()
+
+    fig = go.Figure()
+    fig.add_layout_image(dict(
+        source=f'data:image/png;base64,{img_b64}',
+        xref='paper', yref='paper',
+        x=0, y=1, sizex=1, sizey=1,
+        sizing='stretch', layer='below'
+    ))
+    fig.update_layout(
+        title='Article Keywords Wordcloud',
+        height=300,
+        margin=dict(l=0, r=0, t=40, b=0),
+        xaxis=dict(visible=False, range=[0, 1]),
+        yaxis=dict(visible=False, range=[0, 1])
+    )
     return fig

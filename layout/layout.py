@@ -14,7 +14,7 @@ from layout.components.navigation import navigation_bar
 from layout.components.tables import articles_datatable
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, reset_filters
 from layout.components.maps import empty_map
-from layout.components.charts import create_empty_chart_column
+from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
 
 def create_layout():
     """Create the main dashboard layout"""
@@ -72,11 +72,20 @@ def create_layout():
             # Charts section
             html.H5("Analysis Charts", className="mt-4 mb-3"),
             dbc.Row([
-                # Left chart: Threat Distribution (id, title)
-                create_empty_chart_column('threat-chart',"Threat Types Distribution"),
-                
-                # Right chart: Study Design (id, title)
-                create_empty_chart_column('study-design-chart',"Study Design Distribution")
+                # Left chart: Threat Distribution
+                create_empty_chart_column('threat-chart', "Threat Types Distribution", width=4),
+
+                # Middle chart: Study Design
+                create_empty_chart_column('study-design-chart', "Study Design Distribution", width=4),
+
+                # Right chart: Wordcloud
+                dbc.Col([
+                    dcc.Graph(
+                        id='wordcloud-chart',
+                        figure=create_wordcloud_chart(),
+                        config={'displayModeBar': False}
+                    )
+                ], width=4)
             ]),
             html.H5("Articles table", className="mt-4 mb-3"),
             dbc.Row([
