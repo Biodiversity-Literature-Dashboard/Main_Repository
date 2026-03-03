@@ -1,14 +1,8 @@
 import dash_bootstrap_components as dbc
 from dash import dcc
-
-
 from utils.data_loader import df_grossi, get_threat_categories
 
-
-
 # SEARCH BARS
-
-
 
 def create_search_bar():
     search_bar = dbc.Row(
@@ -34,12 +28,7 @@ def create_search_bar():
 search_bar = create_search_bar()
 
 
-
 # DROPDOWN FILTERS
-
-
-
-
 
 def create_continent_filter():
     # Continent filter
@@ -75,8 +64,6 @@ threat_category_filter = create_threat_category_filter()
 
 # CHECKBOX FILTERS
 
-
-
 def create_ecoregion_filter():
     ecoregion_filter = dcc.Checklist(
         id='ecoregion-filter',
@@ -102,5 +89,31 @@ def create_study_design_filter():
         )
         return study_design_filter
 
+# create reset filter funtion
+def reset_filters():
+    return {
+        'continent-filter': 'all',
+        'ecoregion-filter': ['Terrestrial', 'Marine', 'Freshwater'],
+        'study-design-filter': ['Observational', 'Experimental'],
+        'threat-category-filter': 'all',
+        'year-range-slider': [2000, 2021]
+    }
+
+
+def create_year_range_slider():
+    year_slider = dcc.RangeSlider(
+        id='year-range-slider',
+        min=2000,
+        max=2021,
+        step=1,
+        value=[2000, 2021],
+        marks={y: str(y) for y in range(2000, 2022, 5)},
+        tooltip={'placement': 'bottom', 'always_visible': True},
+        className='mb-3'
+    )
+    return year_slider
+
+
 ecoregion_filter = create_ecoregion_filter()
 study_design_filter = create_study_design_filter()
+year_range_slider = create_year_range_slider()

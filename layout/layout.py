@@ -4,17 +4,14 @@
 # Pre-made packages
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-import plotly.graph_objects as go
 
 
 # Local imports
-from config import APP_TITLE
-from utils.data_loader import df_grossi, get_threat_categories
 from layout.components.navigation import navigation_bar
 from layout.components.tables import articles_datatable
-from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
+from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, reset_filters, year_range_slider
 from layout.components.maps import empty_map
-from layout.components.charts import create_empty_chart_column
+from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
 
 def create_layout():
     """Create the main dashboard layout"""
@@ -38,15 +35,19 @@ def create_layout():
             html.Label("Study Design:", className="fw-bold mb-2 mt-3"),
             study_design_filter,
             
-            # Threat Category filter (dropdown for main categories)
-            # Note: Currently shows 11 main threat categories
-            # TODO: Add option for detailed 48 subcategory filtering in future
+            # Threat Category filter
             html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
             threat_category_filter,
-            
+
+            # Year range filter (filters articles table)
+            html.Label("Publication Year (Articles Table):", className="fw-bold mb-2 mt-3"),
+            year_range_slider,
+
             # Apply button (will wire up in callbacks later)
             html.Hr(),
-            dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2")
+            dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),
+            #reset button
+            dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary", className="w-100 mt-2", n_clicks=0)
         ])
     ], className="h-100")
     
@@ -70,11 +71,20 @@ def create_layout():
             # Charts section
             html.H5("Analysis Charts", className="mt-4 mb-3"),
             dbc.Row([
-                # Left chart: Threat Distribution (id, title)
-                create_empty_chart_column('threat-chart',"Threat Types Distribution"),
-                
-                # Right chart: Study Design (id, title)
-                create_empty_chart_column('study-design-chart',"Study Design Distribution")
+                # Left chart: Threat Distribution
+                create_empty_chart_column('threat-chart', "Threat Types Distribution", width=4),
+
+                # Middle chart: Study Design
+                create_empty_chart_column('study-design-chart', "Study Design Distribution", width=4),
+
+                # Right chart: Wordcloud
+                dbc.Col([
+                    dcc.Graph(
+                        id='wordcloud-chart',
+                        figure=create_wordcloud_chart(),
+                        config={'displayModeBar': False}
+                    )
+                ], width=4)
             ]),
             html.H5("Articles table", className="mt-4 mb-3"),
             dbc.Row([
