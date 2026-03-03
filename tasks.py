@@ -8,8 +8,13 @@ def start(ctx):
 
 @task
 def test(ctx):
-    """Runs coverage tests"""
+    """Runs coverage tests using Chromedriver"""
     ctx.run("coverage run --branch -m pytest", pty=True)
+
+@task
+def test_geckodriver(ctx):
+    """Run tests using Geckodriver/Firefox"""
+    ctx.run("coverage run --branch -m pytest --webdriver Firefox", pty=True)
 
 
 @task

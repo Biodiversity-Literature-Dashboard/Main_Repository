@@ -58,13 +58,29 @@ invoke start
 
 ## Running tests
 
+Make sure Chromedriver or Geckodriver (Firefox) is installed!!
+
+[Chrome driver install guide (Ubuntu)](https://tecadmin.net/install-chromedriver-on-ubuntu/)
+[General Chromedriver install guide](https://www.automationtestinghub.com/download-chrome-driver/)
+
+[Install Geckodriver here](https://github.com/mozilla/geckodriver/releases)
+
+
+
 (make sure you have opened the virtual environment, it should say venv in the corner)
 
-1. Run tests on terminal:
+1. Run tests (Chromedriver) on terminal:
 
 ```bash
 invoke test
 ```
+
+Run tests (Geckodriver) on terminal:
+
+```bash
+invoke test-geckodriver
+```
+
 2. Open test coverage report in terminal
 
 ```bash
