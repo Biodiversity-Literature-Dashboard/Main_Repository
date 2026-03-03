@@ -9,6 +9,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import io
 import base64
+from wordcloud import WordCloud
 
 # local imports
 #from sections.dataframes import top_10_authors
@@ -182,7 +183,6 @@ def create_study_design_chart(df):
 
 def create_wordcloud_chart():
     """Generate a wordcloud from Ridley bibliography article titles."""
-    from wordcloud import WordCloud
 
     titles = ' '.join(ridley_bib_table['Title'].dropna().tolist())
     wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
