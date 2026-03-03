@@ -12,7 +12,7 @@ from config import APP_TITLE
 from utils.data_loader import df_grossi, get_threat_categories
 from layout.components.navigation import navigation_bar
 from layout.components.tables import articles_datatable
-from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, reset_filters
+from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, reset_filters, year_range_slider
 from layout.components.maps import empty_map
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
 
@@ -38,12 +38,14 @@ def create_layout():
             html.Label("Study Design:", className="fw-bold mb-2 mt-3"),
             study_design_filter,
             
-            # Threat Category filter (dropdown for main categories)
-            # Note: Currently shows 11 main threat categories
-            # TODO: Add option for detailed 48 subcategory filtering in future
+            # Threat Category filter
             html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
             threat_category_filter,
-            
+
+            # Year range filter (filters articles table)
+            html.Label("Publication Year (Articles Table):", className="fw-bold mb-2 mt-3"),
+            year_range_slider,
+
             # Apply button (will wire up in callbacks later)
             html.Hr(),
             dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),

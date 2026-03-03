@@ -73,6 +73,7 @@ def register_callbacks(app):
             Output('ecoregion-filter', 'value'),
             Output('study-design-filter', 'value'),
             Output('threat-category-filter', 'value'),
+            Output('year-range-slider', 'value'),
         ],
         Input('reset-filters-btn', 'n_clicks'),
         prevent_initial_call=True
@@ -87,21 +88,29 @@ def register_callbacks(app):
             defaults['ecoregion-filter'],
             defaults['study-design-filter'],
             defaults['threat-category-filter'],
+            defaults['year-range-slider'],
         )
 
     @app.callback(
         Output('article_table','data'),
-        Input('searchbar','value')
+        Input('searchbar','value'),
+        Input('year-range-slider', 'value')
     )
+    def update_search_bar(search_value, year_range):
+        filtered_df = ridley_bib_table.copy()
 
-    def update_search_bar(search_value):
-        if not search_value:
-            filtered_df = ridley_bib_table.to_dict('records')
-        else:
-            # Case-insensitive search across all columns
-            filtered_df = ridley_bib_table[ridley_bib_table.apply(
+        # Filter by year range
+        if year_range:
+            filtered_df = filtered_df[
+                (filtered_df['Year'] >= year_range[0]) &
+                (filtered_df['Year'] <= year_range[1])
+            ]
+
+        # Filter by search text
+        if search_value:
+            filtered_df = filtered_df[filtered_df.apply(
                 lambda row: row.astype(str).str.contains(search_value, case=False).any(),
                 axis=1
-            )].to_dict('records')
-        
-        return filtered_df
+            )]
+
+        return filtered_df.to_dict('records')
