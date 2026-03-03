@@ -58,8 +58,6 @@ def create_empty_chart_column(id, title, width=6):
 
 
 
-# def top_authors_chart():
-#     return px.bar(top_10_authors(), x="Authors", y="Count")
 
 
 def create_threat_distribution_chart(df):
