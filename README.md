@@ -11,9 +11,7 @@ Building an interactive dashboard for indirect threats to biodiversity.
 - [Coding conduct]()
 - [Definition of done]()
 
-## Starting the application locally
-
-## Running unit tests for the backend
+## Setting up repository
 
 1. Clone the repository:
 
@@ -22,13 +20,73 @@ git clone https://github.com/Biodiversity-Literature-Dashboard/Main_Repository.g
 cd Main_Repository
 ```
 
-2. Install Python dependencies
+2. Create a virtual environment:
+
+Linux:
+
+```bash
+python3 -m venv venv
+```
+Windows:
+
+```bash
+python -m venv venv
+```
+
+3. open virtual environment:
+
+Linux:
+```bash
+source venv/bin/activate
+```
+Windows:
+```bash
+venv\Scripts\activate
+```
+4. Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
+## Running the program
 
-## Running unit tests for the frontend
+(make sure you have opened the virtual environment, it should say venv in the corner)
 
-## Running End-to-End tests
+```bash
+invoke start
+```
+
+## Running tests
+
+Make sure Chromedriver or Geckodriver (Firefox) is installed!!
+
+[Chrome driver install guide (Ubuntu)](https://tecadmin.net/install-chromedriver-on-ubuntu/)
+[General Chromedriver install guide](https://www.automationtestinghub.com/download-chrome-driver/)
+
+[Install Geckodriver here](https://github.com/mozilla/geckodriver/releases)
+
+
+
+(make sure you have opened the virtual environment, it should say venv in the corner)
+
+1. Run tests (Chromedriver) on terminal:
+
+```bash
+invoke test
+```
+
+Run tests (Geckodriver) on terminal:
+
+```bash
+invoke test-geckodriver
+```
+
+2. Open test coverage report in terminal
+
+```bash
+invoke coverage-report
+```
+
+
+
 
