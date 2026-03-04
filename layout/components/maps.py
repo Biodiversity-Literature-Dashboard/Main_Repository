@@ -47,8 +47,9 @@ def create_world_map(df):
         [1.0, "#12671C"]
     ]
     
-    # Count studies per country
-    country_counts = df['Country'].value_counts().reset_index()
+    # Count studies per country (support both 'Country' and 'country_eez' column names)
+    country_col = 'Country' if 'Country' in df.columns else 'country_eez'
+    country_counts = df[country_col].value_counts().reset_index()
     country_counts.columns = ['Country', 'Studies']
     
     #Empty state
