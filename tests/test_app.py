@@ -15,3 +15,10 @@ def test_graph_exists(dash_duo):
     dash_duo.start_server(app)
     graph = dash_duo.find_element("#threat-chart")
     assert graph is not None
+
+# added a test function for demo 
+def test_dropdown_exists(dash_duo):
+    from app import app
+    dash_duo.start_server(app)
+    dropdown = dash_duo.find_element("#threat-dropdown")
+    assert dropdown is not None
