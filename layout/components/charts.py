@@ -82,6 +82,10 @@ def create_threat_distribution_chart(df):
         )
         return fig
     
+    # If dataset has no Threat column, return empty chart
+    if 'Threat' not in df.columns:
+        return create_empty_chart("Threat Category Distribution")
+
     # Extract all threat categories from all articles
     all_threats = []
     for threat_code in df['Threat'].dropna():

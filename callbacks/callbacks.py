@@ -6,7 +6,8 @@ from dash import Input, Output
 
 
 # local packages
-from utils.data_loader import df_grossi, filter_grossi_data
+from utils.data_loader import df_ridley, filter_ridley_data
+# from utils.data_loader import df_grossi, filter_grossi_data
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
 from layout.components.maps import create_world_map
@@ -47,7 +48,8 @@ def register_callbacks(app):
 
 
         # Apply filters
-        filtered_df = filter_grossi_data(
+        filtered_df = filter_ridley_data(
+        # filtered_df = filter_grossi_data(
             continent=continent,
             ecoregions=ecoregions,
             study_designs=study_designs,
@@ -55,7 +57,8 @@ def register_callbacks(app):
         )
         
         # Create result counter text
-        total_articles = len(df_grossi)
+        total_articles = len(df_ridley)
+        # total_articles = len(df_grossi)
         filtered_count = len(filtered_df)
         counter_text = f"Showing {filtered_count} of {total_articles} articles"
         
