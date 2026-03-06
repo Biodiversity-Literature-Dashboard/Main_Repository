@@ -15,7 +15,7 @@ from sections.dataframes import ridley_bib_table
 from layout.components.tables import articles_datatable
 
 
-def register_callbacks(app):
+def register_callbacks(app,testing=False):
     """
     Register all dashboard callbacks.
     Call this function from app.py after layout is set.
@@ -117,3 +117,6 @@ def register_callbacks(app):
             )]
 
         return filtered_df.to_dict('records')
+    #for testing functions
+    if testing==True:
+        return update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category) 
