@@ -1,41 +1,23 @@
 # Main Dash application entry point
 # This file initializes the Dash app and runs the server
-from dash import Dash, html, dcc
-import dash_bootstrap_components as dbc
-import plotly.express as px
-import pandas as pd
-from visualizations.charts import top_authors_chart
 
+from dash import Dash
+import dash_bootstrap_components as dbc
+from layout.layout import create_layout
+from callbacks.callbacks import register_callbacks
+from config import DEBUG_MODE
+
+# Initialize Dash app
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
+# Set layout
+app.layout = create_layout()
 
-app.layout = html.Div(children=[
-    html.H1(children='Biodiversity Dashboard'),
+# Register callbacks
+register_callbacks(app)
 
-    html.Div(children='''
-        Authors who have listed the most threats.
-    '''),
-
-    dcc.Graph(
-        id='top_authors_graph',
-        figure=top_authors_chart()
-    )
-])
-
-# app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
-# app.layout = dbc.Container([
-#     dbc.Row([
-#         dbc.Col([
-#             dbc.Card([
-#                 dbc.CardBody([
-#                     "Dashboard"
-#                 ])
-#             ])
-#         ])
-#     ])
-# ])
-
+# Run server
 if __name__ == "__main__":
     print("Starting Dashboard...")
-    app.run(debug=True)
+    print("Open browser at: http://127.0.0.1:8050")
+    app.run(debug=DEBUG_MODE)
