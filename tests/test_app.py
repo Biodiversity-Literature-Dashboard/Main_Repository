@@ -75,6 +75,7 @@ def test_map_renders(dash_duo):
             if map_element.is_displayed() and map_element.size['width'] > 0 and map_element.size['height'] > 0:
                 break
         except StaleElementReferenceException:
+            # Element can become stale while the map is re-rendering; ignore and retry
             pass
         time.sleep(0.5)
     else:
