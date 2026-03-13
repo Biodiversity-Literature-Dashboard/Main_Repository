@@ -36,3 +36,21 @@ def apply_filter(df_filter):
     #check if filter should be applied
     return df_filter and len(df_filter) > 0
 
+def extract_threat_category_from_code(threat_code):
+    """
+    Extract main category number from threat code.
+    Example: '6.3:Other' -> '6', '2.1:AgNTC;9.5:PollAir' -> ['2', '9']
+    """
+    if pd.isna(threat_code):
+        return []
+    
+    categories = set()
+    # Split by semicolon for multiple threats
+    codes = str(threat_code).split(';')
+    for code in codes:
+        # Extract number before the dot
+        if '.' in code:
+            category = code.split('.')[0].strip()
+            categories.add(category)
+    
+    return sorted(list(categories))
