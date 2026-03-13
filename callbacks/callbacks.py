@@ -6,7 +6,7 @@ from dash import Input, Output
 
 
 # local packages
-from utils.data_loader import df_ridley, filter_ridley_data
+from utils.data_loader import df_ridley, filter_data
 # from utils.data_loader import df_grossi, filter_grossi_data
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
@@ -15,7 +15,7 @@ from sections.dataframes import ridley_bib_table
 from layout.components.tables import articles_datatable
 
 
-def register_callbacks(app,testing=False):
+def register_callbacks(app):
     """
     Register all dashboard callbacks.
     Call this function from app.py after layout is set.
@@ -48,8 +48,8 @@ def register_callbacks(app,testing=False):
 
 
         # Apply filters
-        filtered_df = filter_ridley_data(
-        # filtered_df = filter_grossi_data(
+        filtered_df = filter_data(
+            df=df_ridley,
             continent=continent,
             ecoregions=ecoregions,
             study_designs=study_designs,
@@ -117,6 +117,3 @@ def register_callbacks(app,testing=False):
             )]
 
         return filtered_df.to_dict('records')
-    #for testing functions
-    if testing==True:
-        return update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category) 
