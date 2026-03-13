@@ -6,7 +6,7 @@ from dash import Input, Output
 
 
 # local packages
-from utils.data_loader import df_ridley, filter_ridley_data
+from utils.data_loader import df_ridley, filter_data
 # from utils.data_loader import df_grossi, filter_grossi_data
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
@@ -48,8 +48,8 @@ def register_callbacks(app):
 
 
         # Apply filters
-        filtered_df = filter_ridley_data(
-        # filtered_df = filter_grossi_data(
+        filtered_df = filter_data(
+            df=df_ridley,
             continent=continent,
             ecoregions=ecoregions,
             study_designs=study_designs,

@@ -7,6 +7,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config import GROSSI_CSV, RIDLEY_CSV, THREAT_CATEGORIES, THREAT_CODES, RIDLEY_BIB
+from utils.logic.filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
 
 def load_csv_data(csv):
     df = pd.read_csv(csv)
@@ -66,7 +67,7 @@ def extract_threat_category_from_code(threat_code):
     return sorted(list(categories))
 
 
-def filter_grossi_data(continent='all', ecoregions=None, study_designs=None, threat_category='all'):
+def filter_data(df=df_ridley,continent='all', ecoregions=None, study_designs=None, threat_category='all'):
     """
     Filter Grossi dataset based on user selections.
     Uses INCLUSIVE filtering (OR logic) for multi-value fields.
@@ -80,57 +81,16 @@ def filter_grossi_data(continent='all', ecoregions=None, study_designs=None, thr
     Returns:
         Filtered dataframe
     """
-    df = df_grossi.copy()
+    df = df.copy()
+    print(f"dataframe shape (rows,colums) {str(df.shape)}")
 
-    if continent != 'all':
-        df = df[df['Continent_Ocean'].str.lower() == continent.lower()]
+    df =continent_filter(df,continent)
 
-    if ecoregions and len(ecoregions) > 0:
-        eco_mask = df['Ecoregion'].apply(
-            lambda x: any(eco in str(x) for eco in ecoregions) if pd.notna(x) else False
-        )
-        df = df[eco_mask]
+    df= ecoregion_filter(df, ecoregions)
 
-    if study_designs and len(study_designs) > 0:
-        df = df[df['Study_design'].isin(study_designs)]
+    df = study_design_filter(df, study_designs)
 
-    if threat_category != 'all':
-        threat_mask = df['Threat'].apply(
-            lambda x: threat_category in extract_threat_category_from_code(x) if pd.notna(x) else False
-        )
-        df = df[threat_mask]
-
-    return df
-
-
-def filter_ridley_data(continent='all', ecoregions=None, study_designs=None, threat_category='all'):
-    """
-    Filter Ridley articles dashboard dataset based on user selections.
-    Uses INCLUSIVE filtering (OR logic) for multi-value fields.
-    Note: Ridley dataset has no Threat column; threat_category filter is ignored.
-
-    Args:
-        continent: String continent/ocean name or 'all'
-        ecoregions: List of ecoregion values to include (e.g., ['Terrestrial', 'Marine'])
-        study_designs: List of study designs to include (e.g., ['Observational'])
-        threat_category: Ignored (Ridley data has no Threat column)
-
-    Returns:
-        Filtered dataframe
-    """
-    df = df_ridley.copy()
-
-    if continent != 'all':
-        df = df[df['Continent_Ocean'].str.lower() == continent.lower()]
-
-    if ecoregions and len(ecoregions) > 0:
-        eco_mask = df['Ecoregion'].apply(
-            lambda x: any(eco in str(x) for eco in ecoregions) if pd.notna(x) else False
-        )
-        df = df[eco_mask]
-
-    if study_designs and len(study_designs) > 0:
-        df = df[df['Study_design'].isin(study_designs)]
+    df = threat_category_filter(df, threat_category)
 
     return df
 
