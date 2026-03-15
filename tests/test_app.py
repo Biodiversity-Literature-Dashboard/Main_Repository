@@ -107,7 +107,7 @@ def test_articles_table_renders(dash_duo):
     assert len(rows) > 0
 
     # check column headers
-    headers = dash_duo.find_elements("#article_table .column-header--name")
+    headers = dash_duo.find_elements("#article_table .column-header-name")
     header_texts = [h.text for h in headers]
     assert "Authors" in header_texts
     assert "Year" in header_texts
