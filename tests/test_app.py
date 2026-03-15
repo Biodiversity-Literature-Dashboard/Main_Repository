@@ -85,3 +85,30 @@ def test_map_renders(dash_duo):
     assert map_element.is_displayed()
     assert map_element.size['width'] > 0
     assert map_element.size['height'] > 0
+
+import pytest
+# This test checks that the articles table renders with correct ID
+def test_articles_table_renders(dash_duo):
+    # Start the Dash app in the test server
+    from app import app
+    dash_duo.start_server(app)
+
+    # Wait until the table element with id 'article_table' is in the DOM
+    dash_duo.wait_for_element("#article_table")
+
+    # Grab the table element
+    table = dash_duo.find_element("#article_table")
+    
+    # Assert the table exists
+    assert table is not None
+
+    #check that it has rows (data)
+    rows = dash_duo.find_elements("#article_table .dash-cell")
+    assert len(rows) > 0
+
+    # check column headers
+    headers = dash_duo.find_elements("#article_table .column-header-name")
+    header_texts = [h.text for h in headers]
+    assert "Authors" in header_texts
+    assert "Year" in header_texts
+    assert "Title" in header_texts
