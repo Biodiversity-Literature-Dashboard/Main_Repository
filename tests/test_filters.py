@@ -5,21 +5,20 @@ from utils.data_loader import df_ridley
 
 class TestFilters(unittest.TestCase):
     def setUp(self):
-        self.full_shape = (1069, 19)
-        self.study_design_shape = (1053, 19)
+        self.shape = (1069, 19)
 
     def test_continent_filter_returns_correct_amount_of_rows_and_columns(self):
         df_shape = continent_filter(df_ridley, 'all').shape
-        self.assertEqual(df_shape, self.full_shape)
+        self.assertEqual(df_shape, self.shape)
 
     def test_ecoregion_filter_returns_correct_amount_of_rows_and_columns(self):
         df_shape = ecoregion_filter(df_ridley, ['Terrestrial', 'Marine', 'Freshwater']).shape
-        self.assertEqual(df_shape, self.full_shape)
+        self.assertEqual(df_shape, self.shape)
 
     def test_study_design_filter_returns_correct_amount_of_rows_and_columns(self):
         df_shape = study_design_filter(df_ridley, ['Observational', 'Experimental']).shape
-        self.assertEqual(df_shape, self.study_design_shape)
+        self.assertEqual(df_shape, self.shape)
 
     def test_threat_category_filter_returns_correct_amount_of_rows_and_columns(self):
         df_shape = threat_category_filter(df_ridley, 'all').shape
-        self.assertEqual(df_shape, self.full_shape)
+        self.assertEqual(df_shape, self.shape)
