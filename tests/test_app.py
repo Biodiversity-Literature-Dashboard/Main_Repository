@@ -1,23 +1,23 @@
+from app import app
+import time
+from selenium.common.exceptions import StaleElementReferenceException
+
 def test_app_starts(dash_duo):
-    from app import app
     dash_duo.start_server(app)
     assert dash_duo.get_logs() == []
 
 
 def test_title_present(dash_duo):
-    from app import app
     dash_duo.start_server(app)
     dash_duo.wait_for_text_to_equal(".navbar-brand", "Interactive Biodiversity Dashboard")
 
 
 def test_graph_exists(dash_duo):
-    from app import app
     dash_duo.start_server(app)
     graph = dash_duo.find_element("#threat-chart")
     assert graph is not None
 
 def test_layout_rendered(dash_duo):
-    from app import app
     dash_duo.start_server(app)
     navbar = dash_duo.find_element(".navbar")
     assert navbar is not None
@@ -29,7 +29,6 @@ def test_layout_rendered(dash_duo):
 
 def test_charts_exist(dash_duo):
     """Check that all main charts exist in layout"""
-    from app import app
     dash_duo.start_server(app)
 
     # Threat chart
@@ -47,7 +46,6 @@ def test_charts_exist(dash_duo):
 #Map exist test
 
 def test_map_exists(dash_duo):
-    from app import app
     dash_duo.start_server(app)
 
     dash_duo.wait_for_element("#world-map", timeout=10)
@@ -56,9 +54,6 @@ def test_map_exists(dash_duo):
 
 # Map renders correctly test
 def test_map_renders(dash_duo):
-    from app import app
-    import time
-    from selenium.common.exceptions import StaleElementReferenceException
     dash_duo.start_server(app)
 
     # Set browser window size for headless rendering
@@ -85,12 +80,9 @@ def test_map_renders(dash_duo):
     assert map_element.is_displayed()
     assert map_element.size['width'] > 0
     assert map_element.size['height'] > 0
-
-import pytest
 # This test checks that the articles table renders with correct ID
 def test_articles_table_renders(dash_duo):
     # Start the Dash app in the test server
-    from app import app
     dash_duo.start_server(app)
 
     # Wait until the table element with id 'article_table' is in the DOM
