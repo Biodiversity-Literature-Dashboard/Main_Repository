@@ -40,7 +40,7 @@ def filters_view():
                     dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),
                     #reset button
                     dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary", className="w-100 mt-2", n_clicks=0)
-                ])
+                ], className= "filter-bar")
             ], className="h-100")
         return filters_container
 
@@ -50,7 +50,7 @@ filters_view = filters_view()
 
 
 
-# MAP
+#MAP
 
 
 
@@ -124,56 +124,3 @@ def charts_view():
     return charts
 
 charts_view = charts_view()
-
-def content():
-    main = dbc.Card([
-        dbc.CardBody([
-            # Result counter
-            html.Div(
-                id='result-counter',
-                children="Showing 15 of 15 articles",
-                className="mb-2",
-                style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
-            ),
-
-            # Map section
-            html.H5("Study Locations Map", className="mb-3"),
-            empty_map,
-            
-            html.Hr(),
-            
-            # Charts section
-            html.H5("Analysis Charts", className="mt-4 mb-3"),
-            dbc.Row([
-                # Left chart: Threat Distribution
-                create_empty_chart_column('threat-chart', "Threat Types Distribution", width=4),
-
-                # Middle chart: Study Design
-                create_empty_chart_column('study-design-chart', "Study Design Distribution", width=4),
-
-                # Right chart: Wordcloud
-                dbc.Col([
-                    dcc.Graph(
-                        id='wordcloud-chart',
-                        figure=create_wordcloud_chart(),
-                        config={'displayModeBar': False}
-                    )
-                ], width=4)
-            ]),
-            html.H5("Articles table", className="mt-4 mb-3"),
-            dbc.Row([
-                dbc.Col([
-                    articles_datatable
-                ], ),
-
-            ]),
-
-        ])
-        ])
-    return main
-
-content = content()
-
-
-def cat():
-    return 1
