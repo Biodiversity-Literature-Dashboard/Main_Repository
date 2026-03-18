@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 
 # Local imports
 from layout.components.navigation import navigation_bar
-from layout.layout_views import filters_view, map_view, charts_view, table_view, cat
+from layout.layoutviews import filters_view, table_view, charts_view, map_view
 
 def create_layout():
     """Create the main dashboard layout"""
@@ -16,26 +16,29 @@ def create_layout():
     # Navbar at top
     navbar = navigation_bar
     
-    # Filter bar (top)
-    topbar = filters_view
+    # Filter sidebar (left side)
+    top_bar = filters_view
+    right_bar = map_view
+    left_bar = table_view
+
     
-    # Map view
-    leftbar = map_view
-
-    rightbar = table_view
-
-    charts = charts_view
+    # Main content area (right side)
     
     # Combine sidebar + main content in a row
     main_container = dbc.Container([
         dbc.Row([
             # Left column: Filters (25% width)
-            dbc.Col(topbar, width=3),
-            #dbc.Col(leftbar),
-            #Right column: Main content (75% width)
-            dbc.Col(content, width=9)
-        ])
-    ], fluid=True),
+            dbc.Col(top_bar, align= "start"),
+        ],align="top"),
+        dbc.Row([
+            dbc.Col(right_bar),
+            dbc.Col(left_bar),
+        ]),
+            dbc.Row([ #Delete later
+            dbc.Col(charts_view)
+        ]),
+
+    ], fluid=True)
     
     # Combine navbar + container
     layout = html.Div([
