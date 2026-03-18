@@ -36,7 +36,7 @@ body {
 
 /* Data Table Styles */
 .dash-table-container {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-shadow: 0 0.125rem 0.25rem rgba(255, 110, 110, 0.075);
 }
 
 .dash-spreadsheet {
@@ -75,4 +75,24 @@ body {
 .card h2 {
     font-weight: 700;
     margin-top: 0.5rem;
+}
+
+.filter-bar {
+    background-color :aliceblue !important;
+}
+
+.left_bar {
+    position : left;
+    color : aliceblue;
+}
+
+.right_bar {
+    position : right;
+    color : aliceblue;
+}
+
+/* table container input bar */
+
+.dash-table-container .dash-filter input {
+    color: rgb(255, 255, 255);
 }
