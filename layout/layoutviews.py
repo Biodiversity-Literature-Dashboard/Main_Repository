@@ -3,7 +3,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 from layout.components.maps import empty_map
-from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider
+from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
 from layout.components.tables import articles_datatable
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
 
@@ -16,31 +16,70 @@ def filters_view():
                 dbc.CardHeader("Filters", style={"fontWeight": "bold"}),
                 dbc.CardBody([
                     # Continent filter
-                    html.Label("Continent/Ocean:", className="fw-bold mb-2"),
-                    continent_filter,
-                    
-                    # Ecoregion filter (checkboxes - can select multiple)
-                    html.Label("Ecoregion:", className="fw-bold mb-2 mt-3"),
-                    ecoregion_filter,
-                    
-                    # Study Design filter (checkboxes)
-                    html.Label("Study Design:", className="fw-bold mb-2 mt-3"),
-                    study_design_filter,
-                    
-                    # Threat Category filter
-                    html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
-                    threat_category_filter,
+                html.Div(
+                [
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                html.Div([
+                            html.Label("Continent/Ocean:", className="fw-bold mb-2"),
+                            continent_filter,
+                                ]
+                                )
+                            ),
+                            dbc.Col(
+                                html.Div([
+                            # Ecoregion filter (checkboxes - can select multiple)
+                            html.Label("Ecoregion:", className="fw-bold mb-2 mt-3"),
+                            ecoregion_filter,
+                                ]
+                                )
+                            ),
 
-                    # Year range filter (filters articles table)
-                    html.Label("Publication Year (Articles Table):", className="fw-bold mb-2 mt-3"),
-                    year_range_slider,
-
-                    # Apply button (will wire up in callbacks later)
-                    html.Hr(),
-                    dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),
-                    #reset button
-                    dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary", className="w-100 mt-2", n_clicks=0)
-                ], className= "filter-bar")
+                            dbc.Col(
+                                html.Div([
+                            # Study Design filter (checkboxes)
+                            html.Label("Study Design:", className="fw-bold mb-2 mt-3"),
+                            study_design_filter,
+                                ]
+                                )
+                            ),
+                            dbc.Col(
+                                html.Div([
+                            # Threat Category filter
+                            html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
+                            threat_category_filter,
+                                ]
+                                )
+                            ),
+                            dbc.Col(
+                                html.Div([
+                            # Year range filter (filters articles table)
+                            html.Label("Publication Year (Articles Table):", className="fw-bold mb-2 mt-3"),
+                            year_range_slider,
+                                ]
+                                )
+                            ),
+                        ]
+                    ),
+                ]
+                ),
+                html.Div(
+                [
+                    dbc.Row(
+                        [
+                            search_bar,
+                            dbc.Col(
+                                html.Div([
+                                    # Apply button (will wire up in callbacks later)
+                                    dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),
+                                    #reset button
+                                    dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary", className="w-100 mt-2", n_clicks=0)
+                                    ])
+                                )
+                        ]),
+                ]),
+                ], className= "filter-bar"),
             ], className="h-100")
         return filters_container
 
