@@ -5,23 +5,11 @@ from utils.data_loader import df_grossi, get_threat_categories
 # SEARCH BARS
 
 def create_search_bar():
-    search = dbc.Row(
-        [
-            dbc.Col(dbc.Input(id = "searchbar", 
-            type="search", 
+    search = dbc.Col(dbc.Input(id = "searchbar",
+            type="search",
             debounce = True,
-            placeholder="Search articles")),
-            dbc.Col(
-                dbc.Button("Search", 
-                color="primary", 
-                className="ms-2", 
-                n_clicks=0),
-                width="auto",
-            ),
-        ],
-        className="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
-        align="right",
-    )
+            placeholder="Search articles",
+            ))
     return search
 
 
