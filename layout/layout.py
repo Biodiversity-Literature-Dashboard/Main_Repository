@@ -2,6 +2,7 @@
 # Define the overall layout, navigation, tabs, and component arrangement
 
 # Pre-made packages
+from dash import html
 import dash_bootstrap_components as dbc
 
 
