@@ -9,9 +9,9 @@ import dash_bootstrap_components as dbc
 # Local imports
 from layout.components.navigation import navigation_bar
 from layout.components.tables import articles_datatable
-from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, reset_filters, year_range_slider
 from layout.components.maps import empty_map
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
+from layout.layout_views.filters_view import filters_view
 
 def create_layout():
     """Create the main dashboard layout"""
@@ -20,36 +20,7 @@ def create_layout():
     navbar = navigation_bar
     
     # Filter sidebar (left side)
-    filter_sidebar = dbc.Card([
-        dbc.CardHeader("Filters", style={"fontWeight": "bold"}),
-        dbc.CardBody([
-            # Continent filter
-            html.Label("Continent/Ocean:", className="fw-bold mb-2"),
-            continent_filter,
-            
-            # Ecoregion filter (checkboxes - can select multiple)
-            html.Label("Ecoregion:", className="fw-bold mb-2 mt-3"),
-            ecoregion_filter,
-            
-            # Study Design filter (checkboxes)
-            html.Label("Study Design:", className="fw-bold mb-2 mt-3"),
-            study_design_filter,
-            
-            # Threat Category filter
-            html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
-            threat_category_filter,
-
-            # Year range filter (filters articles table)
-            html.Label("Publication Year (Articles Table):", className="fw-bold mb-2 mt-3"),
-            year_range_slider,
-
-            # Apply button (will wire up in callbacks later)
-            html.Hr(),
-            dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),
-            #reset button
-            dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary", className="w-100 mt-2", n_clicks=0)
-        ])
-    ], className="h-100")
+    filter_sidebar = filters_view
     
     # Main content area (right side)
     main_content = dbc.Card([
