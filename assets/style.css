@@ -96,3 +96,12 @@ body {
 .dash-table-container .dash-filter input {
     color: rgb(255, 255, 255) !important;
 }
+
+/* search bar */
+
+
+/*apply/reset filter */
+
+.w-100 {
+    width: 150px !important;
+}
