@@ -2,7 +2,6 @@
 # Define the overall layout, navigation, tabs, and component arrangement
 
 # Pre-made packages
-from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 
@@ -28,7 +27,7 @@ def create_layout():
     main_container = dbc.Container([
         dbc.Row([
             # Left column: Filters (25% width)
-            dbc.Col(top_bar, align= "start"),
+            dbc.Col(top_bar),
         ],align="top"),
         dbc.Row([
             dbc.Col(right_bar),
