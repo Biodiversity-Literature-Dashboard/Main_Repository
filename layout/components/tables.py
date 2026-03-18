@@ -1,8 +1,5 @@
 
 from dash import dash_table
-import datetime
-
-#import pandas as pd
 
 from sections.dataframes import ridley_bib_table
 
@@ -18,13 +15,27 @@ def articles_datatable(df):
     filter_action='native',
 
     style_table={
-        'height': 400,
+        'height': 500,
+        'overflowY': 'scroll',
     },
     style_data={
-        'width': '150px', 'minWidth': '150px', 'maxWidth': '150px',
         'overflow': 'hidden',
         'textOverflow': 'ellipsis',
-    }
+    },
+    style_cell_conditional=[
+        {'if': {'column_id': 'Authors'},
+         'width': '100px',
+         'maxWidth': '100px',
+         'minWidth': '100px'},
+        {'if': {'column_id': 'Year'},
+         'width': '30px',
+         'maxWidth': '30px',
+         'minWidth': '30px'},
+        {'if': {'column_id': 'Title'},
+         'width': '100px',
+         'maxWidth': '200px',
+         'minWidth': '100px'},
+    ]
     )
     return table
 
