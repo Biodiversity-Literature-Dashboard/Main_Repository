@@ -78,21 +78,21 @@ body {
 }
 
 .filter-bar {
-    background-color :aliceblue !important;
+    background-color :white !important;
 }
 
 .left_bar {
     position : left;
-    color : aliceblue;
+    color : white;
 }
 
 .right_bar {
     position : right;
-    color : aliceblue;
+    color : white;
 }
 
 /* table container input bar */
 
 .dash-table-container .dash-filter input {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
 }
