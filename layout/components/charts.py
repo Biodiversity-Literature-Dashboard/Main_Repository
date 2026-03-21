@@ -183,24 +183,43 @@ def create_study_design_chart(df):
 # WORDCLOUD
 
 
-def create_wordcloud_chart():
-    """Generate a wordcloud from Ridley bibliography article titles."""
+def create_wordcloud_chart(filtered_df=None):
+    """Generate a wordcloud from article titles."""
 
-    titles = ' '.join(ridley_bib_table['Title'].dropna().tolist())
-    wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
-
-    buf = io.BytesIO()
-    wc.to_image().save(buf, format='PNG')
-    buf.seek(0)
-    img_b64 = base64.b64encode(buf.read()).decode()
+    if filtered_df is None:
+        titles = ' '.join(ridley_bib_table['Title'].dropna().astype(str).tolist())
+    else:
+        titles = ' '.join(filtered_df['Title'].dropna().astype(str).tolist())
 
     fig = go.Figure()
-    fig.add_layout_image(dict(
-        source=f'data:image/png;base64,{img_b64}',
-        xref='paper', yref='paper',
-        x=0, y=1, sizex=1, sizey=1,
-        sizing='stretch', layer='below'
-    ))
+
+    if not titles.strip():
+        fig.update_layout(
+            title='Article Keywords Wordcloud',
+            height=300,
+            margin=dict(l=0, r=0, t=40, b=0),
+            xaxis=dict(visible=False, range=[0, 1]),
+            yaxis=dict(visible=False, range=[0, 1])
+        )
+        return fig
+
+    try:
+        wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
+
+        buf = io.BytesIO()
+        wc.to_image().save(buf, format='PNG')
+        buf.seek(0)
+        img_b64 = base64.b64encode(buf.read()).decode()
+
+        fig.add_layout_image(dict(
+            source=f'data:image/png;base64,{img_b64}',
+            xref='paper', yref='paper',
+            x=0, y=1, sizex=1, sizey=1,
+            sizing='stretch', layer='below'
+        ))
+    except BaseException:
+        pass
+
     fig.update_layout(
         title='Article Keywords Wordcloud',
         height=300,
