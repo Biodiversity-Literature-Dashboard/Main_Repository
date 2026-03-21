@@ -191,8 +191,9 @@ def create_wordcloud_chart(filtered_df=None):
     else:
         titles = ' '.join(filtered_df['Title'].dropna().astype(str).tolist())
 
+    fig = go.Figure()
+
     if not titles.strip():
-        fig = go.Figure()
         fig.update_layout(
             title='Article Keywords Wordcloud',
             height=300,
@@ -202,20 +203,23 @@ def create_wordcloud_chart(filtered_df=None):
         )
         return fig
 
-    wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
+    try:
+        wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
 
-    buf = io.BytesIO()
-    wc.to_image().save(buf, format='PNG')
-    buf.seek(0)
-    img_b64 = base64.b64encode(buf.read()).decode()
+        buf = io.BytesIO()
+        wc.to_image().save(buf, format='PNG')
+        buf.seek(0)
+        img_b64 = base64.b64encode(buf.read()).decode()
 
-    fig = go.Figure()
-    fig.add_layout_image(dict(
-        source=f'data:image/png;base64,{img_b64}',
-        xref='paper', yref='paper',
-        x=0, y=1, sizex=1, sizey=1,
-        sizing='stretch', layer='below'
-    ))
+        fig.add_layout_image(dict(
+            source=f'data:image/png;base64,{img_b64}',
+            xref='paper', yref='paper',
+            x=0, y=1, sizex=1, sizey=1,
+            sizing='stretch', layer='below'
+        ))
+    except BaseException:
+        pass
+
     fig.update_layout(
         title='Article Keywords Wordcloud',
         height=300,
