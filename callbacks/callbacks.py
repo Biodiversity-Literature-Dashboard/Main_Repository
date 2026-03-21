@@ -28,33 +28,49 @@ def register_callbacks(app):
             Output('threat-chart', 'figure'),
             Output('study-design-chart', 'figure'),
             Output('wordcloud-chart', 'figure'),
+            Output('article_table', 'data'),
         ],
         [
-            Input('apply-filters-btn', 'n_clicks')
-        ],
-        [
+            Input('apply-filters-btn', 'n_clicks'),
             Input('continent-filter', 'value'),
             Input('ecoregion-filter', 'value'),
             Input('study-design-filter', 'value'),
-            Input('threat-category-filter', 'value')
+            Input('threat-category-filter', 'value'),
+            Input('year-range-slider', 'value'),
+            Input('searchbar', 'value')
         ],
         prevent_initial_call=False
     )
-    def update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category):
+    def update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
         """
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
         """
 
+        filtered_df = df_ridley.copy()
 
         # Apply filters
         filtered_df = filter_data(
-            df=df_ridley,
+            df=filtered_df,
             continent=continent,
             ecoregions=ecoregions,
             study_designs=study_designs,
             threat_category=threat_category
         )
+
+        # Filter by year range
+        if year_range:
+            filtered_df = filtered_df[
+                (filtered_df['Year'] >= year_range[0]) &
+                (filtered_df['Year'] <= year_range[1])
+            ]
+
+        # Filter by search text
+        if search_value:
+            filtered_df = filtered_df[filtered_df.apply(
+                lambda row: row.astype(str).str.contains(search_value, case=False, na=False).any(),
+                axis=1
+            )]
         
         # Create result counter text
         total_articles = len(df_ridley)
@@ -66,9 +82,11 @@ def register_callbacks(app):
         map_fig = create_world_map(filtered_df)
         threat_fig = create_threat_distribution_chart(filtered_df)
         design_fig = create_study_design_chart(filtered_df)
-        wordcloud_fig = create_wordcloud_chart()
+        wordcloud_fig = create_wordcloud_chart(filtered_df)
+
+        table_df = filtered_df[['Authors', 'Year', 'Title']]
         
-        return counter_text, map_fig, threat_fig, design_fig, wordcloud_fig
+        return counter_text, map_fig, threat_fig, design_fig, wordcloud_fig, table_df.to_dict('records')
     
     @app.callback(
         [
@@ -93,27 +111,3 @@ def register_callbacks(app):
             defaults['threat-category-filter'],
             defaults['year-range-slider'],
         )
-
-    @app.callback(
-        Output('article_table','data'),
-        Input('searchbar','value'),
-        Input('year-range-slider', 'value')
-    )
-    def update_search_bar(search_value, year_range):
-        filtered_df = ridley_bib_table.copy()
-
-        # Filter by year range
-        if year_range:
-            filtered_df = filtered_df[
-                (filtered_df['Year'] >= year_range[0]) &
-                (filtered_df['Year'] <= year_range[1])
-            ]
-
-        # Filter by search text
-        if search_value:
-            filtered_df = filtered_df[filtered_df.apply(
-                lambda row: row.astype(str).str.contains(search_value, case=False).any(),
-                axis=1
-            )]
-
-        return filtered_df.to_dict('records')

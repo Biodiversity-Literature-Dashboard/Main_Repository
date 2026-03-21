@@ -183,10 +183,25 @@ def create_study_design_chart(df):
 # WORDCLOUD
 
 
-def create_wordcloud_chart():
-    """Generate a wordcloud from Ridley bibliography article titles."""
+def create_wordcloud_chart(filtered_df=None):
+    """Generate a wordcloud from article titles."""
 
-    titles = ' '.join(ridley_bib_table['Title'].dropna().tolist())
+    if filtered_df is None:
+        titles = ' '.join(ridley_bib_table['Title'].dropna().astype(str).tolist())
+    else:
+        titles = ' '.join(filtered_df['Title'].dropna().astype(str).tolist())
+
+    if not titles.strip():
+        fig = go.Figure()
+        fig.update_layout(
+            title='Article Keywords Wordcloud',
+            height=300,
+            margin=dict(l=0, r=0, t=40, b=0),
+            xaxis=dict(visible=False, range=[0, 1]),
+            yaxis=dict(visible=False, range=[0, 1])
+        )
+        return fig
+
     wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
 
     buf = io.BytesIO()
