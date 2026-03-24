@@ -1,6 +1,6 @@
 
 import dash_bootstrap_components as dbc
-from dash import html
+from dash import html, dcc
 from layout.components.search_and_filters import create_search_bar
 
 
@@ -37,3 +37,17 @@ def create_navbar():
     return navbar
 
 navigation_bar = create_navbar()
+
+def create_change_views_button():
+    change_views = dcc.Dropdown(
+        id='change_views',
+        options=[{'label': 'Map', 'value': 'Map'}] + 
+                [{'label': 'Article Table', 'value': 'Article Table'}] +
+                [{'label': 'Charts', 'value': 'Charts'}],
+        value='Map',
+        clearable=False,
+        className="mb-3"
+    )
+    return change_views
+
+views_button = create_change_views_button()

@@ -6,7 +6,7 @@ from layout.components.maps import empty_map
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
 from layout.components.tables import articles_datatable
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
-
+from layout.components.navigation import views_button
 
 
 # FILTER
@@ -97,17 +97,20 @@ filters_view = filters_view()
 
 def map_view():
     map_container = dbc.CardBody([
-            # Result counter
-            html.Div(
-                id='result-counter',
-                children="Showing 15 of 15 articles",
-                className="mb-2",
-                style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
-            ),
-            
-            # Map section
-            html.H5("Study Locations Map", className="mb-3"),
-            empty_map,
+        html.Div(
+            views_button,
+        ),
+        # Result counter
+        html.Div(
+            id='result-counter',
+            children="Showing 15 of 15 articles",
+            className="mb-2",
+            style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
+        ),
+        
+        # Map section
+        html.H5("Study Locations Map", className="mb-3"),
+        empty_map,
     ])
     return map_container
 
