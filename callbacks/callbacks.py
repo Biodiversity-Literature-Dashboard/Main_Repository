@@ -2,7 +2,7 @@
 # Define Input/Output callbacks for chart updates, data filtering, and user interactions
 
 # Pre-made packages
-from dash import Input, Output
+from dash import Input, Output, State
 
 
 # local packages
@@ -111,3 +111,17 @@ def register_callbacks(app):
             defaults['threat-category-filter'],
             defaults['year-range-slider'],
         )
+    @app.callback(
+        Output("info-modal", "is_open"),
+        [
+            Input("info-button", "n_clicks"),
+            Input("close-info", "n_clicks")
+        ],
+        [
+            State("info-modal", "is_open")
+        ]
+    )
+    def toggle_modal(n1, n2, is_open):
+        if n1 or n2:
+            return not is_open
+        return is_open
