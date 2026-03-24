@@ -7,6 +7,7 @@ import dash_bootstrap_components as dbc
 
 
 # Local imports
+from layout.components.info_button import info_button
 from layout.components.navigation import navigation_bar
 from layout.layoutviews import filters_view, table_view, charts_view, map_view
 
@@ -43,6 +44,14 @@ def create_layout():
     # Combine navbar + container
     layout = html.Div([
         navbar,
+        html.Div(
+            info_button(),
+            style={
+                "display": "flex",
+                "justifyContent": "flex-end",
+                "padding": "10px"
+                }
+        ),
         main_container
     ])
     
