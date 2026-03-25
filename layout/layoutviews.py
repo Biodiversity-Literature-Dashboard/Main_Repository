@@ -6,7 +6,7 @@ from layout.components.maps import empty_map
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
 from layout.components.tables import articles_datatable
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
-from layout.components.navigation import change_views_article_table, change_views_charts, change_views_map
+from layout.components.navigation import change_views_left, change_views_right
 
 
 # FILTER
@@ -95,10 +95,14 @@ filters_view = filters_view()
 
 
 
-def map_view():
+def map_view(change_views):
+    if change_views == "left":
+        change_views = change_views_left
+    else:
+        change_views = change_views_right
     map_container = dbc.CardBody([
         html.Div(
-            change_views_map,
+            change_views,
         ),
         # Result counter
         html.Div(
@@ -114,8 +118,6 @@ def map_view():
     ])
     return map_container
 
-map_view = map_view()
-
 
 
 
@@ -126,10 +128,14 @@ map_view = map_view()
 
 
 
-def table_view():
+def table_view(change_views):
+    if change_views == "right":
+        change_views = change_views_right
+    else:
+        change_views = change_views_left
     tables = dbc.CardBody([
         html.Div(
-            change_views_article_table,
+            change_views,
         ),
         html.H5("Article table", className="mt-4 mb-3"),
             dbc.Col([
@@ -138,18 +144,20 @@ def table_view():
     ])
     return tables
 
-table_view = table_view()
-
 
 
 
 # CHARTS
 
 
-def charts_view():
+def charts_view(change_views):
+    if change_views == "right":
+        change_views = change_views_right
+    else:
+        change_views = change_views_left
     charts = dbc.CardBody([
             html.Div(
-                change_views_charts,
+                change_views,
             ),
             html.H5("Analysis Charts", className="mt-4 mb-3"),
             dbc.Row([
@@ -171,4 +179,14 @@ def charts_view():
     ])
     return charts
 
-charts_view = charts_view()
+
+def left_view():
+    current_view = html.Div(map_view("left"),id="left_view")
+    return current_view
+
+def right_view():
+    current_view = html.Div(table_view("right"),id="right_view")
+    return current_view
+
+left_view = left_view()
+right_view = right_view()

@@ -11,8 +11,7 @@ from utils.data_loader import df_ridley, filter_data
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
 from layout.components.maps import create_world_map
-from sections.dataframes import ridley_bib_table
-from layout.components.tables import articles_datatable
+from layout.layoutviews import map_view, charts_view, table_view
 
 
 def register_callbacks(app):
@@ -125,3 +124,23 @@ def register_callbacks(app):
         if n1 or n2:
             return not is_open
         return is_open
+    @app.callback(
+        Output("left_view","children"),
+        Input("change_views_left","value")
+    )
+    def change_views_left(change_views):
+        if change_views == "Charts":
+            return charts_view("left")
+        if change_views == "Map":
+            return map_view("left")
+        return table_view("left")
+    @app.callback(
+        Output("right_view","children"),
+        Input("change_views_right","value")
+    )
+    def change_views_right(change_views):
+        if change_views == "Charts":
+            return charts_view("right")
+        if change_views == "Article_Table":
+            return table_view("right")
+        return map_view("right")
