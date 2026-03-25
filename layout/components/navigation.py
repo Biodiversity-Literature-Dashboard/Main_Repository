@@ -38,16 +38,20 @@ def create_navbar():
 
 navigation_bar = create_navbar()
 
-def create_change_views_button():
+def create_change_views_button(value):
     change_views = dcc.Dropdown(
-        id='change_views',
+        id='change_views'+value,
         options=[{'label': 'Map', 'value': 'Map'}] + 
-                [{'label': 'Article Table', 'value': 'Article Table'}] +
+                [{'label': 'Article Table', 'value': 'Article_Table'}] +
                 [{'label': 'Charts', 'value': 'Charts'}],
-        value='Map',
+        value=value,
         clearable=False,
         className="mb-3"
     )
     return change_views
 
-views_button = create_change_views_button()
+change_views_map = create_change_views_button("Map")
+
+change_views_charts = create_change_views_button("Charts")
+
+change_views_article_table = create_change_views_button("Article_Table")

@@ -6,7 +6,7 @@ from layout.components.maps import empty_map
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
 from layout.components.tables import articles_datatable
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
-from layout.components.navigation import views_button
+from layout.components.navigation import change_views_article_table, change_views_charts, change_views_map
 
 
 # FILTER
@@ -98,7 +98,7 @@ filters_view = filters_view()
 def map_view():
     map_container = dbc.CardBody([
         html.Div(
-            views_button,
+            change_views_map,
         ),
         # Result counter
         html.Div(
@@ -128,7 +128,10 @@ map_view = map_view()
 
 def table_view():
     tables = dbc.CardBody([
-        html.H5("Articles table", className="mt-4 mb-3"),
+        html.Div(
+            change_views_article_table,
+        ),
+        html.H5("Article table", className="mt-4 mb-3"),
             dbc.Col([
                 articles_datatable,
             ], ),
@@ -145,6 +148,9 @@ table_view = table_view()
 
 def charts_view():
     charts = dbc.CardBody([
+            html.Div(
+                change_views_charts,
+            ),
             html.H5("Analysis Charts", className="mt-4 mb-3"),
             dbc.Row([
                 # Left chart: Threat Distribution
