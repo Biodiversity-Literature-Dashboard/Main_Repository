@@ -156,26 +156,15 @@ def charts_view(change_views):
     else:
         change_views = change_views_left
     charts = dbc.CardBody([
-            html.Div(
-                change_views,
-            ),
-            html.H5("Analysis Charts", className="mt-4 mb-3"),
-            dbc.Row([
-                # Left chart: Threat Distribution
-                create_empty_chart_column('threat-chart', "Threat Types Distribution", width=4),
-
-                # Middle chart: Study Design
-                create_empty_chart_column('study-design-chart', "Study Design Distribution", width=4),
-
-                # Right chart: Wordcloud
-                dbc.Col([
-                    dcc.Graph(
-                        id='wordcloud-chart',
-                        figure=create_wordcloud_chart(),
-                        config={'displayModeBar': False}
-                    )
-                ], width=4)
-            ]),
+        html.Div(change_views),
+        html.H5("Analysis Charts", className="mt-4 mb-3"),
+        dbc.Row([
+        dbc.Col(dcc.Graph(id='threat-chart'), width=12)
+        ]),
+        dbc.Row([
+        dbc.Col(dcc.Graph(id='study-design-chart'), width=6),
+        dbc.Col(dcc.Graph(id='wordcloud-chart'), width=6)
+    ]),
     ])
     return charts
 
