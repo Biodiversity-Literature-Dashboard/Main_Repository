@@ -23,6 +23,7 @@ def register_callbacks(app):
     @app.callback(
         [
             Output('article_table', 'data'),
+            Output('article_table', 'tooltip_data'),
         ],
         [
             Input('apply-filters-btn', 'n_clicks'),
@@ -69,8 +70,13 @@ def register_callbacks(app):
         # Generate visualizations
 
         table_df = filtered_df[['Authors', 'Year', 'Title']]
-        
-        return [table_df.to_dict('records')]
+        # Create tooltip data for the Title column only
+        tooltip_data = [
+            {
+                'Title': {'value': row['Title'], 'type': 'text'}  # shows title as tooltip when hovering over Title cell
+            } for _, row in table_df.iterrows()
+        ]
+        return [table_df.to_dict('records'), tooltip_data]
     @app.callback(
         [
         Output('threat-chart', 'figure'),
