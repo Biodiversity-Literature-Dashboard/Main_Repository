@@ -2,7 +2,7 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
-from layout.components.maps import empty_map
+from layout.components.maps import create_empty_dcc_graph_map
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
 from layout.components.tables import articles_datatable
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
@@ -107,7 +107,7 @@ def map_view():
             
             # Map section
             html.H5("Study Locations Map", className="mb-3"),
-            empty_map,
+            create_empty_dcc_graph_map(),
     ])
     return map_container
 

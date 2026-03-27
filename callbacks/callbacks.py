@@ -30,17 +30,16 @@ def register_callbacks(app):
             Output('wordcloud-chart', 'figure'),
         ],
         [
-            Input('apply-filters-btn', 'n_clicks')
-        ],
-        [
+            Input('apply-filters-btn', 'n_clicks'),
             Input('continent-filter', 'value'),
             Input('ecoregion-filter', 'value'),
             Input('study-design-filter', 'value'),
-            Input('threat-category-filter', 'value')
+            Input('threat-category-filter', 'value'),
+            Input('world-map', 'clickData'),
         ],
         prevent_initial_call=False
     )
-    def update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category):
+    def update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category, click_data):
         """
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
@@ -56,6 +55,15 @@ def register_callbacks(app):
             threat_category=threat_category
         )
         
+        # Apply map click filtering
+        if click_data:
+            try:
+                country_clicked = click_data["points"][0].get("location")
+                if country_clicked:
+                    filtered_df = filtered_df[filtered_df["Country"] == country_clicked]
+            except (KeyError, IndexError):
+                pass
+
         # Create result counter text
         total_articles = len(df_ridley)
         # total_articles = len(df_grossi)
@@ -77,6 +85,7 @@ def register_callbacks(app):
             Output('study-design-filter', 'value'),
             Output('threat-category-filter', 'value'),
             Output('year-range-slider', 'value'),
+            Output('world-map', 'clickData'),
         ],
         Input('reset-filters-btn', 'n_clicks'),
         prevent_initial_call=True
@@ -92,14 +101,16 @@ def register_callbacks(app):
             defaults['study-design-filter'],
             defaults['threat-category-filter'],
             defaults['year-range-slider'],
+            None, # Clear map click data
         )
 
     @app.callback(
         Output('article_table','data'),
         Input('searchbar','value'),
-        Input('year-range-slider', 'value')
+        Input('year-range-slider', 'value'),
+        Input("world-map", "clickData"),
     )
-    def update_search_bar(search_value, year_range):
+    def update_search_bar(search_value, year_range, click_data):
         filtered_df = ridley_bib_table.copy()
 
         # Filter by year range
@@ -115,5 +126,14 @@ def register_callbacks(app):
                 lambda row: row.astype(str).str.contains(search_value, case=False).any(),
                 axis=1
             )]
+            
+        # Filter by clicked country on the map
+        if click_data:
+            try:    
+                country_clicked = click_data["points"][0].get("location")
+                if country_clicked:
+                    filtered_df = filtered_df[filtered_df["Country"] == country_clicked]
+            except (KeyError, IndexError):
+                pass
 
         return filtered_df.to_dict('records')
