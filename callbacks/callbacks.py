@@ -22,8 +22,16 @@ def register_callbacks(app):
     
     @app.callback(
         [
+<<<<<<< 61-again-work-on-the-map-view-once-more
+            Output('result-counter', 'children'),
+            Output('world-map', 'figure'),
+            Output('threat-chart', 'figure'),
+            Output('study-design-chart', 'figure'),
+            Output('wordcloud-chart', 'figure'),
+=======
             Output('article_table', 'data'),
             Output('article_table', 'tooltip_data'),
+>>>>>>> Development
         ],
         [
             Input('apply-filters-btn', 'n_clicks'),
@@ -31,12 +39,20 @@ def register_callbacks(app):
             Input('ecoregion-filter', 'value'),
             Input('study-design-filter', 'value'),
             Input('threat-category-filter', 'value'),
+<<<<<<< 61-again-work-on-the-map-view-once-more
+            Input('world-map', 'clickData'),
+        ],
+        prevent_initial_call=False
+    )
+    def update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category, click_data):
+=======
             Input('year-range-slider', 'value'),
             Input('searchbar', 'value')
         ],
         prevent_initial_call=False
     )
     def update_article_table(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+>>>>>>> Development
         """
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
@@ -167,6 +183,15 @@ def register_callbacks(app):
                 axis=1
             )]
         
+        # Apply map click filtering
+        if click_data:
+            try:
+                country_clicked = click_data["points"][0].get("location")
+                if country_clicked:
+                    filtered_df = filtered_df[filtered_df["Country"] == country_clicked]
+            except (KeyError, IndexError):
+                pass
+
         # Create result counter text
         total_articles = len(df_ridley)
         filtered_count = len(filtered_df)
@@ -184,6 +209,7 @@ def register_callbacks(app):
             Output('study-design-filter', 'value'),
             Output('threat-category-filter', 'value'),
             Output('year-range-slider', 'value'),
+            Output('world-map', 'clickData'),
         ],
         Input('reset-filters-btn', 'n_clicks'),
         prevent_initial_call=True
@@ -199,8 +225,43 @@ def register_callbacks(app):
             defaults['study-design-filter'],
             defaults['threat-category-filter'],
             defaults['year-range-slider'],
+            None, # Clear map click data
         )
     @app.callback(
+<<<<<<< 61-again-work-on-the-map-view-once-more
+        Output('article_table','data'),
+        Input('searchbar','value'),
+        Input('year-range-slider', 'value'),
+        Input("world-map", "clickData"),
+    )
+    def update_search_bar(search_value, year_range, click_data):
+        filtered_df = ridley_bib_table.copy()
+
+        # Filter by year range
+        if year_range:
+            filtered_df = filtered_df[
+                (filtered_df['Year'] >= year_range[0]) &
+                (filtered_df['Year'] <= year_range[1])
+            ]
+
+        # Filter by search text
+        if search_value:
+            filtered_df = filtered_df[filtered_df.apply(
+                lambda row: row.astype(str).str.contains(search_value, case=False).any(),
+                axis=1
+            )]
+            
+        # Filter by clicked country on the map
+        if click_data:
+            try:    
+                country_clicked = click_data["points"][0].get("location")
+                if country_clicked:
+                    filtered_df = filtered_df[filtered_df["Country"] == country_clicked]
+            except (KeyError, IndexError):
+                pass
+
+        return filtered_df.to_dict('records')
+=======
         Output("info-modal", "is_open"),
         [
             Input("info-button", "n_clicks"),
@@ -234,3 +295,4 @@ def register_callbacks(app):
         if change_views == "Article_Table":
             return table_view("right")
         return map_view("right")
+>>>>>>> Development

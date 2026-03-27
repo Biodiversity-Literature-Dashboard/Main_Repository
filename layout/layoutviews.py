@@ -2,7 +2,7 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
-from layout.components.maps import empty_map
+from layout.components.maps import create_empty_dcc_graph_map
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
 from layout.components.tables import articles_datatable
 from layout.components.charts import create_empty_chart_column, create_wordcloud_chart
@@ -101,6 +101,19 @@ def map_view(change_views):
     else:
         change_views = change_views_right
     map_container = dbc.CardBody([
+<<<<<<< 61-again-work-on-the-map-view-once-more
+            # Result counter
+            html.Div(
+                id='result-counter',
+                children="Showing 15 of 15 articles",
+                className="mb-2",
+                style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
+            ),
+            
+            # Map section
+            html.H5("Study Locations Map", className="mb-3"),
+            create_empty_dcc_graph_map(),
+=======
         html.Div(
             change_views,
         ),
@@ -115,6 +128,7 @@ def map_view(change_views):
         # Map section
         html.H5("Study Locations Map", className="mb-3"),
         empty_map,
+>>>>>>> Development
     ])
     return map_container
 
