@@ -70,10 +70,10 @@ def register_callbacks(app):
         # Generate visualizations
 
         table_df = filtered_df[['Authors', 'Year', 'Title']]
-        # Create tooltip data for the table
+        # Create tooltip data for the Title column only
         tooltip_data = [
             {
-                'Title': {'value': row['Title'], 'type': 'markdown'} # shows title as tooltip when hovering over authors
+                'Title': {'value': row['Title'], 'type': 'text'}  # shows title as tooltip when hovering over Title cell
             } for _, row in table_df.iterrows()
         ]
         return [table_df.to_dict('records'), tooltip_data]
