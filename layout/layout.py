@@ -39,7 +39,7 @@ def create_layout():
             #dbc.Col(charts_view)
         ]),
 
-    ], fluid=True)
+    ], fluid=True, style={"marginBottom": "80px"}) #added margin bottom 
     
     # Combine navbar + container
     layout = html.Div([
