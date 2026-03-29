@@ -25,6 +25,25 @@ def apply_filters(df,continent, ecoregions,study_designs,threat_category,year_ra
 
     return filtered_df
 
+def update_article_table(df, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+    """
+    Main callback to filter data and update all visualizations.
+    Triggered by Apply Filters button click.
+    """
+
+    filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
+
+    # Generate visualizations
+
+    table_df = filtered_df[['Authors', 'Year', 'Title']]
+    # Create tooltip data for the Title column only
+    tooltip_data = [
+        {
+            'Title': {'value': row['Title'], 'type': 'text'} 
+        } for _, row in table_df.iterrows()
+    ]
+    return [table_df.to_dict('records'), tooltip_data]
+
 def update_map(df, continent, ecoregions, study_designs, threat_category, year_range, search_value):
     filtered_df = apply_filters(df,
                     continent,
@@ -38,7 +57,7 @@ def update_map(df, continent, ecoregions, study_designs, threat_category, year_r
     total_articles = len(df)
     filtered_count = len(filtered_df)
     counter_text = f"Showing {filtered_count} of {total_articles} articles"
-    
+
     # Generate visualizations
     map_fig = create_world_map(filtered_df)
 

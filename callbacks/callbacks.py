@@ -10,7 +10,7 @@ from utils.data_loader import df
 
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
-from callbacks.callbacks_functions import apply_filters,change_views, update_map
+from callbacks.callbacks_functions import apply_filters,change_views, update_map, update_article_table
 
 
 def register_callbacks(app):
@@ -30,30 +30,46 @@ def register_callbacks(app):
 
     @app.callback(
         [
-            Output('article_table', 'data'),
-            Output('article_table', 'tooltip_data'),
+            Output('article_table_left', 'data'),
+            Output('article_table_left', 'tooltip_data'),
         ],
         filter_inputs,
         prevent_initial_call=False
     )
-    def update_article_table(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+    def update_article_table_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
         """
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
         """
 
-        filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
+        return update_article_table(df, 
+                            continent, 
+                            ecoregions, 
+                            study_designs, 
+                            threat_category, 
+                            year_range, 
+                            search_value)
+    @app.callback(
+        [
+            Output('article_table_right', 'data'),
+            Output('article_table_right', 'tooltip_data'),
+        ],
+        filter_inputs,
+        prevent_initial_call=False
+    )
+    def update_article_table_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        """
+        Main callback to filter data and update all visualizations.
+        Triggered by Apply Filters button click.
+        """
 
-        # Generate visualizations
-
-        table_df = filtered_df[['Authors', 'Year', 'Title']]
-        # Create tooltip data for the Title column only
-        tooltip_data = [
-            {
-                'Title': {'value': row['Title'], 'type': 'text'} 
-            } for _, row in table_df.iterrows()
-        ]
-        return [table_df.to_dict('records'), tooltip_data]
+        return update_article_table(df, 
+                            continent, 
+                            ecoregions, 
+                            study_designs, 
+                            threat_category, 
+                            year_range, 
+                            search_value)
     @app.callback(
         [
         Output('threat-chart', 'figure'),
@@ -76,17 +92,19 @@ def register_callbacks(app):
         threat_fig = create_threat_distribution_chart(filtered_df)
         design_fig = create_study_design_chart(filtered_df)
         wordcloud_fig = create_wordcloud_chart(filtered_df)
-        
+
         return threat_fig, design_fig, wordcloud_fig
     @app.callback(
-        [            
+        [           
             Output('result-counter_right', 'children'),
             Output('world-map_right', 'figure'),
         ],
         filter_inputs,
     )
+
     def update_map_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
         return update_map(df,continent, ecoregions, study_designs, threat_category, year_range, search_value)
+
     @app.callback(
         [            
             Output('result-counter_left', 'children'),
@@ -94,8 +112,15 @@ def register_callbacks(app):
         ],
         filter_inputs,
     )
-    def call_update_map_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
-        return update_map(df,continent, ecoregions, study_designs, threat_category, year_range, search_value)
+
+    def update_map_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_map(df,
+                    continent,
+                    ecoregions,
+                    study_designs,
+                    threat_category,
+                    year_range,
+                    search_value)
 
     @app.callback(
         [

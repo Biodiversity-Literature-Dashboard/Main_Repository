@@ -4,7 +4,7 @@ import dash_bootstrap_components as dbc
 
 from layout.components.maps import map_right, map_left
 from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
-from layout.components.tables import articles_datatable
+from layout.components.tables import articles_datatable_right, articles_datatable_left
 from layout.components.navigation import change_views_left, change_views_right
 
 
@@ -129,11 +129,14 @@ def map_view(side):
 
 
 
-def table_view(change_views):
-    if change_views == "right":
+def table_view(side):
+    if side == "right":
         change_views = change_views_right
+        articles_datatable = articles_datatable_right
+
     else:
         change_views = change_views_left
+        articles_datatable = articles_datatable_left
     tables = dbc.CardBody([
         html.Div(
             change_views,
