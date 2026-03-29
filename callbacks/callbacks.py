@@ -1,18 +1,17 @@
-# Dashboard callbacks - interactive functionality
-# Define Input/Output callbacks for chart updates, data filtering, and user interactions
-
+""" Dashboard callbacks - interactive functionality
+Define Input/Output callbacks for chart updates, data filtering, and user interactions """
+# pylint: disable=unused-argument
 # Pre-made packages
 from dash import Input, Output, State
 
 
 # local packages
 from utils.data_loader import df
-# from utils.data_loader import df_grossi, filter_grossi_data
+
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
 from layout.components.maps import create_world_map
-from layout.layoutviews import map_view, charts_view, table_view
-from callbacks.callbacks_functions import apply_filters
+from callbacks.callbacks_functions import apply_filters,change_views
 
 
 def register_callbacks(app):
@@ -20,7 +19,7 @@ def register_callbacks(app):
     Register all dashboard callbacks.
     Call this function from app.py after layout is set.
     """
-    
+
     @app.callback(
         [
             Output('article_table', 'data'),
@@ -44,7 +43,7 @@ def register_callbacks(app):
         """
 
         filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
-        
+
         # Generate visualizations
 
         table_df = filtered_df[['Authors', 'Year', 'Title']]
@@ -73,8 +72,14 @@ def register_callbacks(app):
     )
     def update_charts(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
 
-        filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
-        
+        filtered_df = apply_filters(df,
+                            continent,
+                            ecoregions,
+                            study_designs,
+                            threat_category,
+                            year_range,
+                            search_value)
+
         # Generate visualizations
         threat_fig = create_threat_distribution_chart(filtered_df)
         design_fig = create_study_design_chart(filtered_df)
@@ -97,8 +102,14 @@ def register_callbacks(app):
         ],
     )
     def update_map(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
-        filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
-        
+        filtered_df = apply_filters(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
+
         # Create result counter text
         total_articles = len(df)
         filtered_count = len(filtered_df)
@@ -106,7 +117,7 @@ def register_callbacks(app):
         
         # Generate visualizations
         map_fig = create_world_map(filtered_df)
-        
+
         return counter_text, map_fig
 
     @app.callback(
@@ -150,19 +161,11 @@ def register_callbacks(app):
         Output("left_view","children"),
         Input("change_views_left","value")
     )
-    def change_views_left(change_views):
-        if change_views == "Charts":
-            return charts_view("left")
-        if change_views == "Map":
-            return map_view("left")
-        return table_view("left")
+    def change_views_left(change_views_left):
+        return change_views(change_views_left,"left")
     @app.callback(
         Output("right_view","children"),
         Input("change_views_right","value")
     )
-    def change_views_right(change_views):
-        if change_views == "Charts":
-            return charts_view("right")
-        if change_views == "Article_Table":
-            return table_view("right")
-        return map_view("right")
+    def change_views_right(change_views_right):
+        return change_views(change_views_right,"right")

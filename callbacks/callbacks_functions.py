@@ -1,8 +1,9 @@
 from utils.data_loader import filter_data
+from layout.layoutviews import map_view, charts_view, table_view
 
 
 
-def apply_filters(df,continent, ecoregions,study_designs,threat_category,year_range,search_value):         
+def apply_filters(df,continent, ecoregions,study_designs,threat_category,year_range,search_value):        
     filtered_df = df.copy()
 
     # Apply filters
@@ -21,7 +22,7 @@ def apply_filters(df,continent, ecoregions,study_designs,threat_category,year_ra
     filtered_df = search_value_filter(search_value, filtered_df)
 
     return filtered_df
-    
+
 
 
 
@@ -40,3 +41,15 @@ def search_value_filter(search_value,filtered_df):
             axis=1
         )]
     return filtered_df
+
+def change_views(view,side):
+    if view == "Charts":
+        return charts_view(side)
+    if view == "Article_Table":
+        return table_view(side)
+    if view == "Map":
+        return map_view(side)
+    if side == "right":
+        return map_view(side)
+    if side == "left":
+        return table_view(side)
