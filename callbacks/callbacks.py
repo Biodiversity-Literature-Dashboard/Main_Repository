@@ -6,12 +6,13 @@ from dash import Input, Output, State
 
 
 # local packages
-from utils.data_loader import df_ridley, filter_data
+from utils.data_loader import df
 # from utils.data_loader import df_grossi, filter_grossi_data
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
 from layout.components.maps import create_world_map
 from layout.layoutviews import map_view, charts_view, table_view
+from callbacks.callbacks_functions import apply_filters
 
 
 def register_callbacks(app):
@@ -42,30 +43,7 @@ def register_callbacks(app):
         Triggered by Apply Filters button click.
         """
 
-        filtered_df = df_ridley.copy()
-
-        # Apply filters
-        filtered_df = filter_data(
-            df=filtered_df,
-            continent=continent,
-            ecoregions=ecoregions,
-            study_designs=study_designs,
-            threat_category=threat_category
-        )
-
-        # Filter by year range
-        if year_range:
-            filtered_df = filtered_df[
-                (filtered_df['Year'] >= year_range[0]) &
-                (filtered_df['Year'] <= year_range[1])
-            ]
-
-        # Filter by search text
-        if search_value:
-            filtered_df = filtered_df[filtered_df.apply(
-                lambda row: row.astype(str).str.contains(search_value, case=False, na=False).any(),
-                axis=1
-            )]
+        filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
         
         # Generate visualizations
 
@@ -95,30 +73,7 @@ def register_callbacks(app):
     )
     def update_charts(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
 
-        filtered_df = df_ridley.copy()
-
-        # Apply filters
-        filtered_df = filter_data(
-            df=filtered_df,
-            continent=continent,
-            ecoregions=ecoregions,
-            study_designs=study_designs,
-            threat_category=threat_category
-        )
-
-        # Filter by year range
-        if year_range:
-            filtered_df = filtered_df[
-                (filtered_df['Year'] >= year_range[0]) &
-                (filtered_df['Year'] <= year_range[1])
-            ]
-
-        # Filter by search text
-        if search_value:
-            filtered_df = filtered_df[filtered_df.apply(
-                lambda row: row.astype(str).str.contains(search_value, case=False, na=False).any(),
-                axis=1
-            )]
+        filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
         
         # Generate visualizations
         threat_fig = create_threat_distribution_chart(filtered_df)
@@ -142,33 +97,10 @@ def register_callbacks(app):
         ],
     )
     def update_map(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
-        filtered_df = df_ridley.copy()
-
-        # Apply filters
-        filtered_df = filter_data(
-            df=filtered_df,
-            continent=continent,
-            ecoregions=ecoregions,
-            study_designs=study_designs,
-            threat_category=threat_category
-        )
-
-        # Filter by year range
-        if year_range:
-            filtered_df = filtered_df[
-                (filtered_df['Year'] >= year_range[0]) &
-                (filtered_df['Year'] <= year_range[1])
-            ]
-
-        # Filter by search text
-        if search_value:
-            filtered_df = filtered_df[filtered_df.apply(
-                lambda row: row.astype(str).str.contains(search_value, case=False, na=False).any(),
-                axis=1
-            )]
+        filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
         
         # Create result counter text
-        total_articles = len(df_ridley)
+        total_articles = len(df)
         filtered_count = len(filtered_df)
         counter_text = f"Showing {filtered_count} of {total_articles} articles"
         

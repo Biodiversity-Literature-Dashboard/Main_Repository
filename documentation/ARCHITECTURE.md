@@ -27,7 +27,7 @@
 **`utils/data_loader.py`** - Data loading
 - Loads Grossi and Ridley datasets
 - Cleans column names
-- Exports: `df_grossi`, `df_ridley`
+- Exports: `df_grossi`, `df`
 
 **`sections/dataframes.py`** - Data transformations
 - Processes data for visualizations
