@@ -38,10 +38,17 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Set up Firefox
+        id: setup-firefox
         uses: browser-actions/setup-firefox@v1
 
       - name: Set up Geckodriver
         uses: browser-actions/setup-geckodriver@latest
+
+      - name: Verify Firefox and Geckodriver
+        run: |
+          echo "Firefox path: ${{ steps.setup-firefox.outputs.firefox-path }}"
+          ${{ steps.setup-firefox.outputs.firefox-path }} --version
+          geckodriver --version
 
       - name: Lint with flake8
         run: |
@@ -52,7 +59,9 @@ jobs:
         run: invoke test
 
       - name: Run UI tests with Firefox
-        run: invoke geckodriver
+        run: |
+          sudo ln -sf "${{ steps.setup-firefox.outputs.firefox-path }}" /usr/local/bin/firefox
+          invoke geckodriver
 
       - name: Run UI tests with Chrome
         run: invoke chromedriver
