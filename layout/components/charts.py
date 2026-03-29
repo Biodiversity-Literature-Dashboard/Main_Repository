@@ -49,16 +49,7 @@ def create_empty_chart_column(id, title, width=6):
     ], width=width)
     return chart_col
 
-
-
-
 # BAR CHARTS
-
-
-
-
-
-
 
 def create_threat_distribution_chart(df):
     """
@@ -69,7 +60,7 @@ def create_threat_distribution_chart(df):
         fig = go.Figure()
         fig.update_layout(
             title="Threat Category Distribution",
-            height=300,
+            height=400,
             annotations=[{
                 'text': 'No data matches filters',
                 'xref': 'paper',
@@ -128,21 +119,14 @@ def create_threat_distribution_chart(df):
     )
 
     fig.update_layout(
-        height=300,
+        height=400,
         margin=dict(r=230),
         showlegend=False
     )
 
     return fig
 
-
-
-
 # PIE CHARTS
-
-
-
-
 def create_study_design_chart(df):
     """
     Create pie chart showing distribution of study designs.
@@ -151,7 +135,7 @@ def create_study_design_chart(df):
         fig = go.Figure()
         fig.update_layout(
             title="Study Design Distribution",
-            height=300,
+            height=400,
             annotations=[{
                 'text': 'No data matches filters',
                 'xref': 'paper',
@@ -166,6 +150,8 @@ def create_study_design_chart(df):
     
     design_counts = df['Study_design'].value_counts().reset_index()
     design_counts.columns = ['Design', 'Count']
+    # Rename S_Review for display
+    design_counts['Design'] = design_counts['Design'].replace({'S_Review': 'Systematic Review'})
     
     fig = px.pie(
         design_counts,
@@ -175,7 +161,7 @@ def create_study_design_chart(df):
         hole=0.3  # Donut chart
     )
     
-    fig.update_layout(height=300)
+    fig.update_layout(height=400)
     
     return fig
 
@@ -196,7 +182,7 @@ def create_wordcloud_chart(filtered_df=None):
     if not titles.strip():
         fig.update_layout(
             title='Article Keywords Wordcloud',
-            height=300,
+            height=400,
             margin=dict(l=0, r=0, t=40, b=0),
             xaxis=dict(visible=False, range=[0, 1]),
             yaxis=dict(visible=False, range=[0, 1])
@@ -204,7 +190,7 @@ def create_wordcloud_chart(filtered_df=None):
         return fig
 
     try:
-        wc = WordCloud(width=500, height=260, background_color='white').generate(titles)
+        wc = WordCloud(width=800, height=400, background_color='white').generate(titles)
 
         buf = io.BytesIO()
         wc.to_image().save(buf, format='PNG')
@@ -222,7 +208,7 @@ def create_wordcloud_chart(filtered_df=None):
 
     fig.update_layout(
         title='Article Keywords Wordcloud',
-        height=300,
+        height=400,
         margin=dict(l=0, r=0, t=40, b=0),
         xaxis=dict(visible=False, range=[0, 1]),
         yaxis=dict(visible=False, range=[0, 1])

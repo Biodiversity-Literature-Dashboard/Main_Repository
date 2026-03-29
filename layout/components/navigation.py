@@ -1,5 +1,5 @@
 import dash_bootstrap_components as dbc
-from dash import html
+from dash import html, dcc
 from layout.components.search_and_filters import create_search_bar
 from layout.components.info_button import info_button
 

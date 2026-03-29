@@ -16,7 +16,7 @@ class TestFilters(unittest.TestCase):
         self.assertEqual(df_shape, self.shape)
 
     def test_study_design_filter_returns_correct_amount_of_rows_and_columns(self):
-        df_shape = study_design_filter(df_ridley, ['Observational', 'Experimental']).shape
+        df_shape = study_design_filter(df_ridley, ['Observational', 'Experimental','S_Review']).shape
         self.assertEqual(df_shape, self.shape)
 
     def test_threat_category_filter_returns_correct_amount_of_rows_and_columns(self):
