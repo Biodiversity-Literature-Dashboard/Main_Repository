@@ -13,7 +13,7 @@ def articles_datatable(df):
     ],
     data=df.to_dict('records'),
     filter_action='native',
-
+    page_size = 15, # show 15 rows per page
     style_table={
         'height': 500,
         'overflowY': 'scroll',
@@ -35,7 +35,9 @@ def articles_datatable(df):
          'width': '100px',
          'maxWidth': '200px',
          'minWidth': '100px'},
-    ]
+    ],
+    tooltip_data =[],# start with empty tooltip data, will be populated by callback
+    tooltip_duration = None #tooltip stays until user moves mouse away
     )
     return table
 

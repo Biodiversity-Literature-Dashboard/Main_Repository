@@ -71,9 +71,10 @@ def create_study_design_filter():
             id='study-design-filter',
             options=[
                 {'label': ' Observational', 'value': 'Observational'},
-                {'label': ' Experimental', 'value': 'Experimental'}
+                {'label': ' Experimental', 'value': 'Experimental'},
+                {'label': ' Systematic Review', 'value': 'S_Review'} #added systematic review as option
             ],
-            value=['Observational', 'Experimental'],  # All selected by default
+            value=['Observational', 'Experimental', 'S_Review'],  # All selected by default
             className="mb-3"
         )
         return study_design
@@ -83,7 +84,7 @@ def reset_filters():
     return {
         'continent-filter': 'all',
         'ecoregion-filter': ['Terrestrial', 'Marine', 'Freshwater'],
-        'study-design-filter': ['Observational', 'Experimental'],
+        'study-design-filter': ['Observational', 'Experimental', 'S_Review'],
         'threat-category-filter': 'all',
         'year-range-slider': [2000, 2021]
     }
