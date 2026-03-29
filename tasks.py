@@ -2,24 +2,30 @@ from invoke import task
 from subprocess import call
 from sys import platform
 
+USE_PTY = platform != "win32"
+
 @task
 def start(ctx):
-    ctx.run("python3 app.py", pty=True)
+    ctx.run("python3 app.py", pty=USE_PTY)
 
 @task
 def test(ctx):
-    """Runs coverage tests using Chromedriver"""
-    ctx.run("coverage run --branch -m pytest", pty=True)
+    """Runs non-UI tests only"""
+    ctx.run("coverage run --branch -m pytest tests --ignore=tests/ui", pty=USE_PTY)
 
 @task
-def test_geckodriver(ctx):
-    """Run tests using Geckodriver/Firefox"""
-    ctx.run("coverage run --branch -m pytest --webdriver Firefox", pty=True)
+def geckodriver(ctx):
+    """Runs UI tests using Geckodriver/Firefox"""
+    ctx.run("coverage run --branch -m pytest tests/ui --webdriver Firefox", pty=USE_PTY)
 
+@task
+def chromedriver(ctx):
+    """Runs UI tests using Chromedriver/Chrome"""
+    ctx.run("coverage run --branch -m pytest tests/ui --webdriver Chrome", pty=USE_PTY)
 
 @task
 def coverage_report(ctx):
     """Returns coverage report"""
-    ctx.run("coverage html", pty=True)
+    ctx.run("coverage html", pty=USE_PTY)
     if platform != "win32":
         call(("xdg-open", "htmlcov/index.html"))
