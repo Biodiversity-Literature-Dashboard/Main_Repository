@@ -44,14 +44,6 @@ def create_layout():
     # Combine navbar + container
     layout = html.Div([
         navbar,
-        html.Div(
-            info_button(),
-            style={
-                "display": "flex",
-                "justifyContent": "flex-end",
-                "padding": "10px"
-                }
-        ),
         main_container
     ])
     

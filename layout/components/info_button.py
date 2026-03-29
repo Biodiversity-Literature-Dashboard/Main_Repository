@@ -9,13 +9,20 @@ def info_button():
             "ℹ",
             id="info-button",
             n_clicks=0,
-            className="btn btn-primary btn-sm",
+            className="btn btn-sm",
             style={
                 "borderRadius": "50%",
-                "width": "40px",
-                "height": "40px",
-                "padding": "0",
-                "fontWeight": "bold"
+                "width": "35px",
+                "height": "35px",
+                "fontWeight": "bold",
+                "backgroundColor": "#808080",
+                "color": "white",             
+                "border": "none",             
+                "position": "absolute", 
+                "right": "20px",        # Distance from the right edge
+                "top": "50%",           # Center vertically
+                "transform": "translateY(-50%)" # Perfect vertical alignment
+            
             }
         ),
 

@@ -1,8 +1,7 @@
-
 import dash_bootstrap_components as dbc
 from dash import html
 from layout.components.search_and_filters import create_search_bar
-
+from layout.components.info_button import info_button
 
 LOGO = "https://placehold.co/100x100"
 
@@ -20,9 +19,18 @@ def create_navbar():
                     align="center",
                     className="g-0",
                 ),
+
                 href="https://placehold.co/",
                 style={"textDecoration": "none"},
             ),
+                dbc.Nav(
+                    [
+                        dbc.NavItem(info_button())
+                    ],
+                    className="ms-auto",   #pushes to right
+                    navbar=True
+                ),
+
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
                 id="navbar-collapse",
@@ -35,5 +43,4 @@ def create_navbar():
     dark=True,
     )
     return navbar
-
 navigation_bar = create_navbar()
