@@ -3,7 +3,12 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 from layout.components.maps import map_right, map_left
-from layout.components.search_and_filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter, year_range_slider, search_bar
+from layout.components.search_and_filters import (continent_filter,
+                                                    ecoregion_filter,
+                                                    study_design_filter,
+                                                    threat_category_filter,
+                                                    year_range_slider,
+                                                    search_bar)
 from layout.components.tables import articles_datatable_right, articles_datatable_left
 from layout.components.navigation import change_views_left, change_views_right
 
@@ -154,8 +159,8 @@ def table_view(side):
 # CHARTS
 
 
-def charts_view(change_views):
-    if change_views == "right":
+def charts_view(side):
+    if side == "right":
         change_views = change_views_right
     else:
         change_views = change_views_left
@@ -163,11 +168,11 @@ def charts_view(change_views):
         html.Div(change_views),
         html.H5("Analysis Charts", className="mt-4 mb-3"),
         dbc.Row([
-        dbc.Col(dcc.Graph(id='threat-chart'), width=12)
+        dbc.Col(dcc.Graph(id='threat-chart_'+side), width=12)
         ]),
         dbc.Row([
-        dbc.Col(dcc.Graph(id='study-design-chart'), width=6),
-        dbc.Col(dcc.Graph(id='wordcloud-chart'), width=6)
+        dbc.Col(dcc.Graph(id='study-design-chart_'+side), width=6),
+        dbc.Col(dcc.Graph(id='wordcloud-chart_'+side), width=6)
     ]),
     ])
     return charts

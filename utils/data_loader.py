@@ -78,7 +78,6 @@ def filter_data(dataframe=df,continent='all', ecoregions=None, study_designs=Non
         Filtered dataframe
     """
     dataf = dataframe.copy()
-    print(f"dataframe shape (rows,colums) {str(dataf.shape)}")
 
     dataf =continent_filter(dataf,continent)
 

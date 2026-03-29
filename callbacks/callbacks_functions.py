@@ -2,6 +2,7 @@
 from utils.data_loader import filter_data
 from layout.layoutviews import map_view, charts_view, table_view
 from layout.components.maps import create_world_map
+from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
 
 
 
@@ -62,6 +63,23 @@ def update_map(df, continent, ecoregions, study_designs, threat_category, year_r
     map_fig = create_world_map(filtered_df)
 
     return counter_text, map_fig
+
+def update_charts(df, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+
+    filtered_df = apply_filters(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
+
+    # Generate visualizations
+    threat_fig = create_threat_distribution_chart(filtered_df)
+    design_fig = create_study_design_chart(filtered_df)
+    wordcloud_fig = create_wordcloud_chart(filtered_df)
+
+    return threat_fig, design_fig, wordcloud_fig
 
 
 def year_range_filter(year_range, filtered_df):

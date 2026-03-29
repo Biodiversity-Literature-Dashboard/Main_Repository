@@ -9,8 +9,10 @@ from dash import Input, Output, State
 from utils.data_loader import df
 
 from layout.components.search_and_filters import reset_filters
-from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
-from callbacks.callbacks_functions import apply_filters,change_views, update_map, update_article_table
+from callbacks.callbacks_functions import (change_views,
+                                            update_map, 
+                                            update_article_table, 
+                                            update_charts)
 
 
 def register_callbacks(app):
@@ -42,12 +44,12 @@ def register_callbacks(app):
         Triggered by Apply Filters button click.
         """
 
-        return update_article_table(df, 
-                            continent, 
-                            ecoregions, 
-                            study_designs, 
-                            threat_category, 
-                            year_range, 
+        return update_article_table(df,
+                            continent,
+                            ecoregions,
+                            study_designs,
+                            threat_category,
+                            year_range,
                             search_value)
     @app.callback(
         [
@@ -57,43 +59,52 @@ def register_callbacks(app):
         filter_inputs,
         prevent_initial_call=False
     )
-    def update_article_table_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+    def update_article_table_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
         """
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
         """
 
-        return update_article_table(df, 
-                            continent, 
-                            ecoregions, 
-                            study_designs, 
-                            threat_category, 
-                            year_range, 
-                            search_value)
-    @app.callback(
-        [
-        Output('threat-chart', 'figure'),
-        Output('study-design-chart', 'figure'),
-        Output('wordcloud-chart', 'figure'),
-        ],
-        filter_inputs,
-    )
-    def update_charts(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
-
-        filtered_df = apply_filters(df,
+        return update_article_table(df,
                             continent,
                             ecoregions,
                             study_designs,
                             threat_category,
                             year_range,
                             search_value)
+    @app.callback(
+        [
+        Output('threat-chart_left', 'figure'),
+        Output('study-design-chart_left', 'figure'),
+        Output('wordcloud-chart_left', 'figure'),
+        ],
+        filter_inputs,
+    )
+    def update_charts_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_charts(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
+    @app.callback(
+        [
+        Output('threat-chart_right', 'figure'),
+        Output('study-design-chart_right', 'figure'),
+        Output('wordcloud-chart_right', 'figure'),
+        ],
+        filter_inputs,
+    )
+    def update_charts_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_charts(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
 
-        # Generate visualizations
-        threat_fig = create_threat_distribution_chart(filtered_df)
-        design_fig = create_study_design_chart(filtered_df)
-        wordcloud_fig = create_wordcloud_chart(filtered_df)
-
-        return threat_fig, design_fig, wordcloud_fig
     @app.callback(
         [           
             Output('result-counter_right', 'children'),
@@ -103,7 +114,13 @@ def register_callbacks(app):
     )
 
     def update_map_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
-        return update_map(df,continent, ecoregions, study_designs, threat_category, year_range, search_value)
+        return update_map(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
 
     @app.callback(
         [            
