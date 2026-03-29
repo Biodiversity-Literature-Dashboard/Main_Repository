@@ -1,6 +1,5 @@
 from dash import dcc
 import plotly.graph_objects as go
-import pandas as pd
 
 # EMPTY MAPS
 
@@ -19,17 +18,17 @@ def create_empty_map(): # we have to create create_map() later
     )
     return fig
 
-def create_empty_dcc_graph_map():
+def create_empty_dcc_graph_map(side):
     graph = dcc.Graph(
-        id='world-map',
+        id='world-map'+side,
         figure=create_empty_map(),
         config={'displayModeBar': True, 'scrollZoom': True},
         style={'height': '500px'}
     )
     return graph
 
-empty_map = create_empty_dcc_graph_map()
-
+map_right = create_empty_dcc_graph_map("_right")
+map_left = create_empty_dcc_graph_map("_left")
 
 
 # NON-EMPTY MAPS

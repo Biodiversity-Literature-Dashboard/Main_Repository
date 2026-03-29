@@ -10,8 +10,7 @@ from utils.data_loader import df
 
 from layout.components.search_and_filters import reset_filters
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
-from layout.components.maps import create_world_map
-from callbacks.callbacks_functions import apply_filters,change_views
+from callbacks.callbacks_functions import apply_filters,change_views, update_map
 
 
 def register_callbacks(app):
@@ -19,13 +18,7 @@ def register_callbacks(app):
     Register all dashboard callbacks.
     Call this function from app.py after layout is set.
     """
-
-    @app.callback(
-        [
-            Output('article_table', 'data'),
-            Output('article_table', 'tooltip_data'),
-        ],
-        [
+    filter_inputs = [
             Input('apply-filters-btn', 'n_clicks'),
             Input('continent-filter', 'value'),
             Input('ecoregion-filter', 'value'),
@@ -33,7 +26,14 @@ def register_callbacks(app):
             Input('threat-category-filter', 'value'),
             Input('year-range-slider', 'value'),
             Input('searchbar', 'value')
+        ]
+
+    @app.callback(
+        [
+            Output('article_table', 'data'),
+            Output('article_table', 'tooltip_data'),
         ],
+        filter_inputs,
         prevent_initial_call=False
     )
     def update_article_table(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
@@ -50,7 +50,7 @@ def register_callbacks(app):
         # Create tooltip data for the Title column only
         tooltip_data = [
             {
-                'Title': {'value': row['Title'], 'type': 'text'}  # shows title as tooltip when hovering over Title cell
+                'Title': {'value': row['Title'], 'type': 'text'} 
             } for _, row in table_df.iterrows()
         ]
         return [table_df.to_dict('records'), tooltip_data]
@@ -60,15 +60,7 @@ def register_callbacks(app):
         Output('study-design-chart', 'figure'),
         Output('wordcloud-chart', 'figure'),
         ],
-        [
-            Input('apply-filters-btn', 'n_clicks'),
-            Input('continent-filter', 'value'),
-            Input('ecoregion-filter', 'value'),
-            Input('study-design-filter', 'value'),
-            Input('threat-category-filter', 'value'),
-            Input('year-range-slider', 'value'),
-            Input('searchbar', 'value')
-        ],
+        filter_inputs,
     )
     def update_charts(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
 
@@ -88,37 +80,22 @@ def register_callbacks(app):
         return threat_fig, design_fig, wordcloud_fig
     @app.callback(
         [            
-            Output('result-counter', 'children'),
-            Output('world-map', 'figure'),
+            Output('result-counter_right', 'children'),
+            Output('world-map_right', 'figure'),
         ],
-        [
-            Input('apply-filters-btn', 'n_clicks'),
-            Input('continent-filter', 'value'),
-            Input('ecoregion-filter', 'value'),
-            Input('study-design-filter', 'value'),
-            Input('threat-category-filter', 'value'),
-            Input('year-range-slider', 'value'),
-            Input('searchbar', 'value')
-        ],
+        filter_inputs,
     )
-    def update_map(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
-        filtered_df = apply_filters(df,
-                        continent,
-                        ecoregions,
-                        study_designs,
-                        threat_category,
-                        year_range,
-                        search_value)
-
-        # Create result counter text
-        total_articles = len(df)
-        filtered_count = len(filtered_df)
-        counter_text = f"Showing {filtered_count} of {total_articles} articles"
-        
-        # Generate visualizations
-        map_fig = create_world_map(filtered_df)
-
-        return counter_text, map_fig
+    def update_map_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_map(df,continent, ecoregions, study_designs, threat_category, year_range, search_value)
+    @app.callback(
+        [            
+            Output('result-counter_left', 'children'),
+            Output('world-map_left', 'figure'),
+        ],
+        filter_inputs,
+    )
+    def call_update_map_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_map(df,continent, ecoregions, study_designs, threat_category, year_range, search_value)
 
     @app.callback(
         [

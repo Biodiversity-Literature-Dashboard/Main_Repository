@@ -1,5 +1,7 @@
+"Functions for callbacks"
 from utils.data_loader import filter_data
 from layout.layoutviews import map_view, charts_view, table_view
+from layout.components.maps import create_world_map
 
 
 
@@ -23,7 +25,24 @@ def apply_filters(df,continent, ecoregions,study_designs,threat_category,year_ra
 
     return filtered_df
 
+def update_map(df, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+    filtered_df = apply_filters(df,
+                    continent,
+                    ecoregions,
+                    study_designs,
+                    threat_category,
+                    year_range,
+                    search_value)
 
+    # Create result counter text
+    total_articles = len(df)
+    filtered_count = len(filtered_df)
+    counter_text = f"Showing {filtered_count} of {total_articles} articles"
+    
+    # Generate visualizations
+    map_fig = create_world_map(filtered_df)
+
+    return counter_text, map_fig
 
 
 def year_range_filter(year_range, filtered_df):
