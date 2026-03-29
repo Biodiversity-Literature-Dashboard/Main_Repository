@@ -31,8 +31,8 @@ def create_layout():
             dbc.Col(top_bar),
         ],align="top"),
         dbc.Row([
-            dbc.Col(right_bar),
             dbc.Col(left_bar),
+            dbc.Col(right_bar),
         ]),
 
     ], fluid=True, style={"marginBottom": "80px"}) #added margin bottom 

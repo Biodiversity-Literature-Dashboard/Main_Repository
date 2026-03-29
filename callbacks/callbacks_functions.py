@@ -106,6 +106,6 @@ def change_views(view,side):
     if view == "Map":
         return map_view(side)
     if side == "right":
-        return map_view(side)
-    if side == "left":
         return table_view(side)
+    if side == "left":
+        return map_view(side)
