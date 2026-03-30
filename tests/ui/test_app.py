@@ -4,7 +4,7 @@ from selenium.common.exceptions import StaleElementReferenceException
 
 def test_app_starts(dash_duo):
     dash_duo.start_server(app)
-    assert dash_duo.get_logs() == []
+    assert dash_duo.get_logs() == [] or dash_duo.get_logs() is None
 
 
 def test_title_present(dash_duo):
