@@ -2,13 +2,13 @@
 # Functions to create various chart types using Plotly (bar charts, line charts, pie charts, etc.)
 
 #pre-made packages
+import io
+import base64
 from dash import dcc
 import plotly.express as px
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 import pandas as pd
-import io
-import base64
 from wordcloud import WordCloud
 
 # local imports
@@ -39,10 +39,10 @@ def create_empty_chart(title):
     return fig
 
 
-def create_empty_chart_column(id, title, width=6):
+def create_empty_chart_column(ind, title, width=6):
     chart_col = dbc.Col([
         dcc.Graph(
-            id=id,
+            id=ind,
             figure=create_empty_chart(title),
             config={'displayModeBar': False}
         )
@@ -147,12 +147,12 @@ def create_study_design_chart(df):
             }]
         )
         return fig
-    
+
     design_counts = df['Study_design'].value_counts().reset_index()
     design_counts.columns = ['Design', 'Count']
     # Rename S_Review for display
     design_counts['Design'] = design_counts['Design'].replace({'S_Review': 'Systematic Review'})
-    
+
     fig = px.pie(
         design_counts,
         values='Count',
@@ -160,9 +160,9 @@ def create_study_design_chart(df):
         title='Study Design Distribution',
         hole=0.3  # Donut chart
     )
-    
+
     fig.update_layout(height=400)
-    
+
     return fig
 
 
