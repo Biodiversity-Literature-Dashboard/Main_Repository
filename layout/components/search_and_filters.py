@@ -1,28 +1,17 @@
 import dash_bootstrap_components as dbc
 from dash import dcc
-from utils.data_loader import df_grossi, get_threat_categories
+from utils.data_loader import df, get_threat_categories
+
 
 # SEARCH BARS
 
 def create_search_bar():
-    search_bar = dbc.Row(
-        [
-            dbc.Col(dbc.Input(id = "searchbar", 
-            type="search", 
+    search = dbc.Col(dbc.Input(id = "searchbar",
+            type="search",
             debounce = True,
-            placeholder="Search articles")),
-            dbc.Col(
-                dbc.Button("Search", 
-                color="primary", 
-                className="ms-2", 
-                n_clicks=0),
-                width="auto",
-            ),
-        ],
-        className="g-0 ms-auto flex-nowrap mt-3 mt-md-0",
-        align="right",
-    )
-    return search_bar
+            placeholder="Search articles",
+            ))
+    return search
 
 
 search_bar = create_search_bar()
@@ -32,20 +21,20 @@ search_bar = create_search_bar()
 
 def create_continent_filter():
     # Continent filter
-    continent_filter = dcc.Dropdown(
+    continent = dcc.Dropdown(
         id='continent-filter',
         options=[{'label': 'All', 'value': 'all'}] + 
                 [{'label': cont.title(), 'value': cont} 
-                    for cont in sorted(df_grossi['Continent_Ocean'].dropna().unique())],
+                    for cont in sorted(df['Continent_Ocean'].dropna().unique())],
         value='all',
         clearable=False,
         className="mb-3"
     )
-    return continent_filter
+    return continent
 
 
 def create_threat_category_filter():
-    threat_category_filter = dcc.Dropdown(
+    threat_category = dcc.Dropdown(
         id='threat-category-filter',
         options=[{'label': 'All Categories', 'value': 'all'}] + 
                 [{'label': f"{cat[0]}. {cat[1]}", 'value': cat[0]} 
@@ -54,7 +43,7 @@ def create_threat_category_filter():
         clearable=False,
         className="mb-3"
     )
-    return threat_category_filter
+    return threat_category
 
 
 continent_filter = create_continent_filter()
@@ -65,7 +54,7 @@ threat_category_filter = create_threat_category_filter()
 # CHECKBOX FILTERS
 
 def create_ecoregion_filter():
-    ecoregion_filter = dcc.Checklist(
+    ecoregion = dcc.Checklist(
         id='ecoregion-filter',
         options=[
             {'label': ' Terrestrial', 'value': 'Terrestrial'},
@@ -75,33 +64,34 @@ def create_ecoregion_filter():
         value=['Terrestrial', 'Marine', 'Freshwater'],  # All selected by default
         className="mb-3"
     )
-    return ecoregion_filter
+    return ecoregion
 
 def create_study_design_filter():
-        study_design_filter = dcc.Checklist(
+        study_design = dcc.Checklist(
             id='study-design-filter',
             options=[
                 {'label': ' Observational', 'value': 'Observational'},
-                {'label': ' Experimental', 'value': 'Experimental'}
+                {'label': ' Experimental', 'value': 'Experimental'},
+                {'label': ' Systematic Review', 'value': 'S_Review'} #added systematic review as option
             ],
-            value=['Observational', 'Experimental'],  # All selected by default
+            value=['Observational', 'Experimental', 'S_Review'],  # All selected by default
             className="mb-3"
         )
-        return study_design_filter
+        return study_design
 
 # create reset filter funtion
 def reset_filters():
     return {
         'continent-filter': 'all',
         'ecoregion-filter': ['Terrestrial', 'Marine', 'Freshwater'],
-        'study-design-filter': ['Observational', 'Experimental'],
+        'study-design-filter': ['Observational', 'Experimental', 'S_Review'],
         'threat-category-filter': 'all',
         'year-range-slider': [2000, 2021]
     }
 
 
 def create_year_range_slider():
-    year_slider = dcc.RangeSlider(
+    slider = dcc.RangeSlider(
         id='year-range-slider',
         min=2000,
         max=2021,
@@ -111,7 +101,7 @@ def create_year_range_slider():
         tooltip={'placement': 'bottom', 'always_visible': True},
         className='mb-3'
     )
-    return year_slider
+    return slider
 
 
 ecoregion_filter = create_ecoregion_filter()

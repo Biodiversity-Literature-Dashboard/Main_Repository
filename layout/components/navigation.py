@@ -1,8 +1,6 @@
-
 import dash_bootstrap_components as dbc
-from dash import html
-from layout.components.search_and_filters import create_search_bar
-
+from dash import html, dcc
+from layout.components.info_button import info_button
 
 LOGO = "https://placehold.co/100x100"
 
@@ -20,12 +18,20 @@ def create_navbar():
                     align="center",
                     className="g-0",
                 ),
+
                 href="https://placehold.co/",
                 style={"textDecoration": "none"},
             ),
+                dbc.Nav(
+                    [
+                        dbc.NavItem(info_button())
+                    ],
+                    className="ms-auto",   #pushes to right
+                    navbar=True
+                ),
+
             dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
             dbc.Collapse(
-                create_search_bar(),
                 id="navbar-collapse",
                 is_open=False,
                 navbar=True,
@@ -36,5 +42,20 @@ def create_navbar():
     dark=True,
     )
     return navbar
-
 navigation_bar = create_navbar()
+
+def create_change_views_button(side):
+    change_views = dcc.Dropdown(
+        id='change_views'+side,
+        options= [{'label': 'Change view...', 'value': 'change'}] +
+                [{'label': 'Map', 'value': 'Map'}] +
+                [{'label': 'Article Table', 'value': 'Article_Table'}] +
+                [{'label': 'Charts', 'value': 'Charts'}],
+        value="change",
+        clearable=False,
+        className="mb-3"
+    )
+    return change_views
+
+change_views_left = create_change_views_button("_left")
+change_views_right = create_change_views_button("_right")

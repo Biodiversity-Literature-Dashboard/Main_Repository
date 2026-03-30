@@ -1,6 +1,8 @@
-/* Custom CSS for Dashboard */
+
 
 /* Global Styles */
+/* Custom CSS for Dashboard */
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: #f8f9fa;
@@ -14,7 +16,7 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-2px);
+    /* transform: translateY(-2px); removed - breaks dropdown stacking */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
@@ -24,6 +26,8 @@ body {
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    position: relative; /* position reverted */
+    z-index: 1050; /* z-index reverted */
 }
 
 /* Chart Containers */
@@ -36,7 +40,7 @@ body {
 
 /* Data Table Styles */
 .dash-table-container {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    box-shadow: 0 0.125rem 0.25rem rgba(255, 110, 110, 0.075);
 }
 
 .dash-spreadsheet {
@@ -75,4 +79,37 @@ body {
 .card h2 {
     font-weight: 700;
     margin-top: 0.5rem;
+}
+
+.filter-bar {
+    background-color :white !important;
+}
+
+.left_bar {
+    position : left;
+    color : white;
+}
+
+.right_bar {
+    position : right;
+    color : white;
+}
+
+/* table container input bar */
+
+.dash-table-container .dash-filter input {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* search bar */
+
+
+/*apply/reset filter */
+
+.w-100 {
+    width: 150px !important;
+}
+#info-button:hover {
+    background-color: #666666 !important;
+    transform: scale(1.05);
 }

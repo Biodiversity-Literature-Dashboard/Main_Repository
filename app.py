@@ -8,7 +8,7 @@ from callbacks.callbacks import register_callbacks
 from config import DEBUG_MODE
 
 # Initialize Dash app
-app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
 
 # Set layout
 app.layout = create_layout()

@@ -1,14 +1,11 @@
 
 from dash import dash_table
-import datetime
-
-#import pandas as pd
 
 from sections.dataframes import ridley_bib_table
 
-def articles_datatable(df):
+def articles_datatable(df,side):
     table = dash_table.DataTable(
-    id ='article_table',
+    id ='article_table'+side,
     columns=[
         {'name': 'Authors', 'id': 'Authors', 'type': 'text'},
         {'name': 'Year', 'id': 'Year', 'type': 'numeric'},
@@ -16,17 +13,34 @@ def articles_datatable(df):
     ],
     data=df.to_dict('records'),
     filter_action='native',
-
+    page_size = 15, # show 15 rows per page
     style_table={
-        'height': 400,
+        'height': 500,
+        'overflowY': 'scroll',
     },
     style_data={
-        'width': '150px', 'minWidth': '150px', 'maxWidth': '150px',
         'overflow': 'hidden',
         'textOverflow': 'ellipsis',
-    }
+    },
+    style_cell_conditional=[
+        {'if': {'column_id': 'Authors'},
+         'width': '100px',
+         'maxWidth': '100px',
+         'minWidth': '100px'},
+        {'if': {'column_id': 'Year'},
+         'width': '30px',
+         'maxWidth': '30px',
+         'minWidth': '30px'},
+        {'if': {'column_id': 'Title'},
+         'width': '100px',
+         'maxWidth': '200px',
+         'minWidth': '100px'},
+    ],
+    tooltip_data =[],# start with empty tooltip data, will be populated by callback
+    tooltip_duration = None #tooltip stays until user moves mouse away
     )
     return table
 
-articles_datatable = articles_datatable(ridley_bib_table)
+articles_datatable_right = articles_datatable(ridley_bib_table,"_right")
+articles_datatable_left = articles_datatable(ridley_bib_table,"_left")
 

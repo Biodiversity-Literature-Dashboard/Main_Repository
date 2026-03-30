@@ -69,16 +69,33 @@ Make sure Chromedriver or Geckodriver (Firefox) is installed!!
 
 (make sure you have opened the virtual environment, it should say venv in the corner)
 
-1. Run tests (Chromedriver) on terminal:
+1. Run non-ui tests on terminal:
 
 ```bash
 invoke test
 ```
 
-Run tests (Geckodriver) on terminal:
+Run UI tests (Chromedriver) on terminal (headless):
 
 ```bash
-invoke test-geckodriver
+invoke chromedriver
+```
+
+Run UI tests (Chromedriver) on terminal (browser):
+
+```bash
+invoke chromedriver-browser
+```
+
+Run UI tests (Geckodriver) on terminal (headless):
+
+```bash
+invoke geckodriver
+```
+Run UI tests (Geckodriver) on terminal (browser):
+
+```bash
+invoke geckodriver-browser
 ```
 
 2. Open test coverage report in terminal
@@ -90,3 +107,4 @@ invoke coverage-report
 
 
 
+ 

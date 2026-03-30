@@ -1,26 +1,23 @@
-from pathlib import Path
-import pandas as pd
 import os
 import sys
+from pathlib import Path
+import pandas as pd
 
 # Add parent directory to path to import config
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from config import GROSSI_CSV, RIDLEY_CSV, THREAT_CATEGORIES, THREAT_CODES, RIDLEY_BIB
+from utils.logic.filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
 
 def load_csv_data(csv):
-    df = pd.read_csv(csv)
-    df.columns = df.columns.str.strip()
-    return df
+    dataf = pd.read_csv(csv)
+    dataf.columns = dataf.columns.str.strip()
+    return dataf
 
 # Load datasets on import
 df_grossi = load_csv_data(GROSSI_CSV)
-df_ridley = load_csv_data(RIDLEY_CSV)
+df = load_csv_data(RIDLEY_CSV) # MAIN DATAFRAME
 df_ridley_bib = load_csv_data(RIDLEY_BIB)
-
-# Keep old names for backward compatibility
-df1 = df_grossi
-df2 = df_ridley
 
 
 def get_threat_categories():
@@ -66,7 +63,7 @@ def extract_threat_category_from_code(threat_code):
     return sorted(list(categories))
 
 
-def filter_grossi_data(continent='all', ecoregions=None, study_designs=None, threat_category='all'):
+def filter_data(dataframe=df,continent='all', ecoregions=None, study_designs=None, threat_category='all'):
     """
     Filter Grossi dataset based on user selections.
     Uses INCLUSIVE filtering (OR logic) for multi-value fields.
@@ -80,64 +77,22 @@ def filter_grossi_data(continent='all', ecoregions=None, study_designs=None, thr
     Returns:
         Filtered dataframe
     """
-    df = df_grossi.copy()
+    dataf = dataframe.copy()
 
-    if continent != 'all':
-        df = df[df['Continent_Ocean'].str.lower() == continent.lower()]
+    dataf =continent_filter(dataf,continent)
 
-    if ecoregions and len(ecoregions) > 0:
-        eco_mask = df['Ecoregion'].apply(
-            lambda x: any(eco in str(x) for eco in ecoregions) if pd.notna(x) else False
-        )
-        df = df[eco_mask]
+    dataf= ecoregion_filter(dataf, ecoregions)
 
-    if study_designs and len(study_designs) > 0:
-        df = df[df['Study_design'].isin(study_designs)]
+    dataf = study_design_filter(dataf, study_designs)
 
-    if threat_category != 'all':
-        threat_mask = df['Threat'].apply(
-            lambda x: threat_category in extract_threat_category_from_code(x) if pd.notna(x) else False
-        )
-        df = df[threat_mask]
+    dataf = threat_category_filter(dataf, threat_category)
 
-    return df
-
-
-def filter_ridley_data(continent='all', ecoregions=None, study_designs=None, threat_category='all'):
-    """
-    Filter Ridley articles dashboard dataset based on user selections.
-    Uses INCLUSIVE filtering (OR logic) for multi-value fields.
-    Note: Ridley dataset has no Threat column; threat_category filter is ignored.
-
-    Args:
-        continent: String continent/ocean name or 'all'
-        ecoregions: List of ecoregion values to include (e.g., ['Terrestrial', 'Marine'])
-        study_designs: List of study designs to include (e.g., ['Observational'])
-        threat_category: Ignored (Ridley data has no Threat column)
-
-    Returns:
-        Filtered dataframe
-    """
-    df = df_ridley.copy()
-
-    if continent != 'all':
-        df = df[df['Continent_Ocean'].str.lower() == continent.lower()]
-
-    if ecoregions and len(ecoregions) > 0:
-        eco_mask = df['Ecoregion'].apply(
-            lambda x: any(eco in str(x) for eco in ecoregions) if pd.notna(x) else False
-        )
-        df = df[eco_mask]
-
-    if study_designs and len(study_designs) > 0:
-        df = df[df['Study_design'].isin(study_designs)]
-
-    return df
+    return dataf
 
 
 # Test if run directly
 if __name__ == "__main__":
     print(f"Grossi: {len(df_grossi)} rows, {len(df_grossi.columns)} columns")
     print(f"   Columns: {df_grossi.columns.tolist()[:5]}")
-    print(f"\nRidley: {len(df_ridley)} rows, {len(df_ridley.columns)} columns")
-    print(f"   Columns: {df_ridley.columns.tolist()[:5]}")
+    print(f"\nRidley: {len(df)} rows, {len(df.columns)} columns")
+    print(f"   Columns: {df.columns.tolist()[:5]}")

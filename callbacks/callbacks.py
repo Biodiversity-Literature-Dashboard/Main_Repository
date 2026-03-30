@@ -1,75 +1,139 @@
-# Dashboard callbacks - interactive functionality
-# Define Input/Output callbacks for chart updates, data filtering, and user interactions
-
+""" Dashboard callbacks - interactive functionality
+Define Input/Output callbacks for chart updates, data filtering, and user interactions """
+# pylint: disable=unused-argument
 # Pre-made packages
-from dash import Input, Output
+from dash import Input, Output, State
 
 
 # local packages
-from utils.data_loader import df_ridley, filter_ridley_data
-# from utils.data_loader import df_grossi, filter_grossi_data
+from utils.data_loader import df
+
 from layout.components.search_and_filters import reset_filters
-from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
-from layout.components.maps import create_world_map
-from sections.dataframes import ridley_bib_table
-from layout.components.tables import articles_datatable
+from callbacks.callbacks_functions import (change_views,
+                                            update_map, 
+                                            update_article_table, 
+                                            update_charts)
 
 
 def register_callbacks(app):
-    """
-    Register all dashboard callbacks.
-    Call this function from app.py after layout is set.
-    """
-    
+    filter_inputs = [
+        Input('apply-filters-btn', 'n_clicks'),
+        Input('continent-filter', 'value'),
+        Input('ecoregion-filter', 'value'),
+        Input('study-design-filter', 'value'),
+        Input('threat-category-filter', 'value'),
+        Input('year-range-slider', 'value'),
+        Input('searchbar', 'value')
+    ]
+
     @app.callback(
         [
-            Output('result-counter', 'children'),
-            Output('world-map', 'figure'),
-            Output('threat-chart', 'figure'),
-            Output('study-design-chart', 'figure'),
-            Output('wordcloud-chart', 'figure'),
+            Output('article_table_left', 'data'),
+            Output('article_table_left', 'tooltip_data'),
         ],
-        [
-            Input('apply-filters-btn', 'n_clicks')
-        ],
-        [
-            Input('continent-filter', 'value'),
-            Input('ecoregion-filter', 'value'),
-            Input('study-design-filter', 'value'),
-            Input('threat-category-filter', 'value')
-        ],
+        filter_inputs,
         prevent_initial_call=False
     )
-    def update_dashboard(n_clicks, continent, ecoregions, study_designs, threat_category):
+    def update_article_table_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
         """
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
         """
+        return update_article_table(df,
+                            continent,
+                            ecoregions,
+                            study_designs,
+                            threat_category,
+                            year_range,
+                            search_value)
 
+    @app.callback(
+        [
+            Output('article_table_right', 'data'),
+            Output('article_table_right', 'tooltip_data'),
+        ],
+        filter_inputs,
+        prevent_initial_call=False
+    )
+    def update_article_table_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        """
+        Main callback to filter data and update all visualizations.
+        Triggered by Apply Filters button click.
+        """
+        return update_article_table(df,
+                            continent,
+                            ecoregions,
+                            study_designs,
+                            threat_category,
+                            year_range,
+                            search_value)
 
-        # Apply filters
-        filtered_df = filter_ridley_data(
-        # filtered_df = filter_grossi_data(
-            continent=continent,
-            ecoregions=ecoregions,
-            study_designs=study_designs,
-            threat_category=threat_category
-        )
-        
-        # Create result counter text
-        total_articles = len(df_ridley)
-        # total_articles = len(df_grossi)
-        filtered_count = len(filtered_df)
-        counter_text = f"Showing {filtered_count} of {total_articles} articles"
-        
-        # Generate visualizations
-        map_fig = create_world_map(filtered_df)
-        threat_fig = create_threat_distribution_chart(filtered_df)
-        design_fig = create_study_design_chart(filtered_df)
-        wordcloud_fig = create_wordcloud_chart()
-        
-        return counter_text, map_fig, threat_fig, design_fig, wordcloud_fig
-    
+    @app.callback(
+        [
+            Output('threat-chart_left', 'figure'),
+            Output('study-design-chart_left', 'figure'),
+            Output('wordcloud-chart_left', 'figure'),
+        ],
+        filter_inputs,
+    )
+    def update_charts_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_charts(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
+
+    @app.callback(
+        [
+            Output('threat-chart_right', 'figure'),
+            Output('study-design-chart_right', 'figure'),
+            Output('wordcloud-chart_right', 'figure'),
+        ],
+        filter_inputs,
+    )
+    def update_charts_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_charts(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
+
+    @app.callback(
+        [           
+            Output('result-counter_right', 'children'),
+            Output('world-map_right', 'figure'),
+        ],
+        filter_inputs,
+    )
+    def update_map_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_map(df,
+                        continent,
+                        ecoregions,
+                        study_designs,
+                        threat_category,
+                        year_range,
+                        search_value)
+
+    @app.callback(
+        [            
+            Output('result-counter_left', 'children'),
+            Output('world-map_left', 'figure'),
+        ],
+        filter_inputs,
+    )
+    def update_map_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
+        return update_map(df,
+                    continent,
+                    ecoregions,
+                    study_designs,
+                    threat_category,
+                    year_range,
+                    search_value)
+
     @app.callback(
         [
             Output('continent-filter', 'value'),
@@ -95,25 +159,30 @@ def register_callbacks(app):
         )
 
     @app.callback(
-        Output('article_table','data'),
-        Input('searchbar','value'),
-        Input('year-range-slider', 'value')
+        Output("info-modal", "is_open"),
+        [
+            Input("info-button", "n_clicks"),
+            Input("close-info", "n_clicks")
+        ],
+        [
+            State("info-modal", "is_open")
+        ]
     )
-    def update_search_bar(search_value, year_range):
-        filtered_df = ridley_bib_table.copy()
+    def toggle_modal(n1, n2, is_open):
+        if n1 or n2:
+            return not is_open
+        return is_open
 
-        # Filter by year range
-        if year_range:
-            filtered_df = filtered_df[
-                (filtered_df['Year'] >= year_range[0]) &
-                (filtered_df['Year'] <= year_range[1])
-            ]
+    @app.callback(
+        Output("left_view","children"),
+        Input("change_views_left","value")
+    )
+    def change_views_left(change_views_left):
+        return change_views(change_views_left,"left")
 
-        # Filter by search text
-        if search_value:
-            filtered_df = filtered_df[filtered_df.apply(
-                lambda row: row.astype(str).str.contains(search_value, case=False).any(),
-                axis=1
-            )]
-
-        return filtered_df.to_dict('records')
+    @app.callback(
+        Output("right_view","children"),
+        Input("change_views_right","value")
+    )
+    def change_views_right(change_views_right):
+        return change_views(change_views_right,"right")
