@@ -16,19 +16,15 @@ from callbacks.callbacks_functions import (change_views,
 
 
 def register_callbacks(app):
-    """
-    Register all dashboard callbacks.
-    Call this function from app.py after layout is set.
-    """
     filter_inputs = [
-            Input('apply-filters-btn', 'n_clicks'),
-            Input('continent-filter', 'value'),
-            Input('ecoregion-filter', 'value'),
-            Input('study-design-filter', 'value'),
-            Input('threat-category-filter', 'value'),
-            Input('year-range-slider', 'value'),
-            Input('searchbar', 'value')
-        ]
+        Input('apply-filters-btn', 'n_clicks'),
+        Input('continent-filter', 'value'),
+        Input('ecoregion-filter', 'value'),
+        Input('study-design-filter', 'value'),
+        Input('threat-category-filter', 'value'),
+        Input('year-range-slider', 'value'),
+        Input('searchbar', 'value')
+    ]
 
     @app.callback(
         [
@@ -43,7 +39,6 @@ def register_callbacks(app):
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
         """
-
         return update_article_table(df,
                             continent,
                             ecoregions,
@@ -51,6 +46,7 @@ def register_callbacks(app):
                             threat_category,
                             year_range,
                             search_value)
+
     @app.callback(
         [
             Output('article_table_right', 'data'),
@@ -64,7 +60,6 @@ def register_callbacks(app):
         Main callback to filter data and update all visualizations.
         Triggered by Apply Filters button click.
         """
-
         return update_article_table(df,
                             continent,
                             ecoregions,
@@ -72,11 +67,12 @@ def register_callbacks(app):
                             threat_category,
                             year_range,
                             search_value)
+
     @app.callback(
         [
-        Output('threat-chart_left', 'figure'),
-        Output('study-design-chart_left', 'figure'),
-        Output('wordcloud-chart_left', 'figure'),
+            Output('threat-chart_left', 'figure'),
+            Output('study-design-chart_left', 'figure'),
+            Output('wordcloud-chart_left', 'figure'),
         ],
         filter_inputs,
     )
@@ -88,11 +84,12 @@ def register_callbacks(app):
                         threat_category,
                         year_range,
                         search_value)
+
     @app.callback(
         [
-        Output('threat-chart_right', 'figure'),
-        Output('study-design-chart_right', 'figure'),
-        Output('wordcloud-chart_right', 'figure'),
+            Output('threat-chart_right', 'figure'),
+            Output('study-design-chart_right', 'figure'),
+            Output('wordcloud-chart_right', 'figure'),
         ],
         filter_inputs,
     )
@@ -112,7 +109,6 @@ def register_callbacks(app):
         ],
         filter_inputs,
     )
-
     def update_map_right(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
         return update_map(df,
                         continent,
@@ -129,7 +125,6 @@ def register_callbacks(app):
         ],
         filter_inputs,
     )
-
     def update_map_left(n_clicks, continent, ecoregions, study_designs, threat_category, year_range, search_value):
         return update_map(df,
                     continent,
@@ -162,6 +157,7 @@ def register_callbacks(app):
             defaults['threat-category-filter'],
             defaults['year-range-slider'],
         )
+
     @app.callback(
         Output("info-modal", "is_open"),
         [
@@ -176,12 +172,14 @@ def register_callbacks(app):
         if n1 or n2:
             return not is_open
         return is_open
+
     @app.callback(
         Output("left_view","children"),
         Input("change_views_left","value")
     )
     def change_views_left(change_views_left):
         return change_views(change_views_left,"left")
+
     @app.callback(
         Output("right_view","children"),
         Input("change_views_right","value")

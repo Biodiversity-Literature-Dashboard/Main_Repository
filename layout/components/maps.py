@@ -1,5 +1,12 @@
 from dash import dcc
 import plotly.graph_objects as go
+import pandas as pd
+import os
+
+# Read the master_countries.csv file to get the list of countries and their ISO codes
+current_dir = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(current_dir, "master_countries.csv")
+master_countries = pd.read_csv(csv_path)
 
 # EMPTY MAPS
 
@@ -51,12 +58,16 @@ def create_world_map(df):
     country_counts = df[country_col].value_counts().reset_index()
     country_counts.columns = ['Country', 'Studies']
     
-    #Empty state
+    # Merge with master_countries to get get ISO codes and include with 0 studies
+    full_country_data = pd.merge(master_countries, country_counts, on='Country', how='left')
+    full_country_data["Studies"] = full_country_data["Studies"].fillna(0)
+    
+    # Empty state
     if df.empty:
         fig = go.Figure(go.Choropleth(
-            locations=[],
+            locations=master_countries["Country"],
             locationmode='country names',
-            z=[],
+            z=[0] * len(master_countries),
             zmin=0,
             zmax=1,
             colorscale=colorscale,
@@ -102,11 +113,11 @@ def create_world_map(df):
     
     # Create choropleth map
     fig = go.Figure(go.Choropleth(
-        locations=country_counts['Country'],
+        locations=full_country_data['Country'],
         locationmode='country names',
-        z=country_counts['Studies'],
+        z=full_country_data['Studies'],
         zmin=0,
-        zmax=country_counts['Studies'].max(),
+        zmax=full_country_data['Studies'].max(),
         colorscale=colorscale,
         marker_line_color='white',
         marker_line_width=0.5,
