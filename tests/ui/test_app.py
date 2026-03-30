@@ -48,8 +48,8 @@ def test_layout_rendered(dash_duo):
 def test_map_exists(dash_duo):
     dash_duo.start_server(app)
 
-    dash_duo.wait_for_element("#world-map", timeout=10)
-    map_element = dash_duo.find_element("#world-map")
+    dash_duo.wait_for_element("#world-map_left", timeout=10)
+    map_element = dash_duo.find_element("#world-map_left")
     assert map_element is not None
 
 # Map renders correctly test
@@ -60,12 +60,12 @@ def test_map_renders(dash_duo):
     dash_duo.driver.set_window_size(1200, 800)
 
     # Wait for the element to exist
-    dash_duo.wait_for_element("#world-map", timeout=10)
+    dash_duo.wait_for_element("#world-map_left", timeout=10)
 
     map_element = None
     for _ in range(10):
         try:
-            map_element = dash_duo.find_element("#world-map")
+            map_element = dash_duo.find_element("#world-map_left")
             # Check displayed and has non-zero size
             if map_element.is_displayed() and map_element.size['width'] > 0 and map_element.size['height'] > 0:
                 break
@@ -86,20 +86,20 @@ def test_articles_table_renders(dash_duo):
     dash_duo.start_server(app)
 
     # Wait until the table element with id 'article_table' is in the DOM
-    dash_duo.wait_for_element("#article_table")
+    dash_duo.wait_for_element("#article_table_right")
 
     # Grab the table element
-    table = dash_duo.find_element("#article_table")
+    table = dash_duo.find_element("#article_table_right")
     
     # Assert the table exists
     assert table is not None
 
     #check that it has rows (data)
-    rows = dash_duo.find_elements("#article_table .dash-cell")
+    rows = dash_duo.find_elements("#article_table_right .dash-cell")
     assert len(rows) > 0
 
     # check column headers
-    headers = dash_duo.find_elements("#article_table .column-header-name")
+    headers = dash_duo.find_elements("#article_table_right .column-header-name")
     header_texts = [h.text for h in headers]
     assert "Authors" in header_texts
     assert "Year" in header_texts

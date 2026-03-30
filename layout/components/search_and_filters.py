@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 from dash import dcc
-from utils.data_loader import df_ridley, get_threat_categories
+from utils.data_loader import df, get_threat_categories
 
 
 # SEARCH BARS
@@ -25,7 +25,7 @@ def create_continent_filter():
         id='continent-filter',
         options=[{'label': 'All', 'value': 'all'}] + 
                 [{'label': cont.title(), 'value': cont} 
-                    for cont in sorted(df_ridley['Continent_Ocean'].dropna().unique())],
+                    for cont in sorted(df['Continent_Ocean'].dropna().unique())],
         value='all',
         clearable=False,
         className="mb-3"

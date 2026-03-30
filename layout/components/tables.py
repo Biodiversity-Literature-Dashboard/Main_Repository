@@ -3,9 +3,9 @@ from dash import dash_table
 
 from sections.dataframes import ridley_bib_table
 
-def articles_datatable(df):
+def articles_datatable(df,side):
     table = dash_table.DataTable(
-    id ='article_table',
+    id ='article_table'+side,
     columns=[
         {'name': 'Authors', 'id': 'Authors', 'type': 'text'},
         {'name': 'Year', 'id': 'Year', 'type': 'numeric'},
@@ -41,5 +41,6 @@ def articles_datatable(df):
     )
     return table
 
-articles_datatable = articles_datatable(ridley_bib_table)
+articles_datatable_right = articles_datatable(ridley_bib_table,"_right")
+articles_datatable_left = articles_datatable(ridley_bib_table,"_left")
 

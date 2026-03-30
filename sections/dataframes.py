@@ -1,5 +1,5 @@
 import pandas as pd
-from utils.data_loader import df1,df2, df_ridley_bib
+from utils.data_loader import df_ridley_bib
 
 def get_authors(df):
     return df['Authors']
@@ -14,8 +14,8 @@ def count_values(row):
 def get_top_10(row_counted):
     return row_counted.head(10)
 
-def top_10_authors():
-    authors = get_authors(df2)
+def top_10_authors(df):
+    authors = get_authors(df)
     authors_counted = count_values(authors)
     top_authors = get_top_10(authors_counted)
     return pd.DataFrame({'Authors':top_authors.index, 'Count':top_authors.values})

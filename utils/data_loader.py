@@ -1,7 +1,7 @@
-from pathlib import Path
-import pandas as pd
 import os
 import sys
+from pathlib import Path
+import pandas as pd
 
 # Add parent directory to path to import config
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -10,18 +10,14 @@ from config import GROSSI_CSV, RIDLEY_CSV, THREAT_CATEGORIES, THREAT_CODES, RIDL
 from utils.logic.filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
 
 def load_csv_data(csv):
-    df = pd.read_csv(csv)
-    df.columns = df.columns.str.strip()
-    return df
+    dataf = pd.read_csv(csv)
+    dataf.columns = dataf.columns.str.strip()
+    return dataf
 
 # Load datasets on import
 df_grossi = load_csv_data(GROSSI_CSV)
-df_ridley = load_csv_data(RIDLEY_CSV)
+df = load_csv_data(RIDLEY_CSV) # MAIN DATAFRAME
 df_ridley_bib = load_csv_data(RIDLEY_BIB)
-
-# Keep old names for backward compatibility
-df1 = df_grossi
-df2 = df_ridley
 
 
 def get_threat_categories():
@@ -67,7 +63,7 @@ def extract_threat_category_from_code(threat_code):
     return sorted(list(categories))
 
 
-def filter_data(df=df_ridley,continent='all', ecoregions=None, study_designs=None, threat_category='all'):
+def filter_data(dataframe=df,continent='all', ecoregions=None, study_designs=None, threat_category='all'):
     """
     Filter Grossi dataset based on user selections.
     Uses INCLUSIVE filtering (OR logic) for multi-value fields.
@@ -81,23 +77,22 @@ def filter_data(df=df_ridley,continent='all', ecoregions=None, study_designs=Non
     Returns:
         Filtered dataframe
     """
-    df = df.copy()
-    print(f"dataframe shape (rows,colums) {str(df.shape)}")
+    dataf = dataframe.copy()
 
-    df =continent_filter(df,continent)
+    dataf =continent_filter(dataf,continent)
 
-    df= ecoregion_filter(df, ecoregions)
+    dataf= ecoregion_filter(dataf, ecoregions)
 
-    df = study_design_filter(df, study_designs)
+    dataf = study_design_filter(dataf, study_designs)
 
-    df = threat_category_filter(df, threat_category)
+    dataf = threat_category_filter(dataf, threat_category)
 
-    return df
+    return dataf
 
 
 # Test if run directly
 if __name__ == "__main__":
     print(f"Grossi: {len(df_grossi)} rows, {len(df_grossi.columns)} columns")
     print(f"   Columns: {df_grossi.columns.tolist()[:5]}")
-    print(f"\nRidley: {len(df_ridley)} rows, {len(df_ridley.columns)} columns")
-    print(f"   Columns: {df_ridley.columns.tolist()[:5]}")
+    print(f"\nRidley: {len(df)} rows, {len(df.columns)} columns")
+    print(f"   Columns: {df.columns.tolist()[:5]}")
