@@ -48,12 +48,54 @@ venv\Scripts\activate
 ```bash
 pip install -r requirements.txt
 ```
+## Running the program
 
-
-Run tests (Geckodriver) on terminal:
+(make sure you have opened the virtual environment, it should say venv in the corner)
 
 ```bash
-invoke test-geckodriver
+invoke start
+```
+
+## Running tests
+
+Make sure Chromedriver or Geckodriver (Firefox) is installed!!
+
+[Chrome driver install guide (Ubuntu)](https://tecadmin.net/install-chromedriver-on-ubuntu/)
+[General Chromedriver install guide](https://www.automationtestinghub.com/download-chrome-driver/)
+
+[Install Geckodriver here](https://github.com/mozilla/geckodriver/releases)
+
+
+
+(make sure you have opened the virtual environment, it should say venv in the corner)
+
+1. Run non-ui tests on terminal:
+
+```bash
+invoke test
+```
+
+Run UI tests (Chromedriver) on terminal (headless):
+
+```bash
+invoke chromedriver
+```
+
+Run UI tests (Chromedriver) on terminal (browser):
+
+```bash
+invoke chromedriver-browser
+```
+
+Run UI tests (Geckodriver) on terminal (headless):
+
+```bash
+invoke geckodriver
+```
+Run UI tests (Geckodriver) on terminal (browser):
+
+```bash
+invoke geckodriver-browser
 ```
 
 2. Open test coverage report in terminal

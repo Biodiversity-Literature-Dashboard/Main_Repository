@@ -15,13 +15,23 @@ def test(ctx):
 
 @task
 def geckodriver(ctx):
-    """Runs UI tests using Geckodriver/Firefox"""
+    """Runs UI tests using Geckodriver/Firefox in headless mode"""
     ctx.run("coverage run --branch -m pytest tests/ui --webdriver Firefox --headless", pty=True)
 
 @task
 def chromedriver(ctx):
-    """Runs UI tests using Chromedriver/Chrome"""
+    """Runs UI tests using Chromedriver/Chrome in headless mode"""
     ctx.run("coverage run --branch -m pytest tests/ui --webdriver Chrome --headless", pty=True)
+
+@task
+def geckodriver_browser(ctx):
+    """Runs UI tests using Geckodriver/Firefox"""
+    ctx.run("coverage run --branch -m pytest tests/ui --webdriver Firefox", pty=True)
+
+@task
+def chromedriver_browser(ctx):
+    """Runs UI tests using Chromedriver/Chrome"""
+    ctx.run("coverage run --branch -m pytest tests/ui --webdriver Chrome", pty=True)
 
 @task
 def coverage_report(ctx):
