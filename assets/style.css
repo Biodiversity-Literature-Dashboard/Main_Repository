@@ -106,7 +106,6 @@ body {
     width: 150px !important;
 }
 #info-button:hover {
-    background-color: #0056b3 !important;
+    background-color: #666666 !important;
     transform: scale(1.05);
-    transition: 0.2s;
 }
