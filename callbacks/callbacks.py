@@ -174,6 +174,22 @@ def register_callbacks(app):
         return is_open
 
     @app.callback(
+        [
+            Output("change_views_left", "value"),
+            Output("change_views_right", "value")
+        ],
+        Input("url", "pathname")
+    )
+    def sync_url_to_dropdown(pathname):
+        if pathname == "/charts":
+            return "Charts", "Charts"
+        if pathname == "/table":
+            return "Article_Table", "Article_Table"
+        if pathname == "/map":
+            return "Map", "Map"
+        return "Map", "Article_Table"
+
+    @app.callback(
         Output("left_view","children"),
         Input("change_views_left","value")
     )

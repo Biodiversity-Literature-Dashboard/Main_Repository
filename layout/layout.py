@@ -2,7 +2,7 @@
 # Define the overall layout, navigation, tabs, and component arrangement
 
 # Pre-made packages
-from dash import html
+from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 
@@ -39,6 +39,7 @@ def create_layout():
     
     # Combine navbar + container
     layout = html.Div([
+        dcc.Location(id='url', refresh=False),
         navbar,
         main_container
     ])
