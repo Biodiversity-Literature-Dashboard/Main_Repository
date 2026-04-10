@@ -30,7 +30,7 @@ def create_empty_dcc_graph_map(side):
         id='world-map'+side,
         figure=create_empty_map(),
         config={'displayModeBar': True, 'scrollZoom': True},
-        style={'height': '500px'}
+        style={'height': '600px'}
     )
     return graph
 

@@ -1,5 +1,3 @@
-
-
 /* Global Styles */
 /* Custom CSS for Dashboard */
 
@@ -26,8 +24,8 @@ body {
     padding: 1.5rem;
     border-radius: 0.5rem;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    position: relative; /* position reverted */
-    z-index: 1050; /* z-index reverted */
+    position: relative;
+    z-index: 10; /* FIXED */
 }
 
 /* Chart Containers */
@@ -82,23 +80,23 @@ body {
 }
 
 .filter-bar {
-    background-color :white !important;
+    background-color: white !important;
 }
 
+/* FIXED: invalid position removed */
 .left_bar {
-    position : left;
-    color : white;
+    float: left;
+    color: white;
 }
 
 .right_bar {
-    position : right;
-    color : white;
+    float: right;
+    color: white;
 }
 
 /* table container input bar */
-
 .dash-table-container .dash-filter input {
-    color: rgb(255, 255, 255) !important;
+    color: #000 !important; /* FIXED */
 }
 
 /* search bar */
@@ -106,9 +104,9 @@ body {
 
 /*apply/reset filter */
 
-.w-100 {
-    width: 150px !important;
-}
+/* REMOVED BROKEN .w-100 OVERRIDE */
+
+/* hover button */
 #info-button:hover {
     background-color: #666666 !important;
     transform: scale(1.05);
