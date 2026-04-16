@@ -142,13 +142,14 @@ def register_callbacks(app):
             Output('study-design-filter', 'value'),
             Output('threat-category-filter', 'value'),
             Output('year-range-slider', 'value'),
+            Output('searchbar', 'value', allow_duplicate=True),
         ],
         Input('reset-filters-btn', 'n_clicks'),
         prevent_initial_call=True
     )
     def reset_all_filters(n_clicks):
         """
-        Reset all filters to their default values when the Reset Filters button is clicked.
+        Reset all filters to their default values when the Reset Filters button is clicked. Also clears the searchbar and map selections.
         """
         defaults = reset_filters()
         return (
@@ -157,6 +158,7 @@ def register_callbacks(app):
             defaults['study-design-filter'],
             defaults['threat-category-filter'],
             defaults['year-range-slider'],
+            "",
         )
 
     @app.callback(
