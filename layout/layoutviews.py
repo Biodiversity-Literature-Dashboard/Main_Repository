@@ -117,10 +117,24 @@ def map_view(side):
             className="mb-2",
             style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
         ),
-        
         # Map section
         html.H5("Study Locations Map", className="mb-3"),
-        map_side,
+
+        # Cite marine boundaries data source
+        html.Div([
+            map_side,
+            html.Div([
+                html.Small([
+                    html.I("Marine boundaries data source: "),
+                    "Flanders Marine Institute (2023). ",
+                    html.A("Maritime Boundaries Geodatabase, v12.",
+                        href="https://doi.org/10.14284/632",
+                        target="_blank",
+                        style={"color": "#6c757d", "textDecoration": "underline"}
+                    )
+                ], style={"fontSize": "10px", "color": "#6c757d"})
+            ], style={"marginTop": "-10px", "textAlign": "right"})
+        ])
     ])
     return map_container
 
