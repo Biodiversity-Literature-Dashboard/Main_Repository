@@ -100,12 +100,12 @@ def search_value_filter(search_value,filtered_df):
 
 def change_views(view,side):
     if view == "Charts":
-        return charts_view(side)
+        return charts_view(side, selected_view=view)
     if view == "Article_Table":
-        return table_view(side)
+        return table_view(side, selected_view=view)
     if view == "Map":
-        return map_view(side)
+        return map_view(side, selected_view=view)
     if side == "right":
-        return table_view(side)
+        return table_view(side, selected_view="Article_Table")
     if side == "left":
-        return map_view(side)
+        return map_view(side, selected_view="Map")
