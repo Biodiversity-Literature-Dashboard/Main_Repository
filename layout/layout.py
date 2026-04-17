@@ -8,14 +8,14 @@ import dash_bootstrap_components as dbc
 
 # Local imports
 from layout.components.info_button import info_button
-from layout.components.navigation import navigation_bar
+from layout.components.navigation import navigation_bar, description_banner
 from layout.layoutviews import left_view,right_view, filters_view
 def create_layout():
     """Create the main dashboard layout"""
 
     # Navbar at top
     navbar = navigation_bar
-    
+    banner = description_banner
     # Filter sidebar (left side)
     top_bar = filters_view
     right_bar = right_view
@@ -40,6 +40,7 @@ def create_layout():
     # Combine navbar + container
     layout = html.Div([
         navbar,
+        banner,
         main_container
     ])
     

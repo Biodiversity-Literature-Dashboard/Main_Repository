@@ -10,7 +10,7 @@ from layout.components.search_and_filters import (continent_filter,
                                                     year_range_slider,
                                                     search_bar)
 from layout.components.tables import articles_datatable_right, articles_datatable_left
-from layout.components.navigation import change_views_left, change_views_right
+from layout.components.navigation import change_views_left, change_views_right, create_change_views_button
 
 
 # FILTER
@@ -99,12 +99,12 @@ filters_view = filters_view()
 
 
 
-def map_view(side):
+def map_view(side, selected_view="change"):
     if side == "left":
-        change_views = change_views_left
+        change_views = create_change_views_button("_left", value=selected_view)
         map_side = map_left
     else:
-        change_views = change_views_right
+        change_views = create_change_views_button("_right", value=selected_view)
         map_side = map_right
     map_container = dbc.CardBody([
         html.Div(
@@ -117,9 +117,6 @@ def map_view(side):
             className="mb-2",
             style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
         ),
-        
-        # Map section
-        html.H5("Study Locations Map", className="mb-3"),
         map_side,
     ])
     return map_container
@@ -134,19 +131,18 @@ def map_view(side):
 
 
 
-def table_view(side):
+def table_view(side, selected_view="change"):
     if side == "right":
-        change_views = change_views_right
+        change_views = create_change_views_button("_right", value=selected_view)
         articles_datatable = articles_datatable_right
 
     else:
-        change_views = change_views_left
+        change_views = create_change_views_button("_left", value=selected_view)
         articles_datatable = articles_datatable_left
     tables = dbc.CardBody([
         html.Div(
             change_views,
         ),
-        html.H5("Article table", className="mt-4 mb-3"),
             dbc.Col([
                 articles_datatable,
             ], ),
@@ -159,14 +155,13 @@ def table_view(side):
 # CHARTS
 
 
-def charts_view(side):
+def charts_view(side, selected_view="change"):
     if side == "right":
-        change_views = change_views_right
+        change_views = create_change_views_button("_right", value=selected_view)
     else:
-        change_views = change_views_left
+        change_views = create_change_views_button("_left", value=selected_view)
     charts = dbc.CardBody([
         html.Div(change_views),
-        html.H5("Analysis Charts", className="mt-4 mb-3"),
         dbc.Row([
         dbc.Col(dcc.Graph(id='threat-chart_'+side), width=12)
         ]),
@@ -179,11 +174,11 @@ def charts_view(side):
 
 
 def left_view():
-    current_view = html.Div(map_view("left"),id="left_view")
+    current_view = html.Div(map_view("left", selected_view="Map"), id="left_view")
     return current_view
 
 def right_view():
-    current_view = html.Div(table_view("right"),id="right_view")
+    current_view = html.Div(table_view("right", selected_view="Article_Table"), id="right_view")
     return current_view
 
 left_view = left_view()
