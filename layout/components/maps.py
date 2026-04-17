@@ -182,26 +182,26 @@ def create_world_map(df):
     fig = go.Figure()
     
     # Layer 1: Marine layer
-    fig.add_trace(go.Choropleth(
-        geojson=marine_geojson,
-        featureidkey="properties.SOVEREIGN1",
-        locations=full_country_data["Country"],
-        z=full_country_data["Marine"],
-        colorscale=marine_colorscale,
-        zmin=0,
-        zmax=max_marine,
-        marker_line_width=0,
-        hoverinfo="skip",
-        name="",
-        colorbar=dict(
-            title="Marine Studies",
-            thickness=15,
-            len=0.4,
-            x=1.02,
-            y=0.9,
-            yanchor="top",
-        )
-    ))
+    #fig.add_trace(go.Choropleth(
+    #    geojson=marine_geojson,
+    #    featureidkey="properties.SOVEREIGN1",
+    #    locations=full_country_data["Country"],
+    #    z=full_country_data["Marine"],
+    #    colorscale=marine_colorscale,
+    #    zmin=0,
+    #    zmax=max_marine,
+    #    marker_line_width=0,
+    #    hoverinfo="skip",
+    #    name="",
+    #    colorbar=dict(
+    #        title="Marine Studies",
+    #        thickness=15,
+    #        len=0.4,
+    #        x=1.02,
+    #        y=0.9,
+    #        yanchor="top",
+    #    )
+    #))
     
     # Layer 2: Base map
     fig.add_trace(go.Choropleth(
@@ -261,7 +261,8 @@ def create_world_map(df):
     fig.update_geos(
         showland=True,
         landcolor="#c4c4c4",
-        showocean=False,
+        showocean=True,
+        oceancolor="#c6dbef",
         showlakes=True,
         lakecolor="#ffffff",
         showcountries=True,
