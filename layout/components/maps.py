@@ -54,10 +54,18 @@ def create_world_map(df):
     ]
     
     # Count studies per country (support both 'Country' and 'country_eez' column names)
-    country_col = 'Country' if 'Country' in df.columns else 'country_eez'
+    country_col = 'Country' if 'Country' in df.columns else 'Country_EEZ'
     eco_col = "Ecoregion"
-    country_counts = df[country_col].value_counts().reset_index()
+    all_countries = []
+    for country in df[country_col]:
+        study_countries = str(country).split(";")
+        all_countries += study_countries
+    
+    country_counts = pd.Series(all_countries).value_counts().reset_index()
+    print(country_counts)
     country_counts.columns = ['Country', 'Studies']
+
+
     
     #Count studies per ecoregion
     if eco_col in df.columns:
