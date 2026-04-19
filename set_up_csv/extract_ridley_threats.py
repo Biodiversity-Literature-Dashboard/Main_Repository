@@ -1,13 +1,8 @@
-import sqlite3 as lite
 import pandas as pd
 import json
 
-conn = lite.connect("./database/database.db")
-query = """SELECT *
-        FROM Data_Dissagregated;
-        """
 # Load original Ridley dataset with threat columns
-df = pd.read_sql(query,conn)
+df = pd.read_csv("data/Ridley_et_al_13750_2022_279_MOESM4_ESM_3.csv")
 
 # Load threat decoding mappings
 with open("data/processed/threat_codes.json", "r", encoding="utf-8") as f:
@@ -56,11 +51,9 @@ threat_df["Threat_decoded"] = threat_df["Threat"].map(threat_codes)
 threat_df["Threat1_decoded"] = threat_df["Threat1"].astype(str).map(threat_categories)
 
 # Save clean processed dataframe
-threat_df.to_sql("Threats_Clean", conn, index=False)
+threat_df.to_csv("data/processed/ridley_threats_clean.csv", index=False)
 
-conn.close()
-
-print("Saved Threats_Clean")
+print("Saved: data/processed/ridley_threats_clean.csv")
 print(threat_df.head())
 print("Columns:", threat_df.columns.tolist())
 print("Rows:", len(threat_df))
