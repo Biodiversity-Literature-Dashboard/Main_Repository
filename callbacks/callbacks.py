@@ -11,8 +11,8 @@ from utils.data_loader import df
 
 from layout.components.search_and_filters import reset_filters
 from callbacks.callbacks_functions import (change_views,
-                                            update_map, 
-                                            update_article_table, 
+                                            update_map,
+                                            update_article_table,
                                             update_charts)
 
 
@@ -104,7 +104,7 @@ def register_callbacks(app):
                         search_value)
 
     @app.callback(
-        [           
+        [
             Output('result-counter_right', 'children'),
             Output('world-map_right', 'figure'),
         ],
@@ -120,7 +120,7 @@ def register_callbacks(app):
                         search_value)
 
     @app.callback(
-        [            
+        [
             Output('result-counter_left', 'children'),
             Output('world-map_left', 'figure'),
         ],
@@ -216,7 +216,7 @@ def register_callbacks(app):
     def update_search_map_right(click_data, current_search):
         if not click_data:
             raise PreventUpdate
-        
+
         try:
             clicked_country = click_data["points"][0]["location"]
             if current_search == clicked_country:
