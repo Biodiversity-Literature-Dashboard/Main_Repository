@@ -2,7 +2,8 @@
 Define Input/Output callbacks for chart updates, data filtering, and user interactions """
 # pylint: disable=unused-argument
 # Pre-made packages
-from dash import Input, Output, State
+from dash import Input, Output, State, ctx
+from dash.exceptions import PreventUpdate
 
 
 # local packages
@@ -141,13 +142,14 @@ def register_callbacks(app):
             Output('study-design-filter', 'value'),
             Output('threat-category-filter', 'value'),
             Output('year-range-slider', 'value'),
+            Output('searchbar', 'value', allow_duplicate=True),
         ],
         Input('reset-filters-btn', 'n_clicks'),
         prevent_initial_call=True
     )
     def reset_all_filters(n_clicks):
         """
-        Reset all filters to their default values when the Reset Filters button is clicked.
+        Reset all filters to their default values when the Reset Filters button is clicked. Also clears the searchbar and map selections.
         """
         defaults = reset_filters()
         return (
@@ -156,6 +158,7 @@ def register_callbacks(app):
             defaults['study-design-filter'],
             defaults['threat-category-filter'],
             defaults['year-range-slider'],
+            "",
         )
 
     @app.callback(
@@ -186,3 +189,41 @@ def register_callbacks(app):
     )
     def change_views_right(change_views_right):
         return change_views(change_views_right,"right")
+    
+    @app.callback(
+        Output("searchbar", "value", allow_duplicate=True),
+        Input("world-map_left", "clickData"),
+        State("searchbar", "value"),
+        prevent_initial_call=True
+    )
+    def update_search_map_left(click_data, current_search):
+        if not click_data:
+            raise PreventUpdate
+        
+        try:
+            clicked_country = click_data["points"][0]["location"]
+            if current_search == clicked_country:
+                return ""
+            else:
+                return clicked_country
+        except (KeyError, IndexError):
+            raise PreventUpdate
+
+    @app.callback(
+        Output("searchbar", "value", allow_duplicate=True),
+        Input("world-map_right", "clickData"),
+        State("searchbar", "value"),
+        prevent_initial_call=True
+    )
+    def update_search_map_right(click_data, current_search):
+        if not click_data:
+            raise PreventUpdate
+        
+        try:
+            clicked_country = click_data["points"][0]["location"]
+            if current_search == clicked_country:
+                return ""
+            else:
+                return clicked_country
+        except (KeyError, IndexError):
+            raise PreventUpdate

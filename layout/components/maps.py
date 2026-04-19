@@ -55,12 +55,31 @@ def create_world_map(df):
     
     # Count studies per country (support both 'Country' and 'country_eez' column names)
     country_col = 'Country' if 'Country' in df.columns else 'country_eez'
+    eco_col = "Ecoregion"
     country_counts = df[country_col].value_counts().reset_index()
     country_counts.columns = ['Country', 'Studies']
     
+    #Count studies per ecoregion
+    if eco_col in df.columns:
+        eco_df = pd.DataFrame({
+            "Country": df[country_col],
+            "Terrestrial": df[eco_col].astype(str).str.contains("Terrestrial", case=False, na=False).astype(int),
+            "Freshwater": df[eco_col].astype(str).str.contains("Freshwater", case=False, na=False).astype(int),
+            "Marine": df[eco_col].astype(str).str.contains("Marine", case=False, na=False).astype(int)
+        })
+        eco_counts = eco_df.groupby("Country").sum().reset_index()
+    else:
+        eco_counts = pd.DataFrame({
+            "Country": country_counts["Country"],
+            "Terrestrial": [0] * len(country_counts),
+            "Freshwater": [0] * len(country_counts),
+            "Marine": [0] * len(country_counts)
+        })
+    merged_counts = pd.merge(country_counts, eco_counts, on="Country", how="left")
+    
     # Merge with master_countries to get get ISO codes and include with 0 studies
-    full_country_data = pd.merge(master_countries, country_counts, on='Country', how='left')
-    full_country_data["Studies"] = full_country_data["Studies"].fillna(0)
+    full_country_data = pd.merge(master_countries, merged_counts, on="Country", how="left")
+    full_country_data.fillna({"Studies": 0, "Terrestrial": 0, "Freshwater": 0, "Marine": 0}, inplace=True)
     
     # Empty state
     if df.empty:
@@ -73,7 +92,15 @@ def create_world_map(df):
             colorscale=colorscale,
             marker_line_color='white',
             marker_line_width=0.5,
-            hovertemplate='<b>%{location}</b><br>Studies: %{z}<extra></extra>',
+            customdata=[[0, 0, 0]] * len(master_countries),
+            hovertemplate=(
+                "<b>%{location}</b><br>"
+                "Total: %{z}<br>"
+                "Terrestrial: %{customdata[0]}<br>"
+                "Freshwater: %{customdata[1]}<br>"
+                "Marine: %{customdata[2]}"
+                "<extra></extra>"
+            ),
             colorbar=dict(
                 title='Number of Studies',
                 thickness=0.02,
@@ -121,7 +148,15 @@ def create_world_map(df):
         colorscale=colorscale,
         marker_line_color='white',
         marker_line_width=0.5,
-        hovertemplate='<b>%{location}</b><br>Studies: %{z}<extra></extra>',
+        customdata=full_country_data[["Terrestrial", "Freshwater", "Marine"]],
+        hovertemplate=(
+            "<b>%{location}</b><br>"
+            "Total: %{z}<br>"
+            "Terrestrial: %{customdata[0]}<br>"
+            "Freshwater: %{customdata[1]}<br>"
+            "Marine: %{customdata[2]}"
+            "<extra></extra>"
+            ),
         colorbar=dict(
             title='Number of Studies',
             thickness=0.02,
