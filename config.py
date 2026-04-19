@@ -7,7 +7,7 @@ import os
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
 PROCESSED_DIR = os.path.join(DATA_DIR, 'processed')
 GROSSI_CSV = os.path.join(PROCESSED_DIR, 'grossi_included_clean.csv')
-RIDLEY_CSV = os.path.join(PROCESSED_DIR, 'ridley_articles_dashboard.csv')
+RIDLEY_CSV = os.path.join(PROCESSED_DIR, 'ridley_articles_dashboard_cleaned.csv')
 RIDLEY_BIB = os.path.join(DATA_DIR,'Ridley_bibliography.csv')
 
 # Key columns for Grossi processed dataset

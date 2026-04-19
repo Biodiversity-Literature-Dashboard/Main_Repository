@@ -36,7 +36,7 @@ def update_article_table(df, continent, ecoregions, study_designs, threat_catego
 
     # Generate visualizations
 
-    table_df = filtered_df[['Authors', 'Year', 'Title']]
+    table_df = filtered_df[['Authors', 'Year', 'Title', 'Georef_ind_driver_clean', 'Direct_driver_clean', 'Indirect_driver_clean']]
     # Create tooltip data for the Title column only
     tooltip_data = [
         {
