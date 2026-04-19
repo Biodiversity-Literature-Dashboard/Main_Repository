@@ -14,7 +14,7 @@ from wordcloud import WordCloud
 # local imports
 #from sections.dataframes import top_10_authors
 from utils.data_loader import extract_threat_category_from_code, get_threat_categories
-from sections.dataframes import ridley_bib_table
+from utils.dataframes import bib_table
 
 
 
@@ -173,7 +173,7 @@ def create_wordcloud_chart(filtered_df=None):
     """Generate a wordcloud from article titles."""
 
     if filtered_df is None:
-        titles = ' '.join(ridley_bib_table['Title'].dropna().astype(str).tolist())
+        titles = ' '.join(bib_table['Title'].dropna().astype(str).tolist())
     else:
         titles = ' '.join(filtered_df['Title'].dropna().astype(str).tolist())
 
