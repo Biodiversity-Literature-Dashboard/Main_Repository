@@ -17,6 +17,32 @@ small_countries = pd.read_csv(small_csv_path)
 marine_json_path = os.path.join(current_dir, "eez_v12.json")
 with open(marine_json_path, encoding="utf-8") as f:
     marine_geojson = json.load(f)
+    
+# Check and fix the winding order of GeoJSON files
+def is_clockwise(coords):
+    """Check if polygon coordinates are clockwise."""
+    total = 0
+    for i in range(len(coords) - 1):
+        x1, y1 = coords[i]
+        x2, y2 = coords[i + 1]
+        total += (x2 - x1) * (y2 + y1)
+    return total > 0
+
+def ensure_clockwise(coords):
+    """Ensure polygon coordinates are clockwise (required for Plotly geo choropleth)."""
+    if not is_clockwise(coords):
+        return coords[::-1]
+    return coords
+
+# Apply winding order fix to marine GeoJSON 
+for feature in marine_geojson["features"]:
+    geom_type = feature["geometry"]["type"]
+    coords = feature["geometry"]["coordinates"]
+    if geom_type == "Polygon":
+        coords[0] = ensure_clockwise(coords[0])
+    elif geom_type == "MultiPolygon":
+        for polygon in coords:
+            polygon[0] = ensure_clockwise(polygon[0])
 
 
 # EMPTY MAPS
@@ -66,8 +92,7 @@ def create_world_map(df):
     
     # Create marine colorscale
     marine_colorscale = [
-        [0, "rgba(0,0,0,0)"],
-        [0.000001, "#c6dbef"],
+        [0, "#9ecae1"],
         [0.5, "#4292c6"],
         [1.0, "#08306b"]
     ]
@@ -182,26 +207,26 @@ def create_world_map(df):
     fig = go.Figure()
     
     # Layer 1: Marine layer
-    #fig.add_trace(go.Choropleth(
-    #    geojson=marine_geojson,
-    #    featureidkey="properties.SOVEREIGN1",
-    #    locations=full_country_data["Country"],
-    #    z=full_country_data["Marine"],
-    #    colorscale=marine_colorscale,
-    #    zmin=0,
-    #    zmax=max_marine,
-    #    marker_line_width=0,
-    #    hoverinfo="skip",
-    #    name="",
-    #    colorbar=dict(
-    #        title="Marine Studies",
-    #        thickness=15,
-    #        len=0.4,
-    #        x=1.02,
-    #        y=0.9,
-    #        yanchor="top",
-    #    )
-    #))
+    fig.add_trace(go.Choropleth(
+        geojson=marine_geojson,
+        featureidkey="properties.SOVEREIGN1",
+        locations=full_country_data["Country"],
+        z=full_country_data["Marine"],
+        colorscale=marine_colorscale,
+        zmin=0,
+        zmax=max_marine,
+        marker_line_width=0,
+        hoverinfo="skip",
+        name="",
+        colorbar=dict(
+            title="Marine Studies",
+            thickness=15,
+            len=0.4,
+            x=1.02,
+            y=0.9,
+            yanchor="top",
+        )
+    ))
     
     # Layer 2: Base map
     fig.add_trace(go.Choropleth(
@@ -279,7 +304,9 @@ def create_world_map(df):
         height=500,
         margin={'r': 100, 't': 40, 'l': 0, 'b': 0},
         paper_bgcolor="#ffffff",
-        plot_bgcolor="#ffffff"
+        plot_bgcolor="#ffffff",
+        # Sensitivity settings for mouse hover (adjust as needed)
+        hoverdistance=2
     )
     
     return fig
