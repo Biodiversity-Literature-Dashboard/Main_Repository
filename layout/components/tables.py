@@ -1,6 +1,6 @@
 from dash import dash_table
 
-from sections.dataframes import ridley_bib_table
+from utils.dataframes import bib_table
 
 def articles_datatable(df,side):
     table = dash_table.DataTable(
@@ -55,5 +55,5 @@ def articles_datatable(df,side):
     )
     return table
 
-articles_datatable_right = articles_datatable(ridley_bib_table,"_right")
-articles_datatable_left = articles_datatable(ridley_bib_table,"_left")
+articles_datatable_right = articles_datatable(bib_table, "_right")
+articles_datatable_left = articles_datatable(bib_table, "_left")

@@ -3,7 +3,7 @@ from utils.data_loader import filter_data
 from layout.layoutviews import map_view, charts_view, table_view
 from layout.components.maps import create_world_map
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
-from sections.dataframes import ridley_driver_lookup
+from utils.dataframes import ridley_driver_lookup
 
 
 def apply_filters(df,continent, ecoregions,study_designs,threat_category,year_range,search_value):        

@@ -48,6 +48,13 @@ venv\Scripts\activate
 ```bash
 pip install -r requirements.txt
 ```
+
+## Setting up SQLite database and data cleaning
+
+Go to the set_up folder. First you may check that it is using the excel file of your choice and run the data_exploration_excel.ipynb file to test it.
+
+After this carefully go through and run the set_up ipynb file to set up SQLite database for your data and make sure you are converting the correct file!
+
 ## Running the program
 
 (make sure you have opened the virtual environment, it should say venv in the corner)
