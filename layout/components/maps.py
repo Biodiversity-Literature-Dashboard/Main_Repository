@@ -110,7 +110,6 @@ def create_world_map(df):
     all_countries = unstrip_countries(df, country_col)
 
     country_counts = pd.Series(all_countries).value_counts().reset_index()
-    print(country_counts)
     country_counts.columns = ['Country', 'Studies']
 
     
