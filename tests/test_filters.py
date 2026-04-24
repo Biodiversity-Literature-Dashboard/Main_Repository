@@ -5,8 +5,7 @@ from utils.data_loader import df
 
 class TestFilters(unittest.TestCase):
     def setUp(self):
-        self.shape = (1069, 19)
-        self.empty_shape =(0,19)
+        self.shape = (1069, 25)
 
     def test_continent_filter_returns_correct_amount_of_rows_and_columns(self):
         df_shape = continent_filter(df, 'all').shape
@@ -26,7 +25,7 @@ class TestFilters(unittest.TestCase):
 
     def test_use_continent_filter_africa(self):
         df_shape = continent_filter(df, 'africa').shape
-        self.assertEqual(df_shape, df[df['Continent_Ocean'] == "africa"].shape)
+        self.assertEqual(df_shape, df[df['Continent_Ocean'].str.contains("africa",case=False)].shape)
 
     def test_use_continent_filter_none(self):
         df_shape = continent_filter(df, 'all').shape
@@ -34,11 +33,11 @@ class TestFilters(unittest.TestCase):
 
     def test_use_ecoregion_filter_marine(self):
         df_shape = ecoregion_filter(df, ['Marine']).shape
-        self.assertEqual(df_shape, df[df['Ecoregion'] == "Marine"].shape)
+        self.assertEqual(df_shape, df[df['Ecoregion'].str.contains("Marine",case=False)].shape)
 
     def test_use_ecoregion_filter_terrestial_freshwater(self):
         df_shape = ecoregion_filter(df, ['Terrestrial','Freshwater']).shape
-        self.assertEqual(df_shape, df[df['Ecoregion'].isin(['Terrestrial','Freshwater'])].shape)
+        self.assertEqual(df_shape, df[df['Ecoregion'].str.contains('Terrestrial',case=False) | df['Ecoregion'].str.contains('Freshwater',case=False)].shape)
 
     def test_use_ecoregion_filter_none(self):
         df_shape = ecoregion_filter(df,None).shape

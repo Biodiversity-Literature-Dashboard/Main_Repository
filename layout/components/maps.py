@@ -40,6 +40,13 @@ map_left = create_empty_dcc_graph_map("_left")
 
 # NON-EMPTY MAPS
 
+def unstrip_countries(df,country_col):
+    all_countries = []
+    for country in df[country_col]:
+        study_countries = str(country).split(";")
+        all_countries += study_countries
+    return all_countries
+
 def create_world_map(df):
     """
     Create world map with country markers from filtered data.
@@ -54,18 +61,25 @@ def create_world_map(df):
     ]
     
     # Count studies per country (support both 'Country' and 'country_eez' column names)
-    country_col = 'Country' if 'Country' in df.columns else 'country_eez'
+    country_col = 'Country' if 'Country' in df.columns else 'Country_EEZ'
     eco_col = "Ecoregion"
-    country_counts = df[country_col].value_counts().reset_index()
+    all_countries = unstrip_countries(df, country_col)
+
+    country_counts = pd.Series(all_countries).value_counts().reset_index()
+    print(country_counts)
     country_counts.columns = ['Country', 'Studies']
+
     
     #Count studies per ecoregion
     if eco_col in df.columns:
+        df[country_col] = df[country_col].str.split(';')
+        exploded_df = df.explode(country_col)
         eco_df = pd.DataFrame({
-            "Country": df[country_col],
-            "Terrestrial": df[eco_col].astype(str).str.contains("Terrestrial", case=False, na=False).astype(int),
-            "Freshwater": df[eco_col].astype(str).str.contains("Freshwater", case=False, na=False).astype(int),
-            "Marine": df[eco_col].astype(str).str.contains("Marine", case=False, na=False).astype(int)
+
+            "Country": exploded_df[country_col],
+            "Terrestrial": exploded_df[eco_col].astype(str).str.contains("Terrestrial", case=False, na=False).astype(int),
+            "Freshwater": exploded_df[eco_col].astype(str).str.contains("Freshwater", case=False, na=False).astype(int),
+            "Marine": exploded_df[eco_col].astype(str).str.contains("Marine", case=False, na=False).astype(int)
         })
         eco_counts = eco_df.groupby("Country").sum().reset_index()
     else:
