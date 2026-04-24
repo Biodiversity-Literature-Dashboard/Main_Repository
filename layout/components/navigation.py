@@ -10,11 +10,19 @@ def create_navbar():
         [
             html.A(
                 # Use row and col to control vertical alignment of logo / brand
-                dbc.Row(
-                    [
-                        dbc.Col(html.Img(src=LOGO, height="30px")),
-                        dbc.Col(dbc.NavbarBrand("Interactive Biodiversity Dashboard", className="ms-2")),
-                    ],
+                       dbc.Row([
+                    dbc.Col(html.Img(src=LOGO, height="30px")),
+                    dbc.Col(
+                        html.Div([
+                            dbc.NavbarBrand(
+                                "What is the evidence on indirect drivers of biodiversity loss? A systematic map",
+                                className="ms-2 dashboard-title",
+                                style={"fontFamily": "Tahoma, Geneva, sans-serif",
+                                       "fontSize": "1rem", "fontWeight": "700"}
+                            ),
+                        ])
+                    ),
+                ],
                     align="center",
                     className="g-0",
                 ),
@@ -42,20 +50,48 @@ def create_navbar():
     dark=True,
     )
     return navbar
+def create_description_banner():
+    """Text banner displayed directly below the navbar."""
+    return html.Div(
+        className="study-description-banner",
+        children=[
+            html.P("Interactive dashboard on the indirect drivers of biodiversity loss",
+                    className="ms-2 dashboard-subtitle"),
+            html.P(
+                "This map displays studies identified through a systematic literature review "
+                "that examine the indirect drivers of biodiversity loss at multi-national "
+                "scales or below.",
+                style={"marginBottom": "0.25rem"}
+            ),
+            html.Div(
+                className="reference-block",
+                children=[
+                    html.Strong("Reference: "),
+                    html.Span(
+                        '[Author(s), Year]. "Title of the open-access publication." '
+                        "Journal, volume, pages. DOI: [insert DOI]"
+                    ),
+                ]
+            ),
+        ]
+    )
 navigation_bar = create_navbar()
+description_banner = create_description_banner()
 
-def create_change_views_button(side):
+def create_change_views_button(side, value="change"):
     change_views = dcc.Dropdown(
         id='change_views'+side,
-        options= [{'label': 'Change view...', 'value': 'change'}] +
-                [{'label': 'Map', 'value': 'Map'}] +
-                [{'label': 'Article Table', 'value': 'Article_Table'}] +
-                [{'label': 'Charts', 'value': 'Charts'}],
-        value="change",
+        options=[
+            {'label': 'Change view...', 'value': 'change'},
+            {'label': 'Map', 'value': 'Map'},
+            {'label': 'Article Table', 'value': 'Article_Table'},
+            {'label': 'Charts', 'value': 'Charts'},
+        ],
+        value=value,
         clearable=False,
         className="mb-3"
     )
     return change_views
 
-change_views_left = create_change_views_button("_left")
+change_views_left  = create_change_views_button("_left")
 change_views_right = create_change_views_button("_right")

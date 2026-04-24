@@ -1,7 +1,6 @@
-
 from dash import dash_table
 
-from sections.dataframes import ridley_bib_table
+from utils.dataframes import bib_table
 
 def articles_datatable(df,side):
     table = dash_table.DataTable(
@@ -10,6 +9,9 @@ def articles_datatable(df,side):
         {'name': 'Authors', 'id': 'Authors', 'type': 'text'},
         {'name': 'Year', 'id': 'Year', 'type': 'numeric'},
         {'name': 'Title', 'id': 'Title', 'type': 'text'},
+        {'name': 'Georef Indirect Driver', 'id': 'Georef_ind_driver_clean', 'type': 'text'},
+        {'name': 'Direct Driver', 'id': 'Direct_driver_clean', 'type': 'text'},
+        {'name': 'Indirect Driver', 'id': 'Indirect_driver_clean', 'type': 'text'},
     ],
     data=df.to_dict('records'),
     filter_action='native',
@@ -35,12 +37,23 @@ def articles_datatable(df,side):
          'width': '100px',
          'maxWidth': '200px',
          'minWidth': '100px'},
+        {'if': {'column_id': 'Georef_ind_driver_clean'},
+         'width': '120px',
+         'maxWidth': '200px',
+         'minWidth': '120px'},
+        {'if': {'column_id': 'Direct_driver_clean'},
+         'width': '120px',
+         'maxWidth': '200px',
+         'minWidth': '120px'},
+        {'if': {'column_id': 'Indirect_driver_clean'},
+         'width': '120px',
+         'maxWidth': '200px',
+         'minWidth': '120px'},
     ],
     tooltip_data =[],# start with empty tooltip data, will be populated by callback
     tooltip_duration = None #tooltip stays until user moves mouse away
     )
     return table
 
-articles_datatable_right = articles_datatable(ridley_bib_table,"_right")
-articles_datatable_left = articles_datatable(ridley_bib_table,"_left")
-
+articles_datatable_right = articles_datatable(bib_table, "_right")
+articles_datatable_left = articles_datatable(bib_table, "_left")

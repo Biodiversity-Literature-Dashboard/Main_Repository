@@ -11,7 +11,7 @@ from layout.components.search_and_filters import (
     search_bar
 )
 from layout.components.tables import articles_datatable_right, articles_datatable_left
-from layout.components.navigation import change_views_left, change_views_right
+from layout.components.navigation import change_views_left, change_views_right, create_change_views_button
 
 
 # FILTER
@@ -84,14 +84,21 @@ def filters_view():
 filters_view = filters_view()
 
 
-# MAP
 
-def map_view(side):
+
+
+#MAP
+
+
+
+
+
+def map_view(side, selected_view="change"):
     if side == "left":
-        change_views = change_views_left
+        change_views = create_change_views_button("_left", value=selected_view)
         map_side = map_left
     else:
-        change_views = change_views_right
+        change_views = create_change_views_button("_right", value=selected_view)
         map_side = map_right
 
     map_container = dbc.CardBody([
@@ -102,43 +109,62 @@ def map_view(side):
             className="mb-2",
             style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
         ),
+        # Map section
         html.H5("Study Locations Map", className="mb-3"),
-        map_side,
+
+        # Cite marine boundaries data source
+        html.Div([
+            map_side,
+            html.Div([
+                html.Small([
+                    html.I("Marine boundaries data source: "),
+                    "Flanders Marine Institute (2023). ",
+                    html.A("Maritime Boundaries Geodatabase, v12.",
+                        href="https://doi.org/10.14284/632",
+                        target="_blank",
+                        style={"color": "#6c757d", "textDecoration": "underline"}
+                    )
+                ], style={"fontSize": "10px", "color": "#6c757d"})
+            ], style={"marginTop": "-10px", "textAlign": "right"})
+        ])
     ])
     return map_container
 
 
 # TABLE
 
-def table_view(side):
+
+
+
+def table_view(side, selected_view="change"):
     if side == "right":
-        change_views = change_views_right
+        change_views = create_change_views_button("_right", value=selected_view)
         articles_datatable = articles_datatable_right
     else:
-        change_views = change_views_left
+        change_views = create_change_views_button("_left", value=selected_view)
         articles_datatable = articles_datatable_left
 
     tables = dbc.CardBody([
-        html.Div(change_views),
-        html.H5("Article table", className="mt-4 mb-3"),
-        html.Div([
-            articles_datatable,
-        ]),
+        html.Div(
+            change_views,
+        ),
+            dbc.Col([
+                articles_datatable,
+            ], ),
     ])
     return tables
 
 
 # CHARTS
 
-def charts_view(side):
-    if side == "right":
-        change_views = change_views_right
-    else:
-        change_views = change_views_left
 
+def charts_view(side, selected_view="change"):
+    if side == "right":
+        change_views = create_change_views_button("_right", value=selected_view)
+    else:
+        change_views = create_change_views_button("_left", value=selected_view)
     charts = dbc.CardBody([
         html.Div(change_views),
-        html.H5("Analysis Charts", className="mt-4 mb-3"),
         dbc.Row([
             dbc.Col(dcc.Graph(id='threat-chart_' + side), width=12)
         ]),
@@ -151,12 +177,12 @@ def charts_view(side):
 
 
 def left_view():
-    current_view = html.Div(map_view("left"), id="left_view")
+    current_view = html.Div(map_view("left", selected_view="Map"), id="left_view")
     return current_view
 
 
 def right_view():
-    current_view = html.Div(table_view("right"), id="right_view")
+    current_view = html.Div(table_view("right", selected_view="Article_Table"), id="right_view")
     return current_view
 
 
