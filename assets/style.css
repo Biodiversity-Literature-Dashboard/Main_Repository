@@ -129,7 +129,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* table container input bar */
 .dash-table-container .dash-filter input {
-    color: #000 !important; /* FIXED */
+    color: #ffffff !important; /* FIXED */
 }
 
 /* search bar */
