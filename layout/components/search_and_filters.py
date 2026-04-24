@@ -19,13 +19,20 @@ search_bar = create_search_bar()
 
 # DROPDOWN FILTERS
 
+def continent_list():
+    all_continents = set()
+    for continents in df['Continent_Ocean'].dropna():
+        continents = set(continents.split(";"))
+        all_continents = all_continents.union(continents)
+    return all_continents
+
 def create_continent_filter():
     # Continent filter
     continent = dcc.Dropdown(
         id='continent-filter',
         options=[{'label': 'All', 'value': 'all'}] + 
                 [{'label': cont.title(), 'value': cont} 
-                    for cont in sorted(df['Continent_Ocean'].dropna().unique())],
+                    for cont in continent_list()],
         value='all',
         clearable=False,
         className="mb-3"
