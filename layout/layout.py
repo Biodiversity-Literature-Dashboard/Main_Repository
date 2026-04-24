@@ -33,8 +33,8 @@ def create_layout():
 
         # Main content row
         dbc.Row([
-            dbc.Col(left_bar, width=7),
-            dbc.Col(right_bar, width=5),
+            dbc.Col(left_bar, width=6),
+            dbc.Col(right_bar, width=6),
         ], className="g-3"),
 
     ], fluid=True, style={"marginBottom": "80px"})
