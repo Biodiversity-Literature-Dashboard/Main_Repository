@@ -223,7 +223,6 @@ def left_panel():
     panel = dbc.Card([
         dbc.CardHeader(
             dbc.Row([
-                dbc.Col(html.Span("Left Panel", className="fw-bold"), width="auto"),
                 dbc.Col(
                     create_change_views_button("_left", value="Map"),
                 ),
@@ -246,7 +245,6 @@ def right_panel():
     panel = dbc.Card([
         dbc.CardHeader(
             dbc.Row([
-                dbc.Col(html.Span("Right Panel", className="fw-bold"), width="auto"),
                 dbc.Col(
                     create_change_views_button("_right", value="Article_Table"),
                 ),
