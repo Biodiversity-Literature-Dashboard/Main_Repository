@@ -11,7 +11,7 @@ from layout.components.search_and_filters import (
     search_bar
 )
 from layout.components.tables import articles_datatable_right, articles_datatable_left
-from layout.components.navigation import change_views_left, change_views_right, create_change_views_button
+from layout.components.navigation import create_change_views_button
 
 
 # FILTER
@@ -93,7 +93,7 @@ filters_view = filters_view()
 
 
 
-def map_view(side, selected_view="change"):
+def map_view(side, selected_view="Map"):
     if side == "left":
         change_views = create_change_views_button("_left", value=selected_view)
         map_side = map_left
@@ -109,8 +109,6 @@ def map_view(side, selected_view="change"):
             className="mb-2",
             style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
         ),
-        # Map section
-        html.H5("Study Locations Map", className="mb-3"),
 
         # Cite marine boundaries data source
         html.Div([
@@ -136,7 +134,7 @@ def map_view(side, selected_view="change"):
 
 
 
-def table_view(side, selected_view="change"):
+def table_view(side, selected_view="Map"):
     if side == "right":
         change_views = create_change_views_button("_right", value=selected_view)
         articles_datatable = articles_datatable_right
@@ -158,7 +156,7 @@ def table_view(side, selected_view="change"):
 # CHARTS
 
 
-def charts_view(side, selected_view="change"):
+def charts_view(side, selected_view="Map"):
     if side == "right":
         change_views = create_change_views_button("_right", value=selected_view)
     else:
