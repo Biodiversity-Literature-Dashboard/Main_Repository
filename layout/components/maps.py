@@ -313,7 +313,6 @@ def create_world_map(df):
     )
     
     fig.update_layout(
-        title=f"Study Locations ({len(df)} articles)",
         height=500,
         margin={'r': 100, 't': 40, 'l': 0, 'b': 0},
         paper_bgcolor="#ffffff",

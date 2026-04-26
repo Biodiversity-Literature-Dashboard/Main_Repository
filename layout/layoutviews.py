@@ -116,7 +116,7 @@ filters_view = filters_view()
 
 
 
-def map_view(side, selected_view="change"):
+def map_view(side, selected_view="Map"):
     if side == "left":
         map_side = map_left
     else:
@@ -129,8 +129,6 @@ def map_view(side, selected_view="change"):
             className="mb-2",
             style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
         ),
-        # Map section
-        html.H5("Study Locations Map", className="mb-3"),
 
         # Cite marine boundaries data source
         html.Div([
@@ -160,7 +158,7 @@ def map_view(side, selected_view="change"):
 
 
 
-def table_view(side, selected_view="change"):
+def table_view(side, selected_view="Map"):
     if side == "right":
         articles_datatable = articles_datatable_right
     else:
@@ -178,7 +176,8 @@ def table_view(side, selected_view="change"):
 # CHARTS
 
 
-def charts_view(side, selected_view="change"):
+
+def charts_view(side, selected_view="Map"):
     chart_order = [
         ('threat-chart_' + side,       'Threat Categories',  '360px', '410px'),
         ('driver-sankey_' + side,      'Driver Pathways',    '620px', '680px'),

@@ -81,12 +81,11 @@ def create_description_banner():
 navigation_bar = create_navbar()
 description_banner = create_description_banner()
 
-def create_change_views_button(side, value="change"):
+def create_change_views_button(side, value="Map"):
     change_views = dcc.Dropdown(
         id='change_views'+side,
         options=[
-            {'label': 'Change view...', 'value': 'change'},
-            {'label': 'Map', 'value': 'Map'},
+            {'label': 'Study Locations Map', 'value': 'Map'},
             {'label': 'Article Table', 'value': 'Article_Table'},
             {'label': 'Charts', 'value': 'Charts'},
         ],

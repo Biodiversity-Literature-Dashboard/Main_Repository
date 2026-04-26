@@ -4,7 +4,7 @@ from layout.layoutviews import map_view, charts_view, table_view
 from layout.components.maps import create_world_map
 from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart, create_driver_sankey
 from utils.data_loader import df_threats
-from utils.dataframes import ridley_driver_lookup
+
 
 
 def apply_filters(df,continent, ecoregions,study_designs,threat_category,year_range,search_value):        
@@ -35,34 +35,13 @@ def update_article_table(df, continent, ecoregions, study_designs, threat_catego
 
     filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
 
-    # Build article table only
-    table_df = filtered_df[['ArticleID', 'Authors', 'Year', 'Title']].copy()
-    table_df['ArticleID'] = table_df['ArticleID'].astype(str)
-
-    table_df = table_df.merge(
-        ridley_driver_lookup,
-        on='ArticleID',
-        how='left'
-    )
-
-    table_df = table_df[
-        [
-            'Authors',
-            'Year',
-            'Title',
-            'Georef_ind_driver_clean',
-            'Direct_driver_clean',
-            'Indirect_driver_clean'
-        ]
-    ]
-
     # Create tooltip data for the Title column only
     tooltip_data = [
         {
             'Title': {'value': row['Title'], 'type': 'text'} 
-        } for _, row in table_df.iterrows()
+        } for _, row in filtered_df.iterrows()
     ]
-    return [table_df.to_dict('records'), tooltip_data]
+    return [filtered_df.to_dict('records'), tooltip_data]
 
 def update_map(df, continent, ecoregions, study_designs, threat_category, year_range, search_value):
     filtered_df = apply_filters(df,

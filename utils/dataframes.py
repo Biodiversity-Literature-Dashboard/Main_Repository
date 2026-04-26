@@ -1,8 +1,6 @@
 import pandas as pd
 from utils.data_loader import df
 
-CLEANED_DRIVER_FILE = "data/processed/ridley_articles_dashboard_cleaned.csv"
-
 
 def get_authors(df):
     return df['Authors']
@@ -34,26 +32,8 @@ def bib_table(df):
     return df
 
 
-def create_ridley_driver_lookup():
-    df = pd.read_csv(CLEANED_DRIVER_FILE)
-    df['ArticleID'] = df['ArticleID'].astype(str)
-
-    driver_lookup = df[
-        [
-            'ArticleID',
-            'Georef_ind_driver_clean',
-            'Direct_driver_clean',
-            'Indirect_driver_clean'
-        ]
-    ].copy()
-
-    return driver_lookup
-
-
 bib_table = bib_table(df)
-ridley_driver_lookup = create_ridley_driver_lookup()
 
 
 if __name__ == "__main__":
     print(bib_table)
-    print(create_ridley_driver_lookup().head())
