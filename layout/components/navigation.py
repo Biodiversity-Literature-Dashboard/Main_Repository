@@ -95,6 +95,3 @@ def create_change_views_button(side, value="change"):
         className="mb-0"
     )
     return change_views
-
-change_views_left  = create_change_views_button("_left")
-change_views_right = create_change_views_button("_right")

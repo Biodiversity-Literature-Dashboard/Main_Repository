@@ -241,11 +241,11 @@ def create_driver_sankey(df, df_threats):
     for _, row in df_work.iterrows():
         # deduplicate within each article's driver/threat list
         indirects = list(dict.fromkeys(
-            i.strip() for i in str(row.get('Indirect_driver_clean', '')).split(',')
+            i.strip() for i in str(row.get('Indirect_driver', '')).split(';')
             if i.strip() and i.strip().lower() not in ('unknown', 'nan', 'none', '')
         ))
         directs = list(dict.fromkeys(
-            d.strip() for d in str(row.get('Direct_driver_clean', '')).split(',')
+            d.strip() for d in str(row.get('Direct_driver', '')).split(';')
             if d.strip() and d.strip().lower() not in ('unknown', 'nan', 'none', '')
         ))
         threats = list(dict.fromkeys(
@@ -278,7 +278,7 @@ def create_driver_sankey(df, df_threats):
         return 'rgba(100, 180, 120, 0.85)'
 
     node_colors = [node_color(n) for n in all_nodes]
-    node_labels = [n.split(': ', 1)[1] for n in all_nodes]
+    node_labels = [n.split(':', 1)[1] for n in all_nodes]
 
     fig = go.Figure(go.Sankey(
         arrangement='snap',

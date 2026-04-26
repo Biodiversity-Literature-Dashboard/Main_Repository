@@ -9,7 +9,7 @@ from layout.components.search_and_filters import (continent_filter,
                                                     threat_category_filter,
                                                     year_range_slider)
 from layout.components.tables import articles_datatable_right, articles_datatable_left
-from layout.components.navigation import change_views_left, change_views_right, create_change_views_button
+from layout.components.navigation import create_change_views_button
 
 
 # FILTER

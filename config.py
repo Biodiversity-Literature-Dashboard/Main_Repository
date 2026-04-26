@@ -2,6 +2,7 @@
 # Define data paths, constants, and application settings here
 
 import os
+import json
 
 # Data paths
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
@@ -27,7 +28,6 @@ FILTER_DEFAULTS = {
 }
 
 # Load threat code mappings from JSON
-import json
 THREAT_CODES_JSON = os.path.join(PROCESSED_DIR, 'threat_codes.json')
 with open(THREAT_CODES_JSON, 'r', encoding='utf-8') as f:
     _threat_data = json.load(f)
@@ -56,8 +56,7 @@ WORDCLOUD_STOPWORDS = {
 # Text columns available for wordcloud source — add new columns here if dataset grows
 WORDCLOUD_SOURCE_COLS = {
     'Title': 'Article Titles',
-    'Direct_driver_clean': 'Direct Drivers',
-    'Indirect_driver_clean': 'Indirect Drivers',
+    'Direct_driver': 'Direct Drivers',
+    'Indirect_driver': 'Indirect Drivers',
     'Threat': 'Threats',
 }
-
