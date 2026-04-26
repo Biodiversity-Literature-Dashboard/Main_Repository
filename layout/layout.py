@@ -7,7 +7,6 @@ import dash_bootstrap_components as dbc
 
 
 # Local imports
-from layout.components.info_button import info_button
 from layout.components.navigation import navigation_bar, description_banner
 from layout.layoutviews import left_panel, right_panel, filters_view
 def create_layout():
@@ -21,14 +20,10 @@ def create_layout():
     right_bar = right_panel
     left_bar = left_panel
 
-    
-    # Main content area (right side)
-    
-    # Combine sidebar + main content in a row
+    # Main container
     main_container = dbc.Container([
         banner,
         dbc.Row([
-            # Left column: Filters (25% width)
             dbc.Col(top_bar),
         ], align="top"),
         dbc.Row([

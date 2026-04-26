@@ -67,7 +67,7 @@ def create_empty_dcc_graph_map(side):
         id='world-map'+side,
         figure=create_empty_map(),
         config={'displayModeBar': True, 'scrollZoom': True},
-        style={'height': '500px'}
+        style={'height': '600px'}
     )
     return graph
 
@@ -110,7 +110,6 @@ def create_world_map(df):
     all_countries = unstrip_countries(df, country_col)
 
     country_counts = pd.Series(all_countries).value_counts().reset_index()
-    print(country_counts)
     country_counts.columns = ['Country', 'Studies']
 
     
