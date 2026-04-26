@@ -5,7 +5,7 @@ from utils.data_loader import df
 
 class TestFilters(unittest.TestCase):
     def setUp(self):
-        self.shape = (1069, 25)
+        self.shape = (1069, 27)
 
     def test_continent_filter_returns_correct_amount_of_rows_and_columns(self):
         df_shape = continent_filter(df, 'all').shape
