@@ -38,4 +38,26 @@ with open(THREAT_CODES_JSON, 'r', encoding='utf-8') as f:
 APP_TITLE = "Biodiversity Interactive Dashboard"
 DEBUG_MODE = True
 
+# Wordcloud settings — modify these to customise the word cloud without touching chart code
+WORDCLOUD_MAX_WORDS = 80
+WORDCLOUD_COLORMAP = 'viridis'   # any matplotlib colormap name, e.g. 'Blues', 'plasma', 'magma'
+WORDCLOUD_STOPWORDS = {
+    # Generic academic words
+    'study', 'studies', 'using', 'based', 'analysis', 'data', 'results',
+    'effect', 'effects', 'impact', 'impacts', 'new', 'also', 'one', 'two',
+    'three', 'across', 'within', 'among', 'due', 'associated', 'used',
+    'review', 'systematic', 'evidence', 'literature', 'paper', 'research',
+    'different', 'high', 'low', 'large', 'small', 'use', 'show', 'shows',
+    # Domain-generic (too common to be informative)
+    'marine', 'terrestrial', 'freshwater', 'environmental', 'biodiversity',
+    'species', 'population', 'habitat', 'area', 'global', 'local',
+    'change', 'changes', 'management', 'conservation',
+}
+# Text columns available for wordcloud source — add new columns here if dataset grows
+WORDCLOUD_SOURCE_COLS = {
+    'Title': 'Article Titles',
+    'Direct_driver_clean': 'Direct Drivers',
+    'Indirect_driver_clean': 'Indirect Drivers',
+    'Threat': 'Threats',
+}
 
