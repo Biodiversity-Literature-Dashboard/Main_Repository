@@ -2,7 +2,7 @@
 Define Input/Output callbacks for chart updates, data filtering, and user interactions """
 # pylint: disable=unused-argument
 # Pre-made packages
-from dash import Input, Output, State, ctx
+from dash import Input, Output, State, ctx, clientside_callback, ClientsideFunction, ALL
 from dash.exceptions import PreventUpdate
 
 
@@ -17,6 +17,58 @@ from callbacks.callbacks_functions import (change_views,
 
 
 def register_callbacks(app):
+
+    # Clientside: scroll charts container to the clicked chart card
+    app.clientside_callback(
+        """
+        function(n_clicks_list, btn_ids) {
+            const triggered = dash_clientside.callback_context.triggered;
+            if (!triggered || triggered.length === 0) return dash_clientside.no_update;
+            const prop = triggered[0].prop_id;
+            if (!prop) return dash_clientside.no_update;
+            // find the button element that was clicked via data attributes
+            const btns = document.querySelectorAll('.chart-nav-pill');
+            let scrollContainerId = null;
+            let targetId = null;
+            btns.forEach(function(btn) {
+                if (btn.getAttribute('data-target') && prop.includes(btn.getAttribute('data-target'))) {
+                    scrollContainerId = btn.getAttribute('data-scroll');
+                    targetId = 'anchor-' + btn.getAttribute('data-target');
+                }
+            });
+            // fallback: parse from prop_id JSON
+            if (!targetId) {
+                try {
+                    const idx = JSON.parse(prop.split('.')[0]);
+                    const side = idx.side;
+                    const i = idx.index;
+                    const charts = ['threat-chart_','driver-sankey_','study-design-chart_','wordcloud-chart_'];
+                    targetId = 'anchor-' + charts[i] + side;
+                    scrollContainerId = 'charts-scroll-' + side;
+                } catch(e) { return dash_clientside.no_update; }
+            }
+            const container = document.getElementById(scrollContainerId);
+            const target = document.getElementById(targetId);
+            if (container && target) {
+                container.scrollTo({ top: target.offsetTop - container.offsetTop, behavior: 'smooth' });
+                // highlight active pill
+                document.querySelectorAll('.chart-nav-pill').forEach(b => b.classList.remove('active'));
+                const activeSide = scrollContainerId ? scrollContainerId.replace('charts-scroll-','') : '';
+                document.querySelectorAll('.chart-nav-pill').forEach(function(b) {
+                    if (b.getAttribute('data-target') === targetId.replace('anchor-','') ) {
+                        b.classList.add('active');
+                    }
+                });
+            }
+            return dash_clientside.no_update;
+        }
+        """,
+        Output('charts-scroll-left', 'data-active', allow_duplicate=True),
+        Input({'type': 'chart-nav-btn', 'side': ALL, 'index': ALL}, 'n_clicks'),
+        State({'type': 'chart-nav-btn', 'side': ALL, 'index': ALL}, 'id'),
+        prevent_initial_call=True,
+    )
+
     filter_inputs = [
         Input('apply-filters-btn', 'n_clicks'),
         Input('continent-filter', 'value'),
@@ -74,6 +126,7 @@ def register_callbacks(app):
             Output('threat-chart_left', 'figure'),
             Output('study-design-chart_left', 'figure'),
             Output('wordcloud-chart_left', 'figure'),
+            Output('driver-sankey_left', 'figure'),
         ],
         filter_inputs,
     )
@@ -91,6 +144,7 @@ def register_callbacks(app):
             Output('threat-chart_right', 'figure'),
             Output('study-design-chart_right', 'figure'),
             Output('wordcloud-chart_right', 'figure'),
+            Output('driver-sankey_right', 'figure'),
         ],
         filter_inputs,
     )
@@ -227,3 +281,56 @@ def register_callbacks(app):
                 return clicked_country
         except (KeyError, IndexError):
             raise PreventUpdate
+
+    @app.callback(
+        [
+            Output("left-collapse", "is_open"),
+            Output("right-collapse", "is_open"),
+            Output("left-col", "className"),
+            Output("right-col", "className"),
+            Output("toggle-left-btn", "children"),
+            Output("toggle-right-btn", "children"),
+        ],
+        [
+            Input("toggle-left-btn", "n_clicks"),
+            Input("toggle-right-btn", "n_clicks"),
+        ],
+        [
+            State("left-collapse", "is_open"),
+            State("right-collapse", "is_open"),
+        ],
+        prevent_initial_call=True,
+    )
+    def toggle_panels(n_left, n_right, left_open, right_open):
+        triggered = ctx.triggered_id
+        if triggered == "toggle-left-btn":
+            left_open = not left_open
+        elif triggered == "toggle-right-btn":
+            right_open = not right_open
+
+        if left_open and right_open:
+            left_class, right_class = "col-6", "col-6"
+        elif left_open and not right_open:
+            left_class, right_class = "col-12", "col-12 d-none"
+        elif not left_open and right_open:
+            left_class, right_class = "col-12 d-none", "col-12"
+        else:
+            # both collapsed — restore both
+            left_open, right_open = True, True
+            left_class, right_class = "col-6", "col-6"
+
+        left_label = "▼ Hide" if left_open else "▶ Show"
+        right_label = "▼ Hide" if right_open else "▶ Show"
+        return left_open, right_open, left_class, right_class, left_label, right_label
+
+    @app.callback(
+        Output("filter-collapse", "is_open"),
+        Output("toggle-filter-btn", "children"),
+        Input("toggle-filter-btn", "n_clicks"),
+        State("filter-collapse", "is_open"),
+        prevent_initial_call=True,
+    )
+    def toggle_filter(n_clicks, is_open):
+        new_state = not is_open
+        label = "▼ Hide Filters" if new_state else "▶ Show Filters"
+        return new_state, label

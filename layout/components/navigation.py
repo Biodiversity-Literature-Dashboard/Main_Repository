@@ -44,7 +44,9 @@ def create_navbar():
                 is_open=False,
                 navbar=True,
             ),
-        ]
+        ],
+        fluid=True,
+        style={"paddingLeft": "1.5rem", "paddingRight": "1.5rem"},
     ),
     color="dark",
     dark=True,
@@ -54,6 +56,7 @@ def create_description_banner():
     """Text banner displayed directly below the navbar."""
     return html.Div(
         className="study-description-banner",
+        style={"marginLeft": "-1.5rem", "marginRight": "-1.5rem"},
         children=[
             html.P("Interactive dashboard on the indirect drivers of biodiversity loss",
                     className="ms-2 dashboard-subtitle"),
@@ -89,7 +92,7 @@ def create_change_views_button(side, value="change"):
         ],
         value=value,
         clearable=False,
-        className="mb-3"
+        className="mb-0"
     )
     return change_views
 

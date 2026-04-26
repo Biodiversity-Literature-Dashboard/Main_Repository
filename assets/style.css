@@ -146,3 +146,102 @@ h1, h2, h3, h4, h5, h6,
     background-color: #666666 !important;
     transform: scale(1.05);
 }
+
+/* Inner scrollable charts container */
+.charts-inner-scroll {
+    height: 520px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: 8px;
+    scrollbar-width: auto;
+    scrollbar-color: #6c757d #e9ecef;
+    scroll-behavior: smooth;
+}
+
+.charts-inner-scroll::-webkit-scrollbar {
+    width: 10px;
+}
+
+.charts-inner-scroll::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 5px;
+}
+
+.charts-inner-scroll::-webkit-scrollbar-thumb {
+    background-color: #6c757d;
+    border-radius: 5px;
+    border: 2px solid #e9ecef;
+}
+
+.chart-card {
+    width: 100%;
+    max-width: 900px;
+    min-height: 410px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.06);
+}
+
+.chart-card-title {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Panel header search bar */
+.panel-searchbar {
+    font-size: 0.8rem !important;
+    height: 28px !important;
+    padding: 0.15rem 0.5rem !important;
+    border-radius: 999px !important;
+}
+
+/* Chart navigation pill bar */
+.chart-nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+.chart-nav-pill {
+    font-family: 'Abel', Arial, sans-serif;
+    font-size: 0.78rem;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid #0d6efd;
+    border-radius: 999px;
+    background: transparent;
+    color: #0d6efd;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+
+.chart-nav-pill:hover,
+.chart-nav-pill.active {
+    background: #0d6efd;
+    color: #ffffff;
+}
+
+.chart-card-title {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
