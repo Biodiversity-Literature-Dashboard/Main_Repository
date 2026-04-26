@@ -27,6 +27,7 @@ def load_sql_data(connection,table):
 
 # Load datasets on import
 df = load_sql_data("./database/database.db","processed") # MAIN DATAFRAME
+df_threats = load_sql_data("./database/database.db","Threats_Clean") # THREATS TABLE
 
 
 def get_threat_categories():

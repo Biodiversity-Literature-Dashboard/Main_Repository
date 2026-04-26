@@ -59,7 +59,6 @@ def create_threat_distribution_chart(df):
     if df.empty:
         fig = go.Figure()
         fig.update_layout(
-            title="Threat Category Distribution",
             height=400,
             annotations=[{
                 'text': 'No data matches filters',
@@ -103,7 +102,6 @@ def create_threat_distribution_chart(df):
         threat_counts,
         x='Num',
         y='Count',
-        title='Threat Category Distribution',
         labels={'Num': 'Category #', 'Count': 'Number of Articles'}
     )
 
@@ -134,7 +132,6 @@ def create_study_design_chart(df):
     if df.empty:
         fig = go.Figure()
         fig.update_layout(
-            title="Study Design Distribution",
             height=400,
             annotations=[{
                 'text': 'No data matches filters',
@@ -157,7 +154,6 @@ def create_study_design_chart(df):
         design_counts,
         values='Count',
         names='Design',
-        title='Study Design Distribution',
         hole=0.3  # Donut chart
     )
 
@@ -172,7 +168,7 @@ def create_study_design_chart(df):
 def create_wordcloud_chart(filtered_df=None):
     """Generate a wordcloud from article titles."""
 
-    if filtered_df is None:
+    if filtered_df is None or filtered_df.empty:
         titles = ' '.join(bib_table['Title'].dropna().astype(str).tolist())
     else:
         titles = ' '.join(filtered_df['Title'].dropna().astype(str).tolist())
@@ -181,16 +177,15 @@ def create_wordcloud_chart(filtered_df=None):
 
     if not titles.strip():
         fig.update_layout(
-            title='Article Keywords Wordcloud',
             height=400,
-            margin=dict(l=0, r=0, t=40, b=0),
+            margin=dict(l=0, r=0, t=0, b=0),
             xaxis=dict(visible=False, range=[0, 1]),
             yaxis=dict(visible=False, range=[0, 1])
         )
         return fig
 
     try:
-        wc = WordCloud(width=800, height=400, background_color='white').generate(titles)
+        wc = WordCloud(width=800, height=360, background_color='white').generate(titles)
 
         buf = io.BytesIO()
         wc.to_image().save(buf, format='PNG')
@@ -207,10 +202,114 @@ def create_wordcloud_chart(filtered_df=None):
         pass
 
     fig.update_layout(
-        title='Article Keywords Wordcloud',
         height=400,
-        margin=dict(l=0, r=0, t=40, b=0),
+        margin=dict(l=0, r=0, t=0, b=0),
         xaxis=dict(visible=False, range=[0, 1]),
         yaxis=dict(visible=False, range=[0, 1])
+    )
+    return fig
+
+
+# SANKEY DIAGRAM
+
+def create_driver_sankey(df, df_threats):
+    """
+    Create Sankey diagram: Indirect Driver → Direct Driver → Threat.
+    df         : filtered articles DataFrame (must have Direct_driver_clean, Indirect_driver_clean)
+    df_threats : full Threats_Clean DataFrame (ArticleID, Threat1_decoded)
+    """
+    if df.empty:
+        return create_empty_chart("Driver Causal Chain (Sankey)")
+
+    # Filter threats to articles in filtered df
+    article_ids = df['ArticleID'].astype(str).unique()
+    threats_filtered = df_threats[df_threats['ArticleID'].astype(str).isin(article_ids)]
+
+    # Aggregate Threat1_decoded per article
+    df_threats_agg = (
+        threats_filtered.groupby('ArticleID', as_index=False)
+        .agg({'Threat1_decoded': lambda x: '; '.join(sorted(set(x.dropna().astype(str))))})
+    )
+    df_threats_agg['ArticleID'] = df_threats_agg['ArticleID'].astype(str)
+
+    df_work = df.copy()
+    df_work['ArticleID'] = df_work['ArticleID'].astype(str)
+    df_work = df_work.merge(df_threats_agg, on='ArticleID', how='left')
+
+    # Build edge list
+    sankey_rows = []
+    for _, row in df_work.iterrows():
+        # deduplicate within each article's driver/threat list
+        indirects = list(dict.fromkeys(
+            i.strip() for i in str(row.get('Indirect_driver', '')).split(';')
+            if i.strip() and i.strip().lower() not in ('unknown', 'nan', 'none', '')
+        ))
+        directs = list(dict.fromkeys(
+            d.strip() for d in str(row.get('Direct_driver', '')).split(';')
+            if d.strip() and d.strip().lower() not in ('unknown', 'nan', 'none', '')
+        ))
+        threats = list(dict.fromkeys(
+            t.strip() for t in str(row.get('Threat1_decoded', '')).split(';')
+            if t.strip() and t.strip().lower() not in ('unknown', 'nan', 'none', '')
+        ))
+        for ind in indirects:
+            for dir_ in directs:
+                sankey_rows.append({'source': f'IND: {ind}', 'target': f'DIR: {dir_}'})
+        for dir_ in directs:
+            for thr in threats:
+                sankey_rows.append({'source': f'DIR: {dir_}', 'target': f'THR: {thr}'})
+
+    if not sankey_rows:
+        return create_empty_chart("Driver Causal Chain (Sankey)")
+
+    df_sankey = (
+        pd.DataFrame(sankey_rows)
+        .groupby(['source', 'target'])
+        .size()
+        .reset_index(name='value')
+    )
+
+    all_nodes  = list(dict.fromkeys(df_sankey['source'].tolist() + df_sankey['target'].tolist()))
+    node_idx   = {n: i for i, n in enumerate(all_nodes)}
+
+    def node_color(label):
+        if label.startswith('IND:'): return 'rgba(255, 160, 86, 0.85)'
+        if label.startswith('DIR:'): return 'rgba(70, 145, 210, 0.85)'
+        return 'rgba(100, 180, 120, 0.85)'
+
+    node_colors = [node_color(n) for n in all_nodes]
+    node_labels = [n.split(':', 1)[1] for n in all_nodes]
+
+    fig = go.Figure(go.Sankey(
+        arrangement='snap',
+        node=dict(
+            pad=18, thickness=20,
+            line=dict(color='white', width=0.5),
+            label=node_labels,
+            color=node_colors,
+        ),
+        link=dict(
+            source=[node_idx[s] for s in df_sankey['source']],
+            target=[node_idx[t] for t in df_sankey['target']],
+            value=df_sankey['value'].tolist(),
+            color='rgba(180, 180, 180, 0.3)',
+        ),
+    ))
+
+    fig.update_layout(
+        height=620,
+        margin=dict(t=60, b=20, l=10, r=10),
+        font=dict(size=11),
+        annotations=[
+            dict(x=0.01, y=1.06, xref='paper', yref='paper',
+                 text='<b>Indirect Drivers</b>', showarrow=False,
+                 font=dict(color='rgba(255,140,40,1)', size=12)),
+            dict(x=0.50, y=1.06, xref='paper', yref='paper',
+                 text='<b>Direct Drivers</b>', showarrow=False,
+                 font=dict(color='rgba(50,120,200,1)', size=12)),
+            dict(x=0.99, y=1.06, xref='paper', yref='paper',
+                 text='<b>Threats</b>', showarrow=False,
+                 font=dict(color='rgba(60,150,80,1)', size=12)),
+        ],
     )
     return fig
