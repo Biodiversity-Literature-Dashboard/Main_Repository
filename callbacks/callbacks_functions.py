@@ -2,7 +2,8 @@
 from utils.data_loader import filter_data
 from layout.layoutviews import map_view, charts_view, table_view
 from layout.components.maps import create_world_map
-from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
+from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart, create_driver_sankey
+from utils.data_loader import df_threats
 from utils.dataframes import ridley_driver_lookup
 
 
@@ -93,11 +94,12 @@ def update_charts(df, continent, ecoregions, study_designs, threat_category, yea
                         search_value)
 
     # Generate visualizations
-    threat_fig = create_threat_distribution_chart(filtered_df)
-    design_fig = create_study_design_chart(filtered_df)
+    threat_fig    = create_threat_distribution_chart(filtered_df)
+    design_fig    = create_study_design_chart(filtered_df)
     wordcloud_fig = create_wordcloud_chart(filtered_df)
+    sankey_fig    = create_driver_sankey(filtered_df, df_threats)
 
-    return threat_fig, design_fig, wordcloud_fig
+    return threat_fig, design_fig, wordcloud_fig, sankey_fig
 
 
 def year_range_filter(year_range, filtered_df):
