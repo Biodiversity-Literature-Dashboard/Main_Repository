@@ -11,7 +11,7 @@ def test_database_folder_exists():
 
 def test_database_file_exists():
     # change filename if your repo uses a different name
-    candidates = list(DATA_DIR.glob("**.db"))
+    candidates = list(DATA_DIR.glob("*.db"))
     assert len(candidates) > 0, f"Database file found in {DATA_DIR}"
 
 def test_processed_table_exists():
