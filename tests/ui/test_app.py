@@ -1,6 +1,8 @@
 from app import app
 import time
+from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.common.by import By
 
 def test_app_starts(dash_duo):
     dash_duo.start_server(app)
@@ -11,11 +13,14 @@ def test_title_present(dash_duo):
     dash_duo.start_server(app)
     dash_duo.wait_for_text_to_equal(".navbar-brand", "What is the evidence on indirect drivers of biodiversity loss? A systematic map")
 
-# FIX!!!
-# def test_graph_exists(dash_duo):
-#     dash_duo.start_server(app)
-#     graph = dash_duo.find_element("#threat-chart")
-#     assert graph is not None
+def test_graph_exists(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.multiple_click("#change_views_left",1)
+    time.sleep(0.5)
+    charts_button = dash_duo.driver.find_element(By.XPATH, "//*[text()='Charts']")
+    charts_button.click()
+    graph = dash_duo.find_element("#threat-chart_left")
+    assert graph is not None
 
 def test_layout_rendered(dash_duo):
     dash_duo.start_server(app)
@@ -25,23 +30,28 @@ def test_layout_rendered(dash_duo):
     main_container = dash_duo.find_element(".container-fluid")
     assert main_container is not None
 
-# Graphs exist test, FIX!!!!
+def test_charts_exist(dash_duo):
+    """Check that all main charts exist in layout"""
+    dash_duo.start_server(app)
+    dash_duo.multiple_click("#change_views_right",1)
+    time.sleep(0.5)
+    charts_button = dash_duo.driver.find_element(By.XPATH, "//*[text()='Charts']")
+    charts_button.click()
 
-# def test_charts_exist(dash_duo):
-#     """Check that all main charts exist in layout"""
-#     dash_duo.start_server(app)
+    # Threat chart
+    threat_chart = dash_duo.find_element("#threat-chart_right")
+    assert threat_chart is not None
 
-#     # Threat chart
-#     threat_chart = dash_duo.find_element("#threat-chart")
-#     assert threat_chart is not None
+    # Study Design chart
+    study_chart = dash_duo.find_element("#study-design-chart_right")
+    assert study_chart is not None
 
-#     # Study Design chart
-#     study_chart = dash_duo.find_element("#study-design-chart")
-#     assert study_chart is not None
+    study_chart = dash_duo.find_element("#driver-sankey_right")
+    assert study_chart is not None
 
-#     # Wordcloud chart
-#     wordcloud_chart = dash_duo.find_element("#wordcloud-chart")
-#     assert wordcloud_chart is not None
+    # Wordcloud chart
+    wordcloud_chart = dash_duo.find_element("#wordcloud-chart_right")
+    assert wordcloud_chart is not None
 
 #Map exist test
 
