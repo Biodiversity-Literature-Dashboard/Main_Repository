@@ -1,31 +1,41 @@
+import sqlite3 as lite
 import pandas as pd
 from pathlib import Path
 
-DATA_DIR = Path(__file__).resolve().parents[1] / "data" / "processed"
+DATA_DIR = Path(__file__).resolve().parents[1] / "database"
 
-def test_processed_folder_exists():
+conn = lite.connect(DATA_DIR/"database.db")
+
+def test_database_folder_exists():
     assert DATA_DIR.exists(), f"Processed data folder not found: {DATA_DIR}"
 
-def test_ridley_processed_csv_exists():
+def test_database_file_exists():
     # change filename if your repo uses a different name
-    candidates = list(DATA_DIR.glob("*ridley*.csv"))
-    assert len(candidates) > 0, f"No Ridley processed CSV found in {DATA_DIR}"
+    candidates = list(DATA_DIR.glob("**.db"))
+    assert len(candidates) > 0, f"Database file found in {DATA_DIR}"
 
-def test_grossi_processed_csv_exists():
-    candidates = list(DATA_DIR.glob("*grossi*.csv"))
-    assert len(candidates) > 0, f"No Grossi processed CSV found in {DATA_DIR}"
+def test_processed_table_exists():
+    query = "SELECT * FROM processed;"
+    candidates = pd.read_sql(query,conn)
+    assert len(candidates) > 0, f"No processed table found in {DATA_DIR}"
 
-def test_ridley_csv_loads_and_has_rows():
-    ridley_file = list(DATA_DIR.glob("*ridley*.csv"))[0]
-    df = pd.read_csv(ridley_file)
-    assert len(df) > 0, "Ridley dataframe is empty"
+def test_all_needed_columns_exists():
+    # checks if columns needed in the dashboard are present
+    query = "SELECT * FROM processed;"
+    df = pd.read_sql(query,conn)
+
+    key_cols = ["ArticleID", "Authors", "Year", "Continent_Ocean", "Country_EEZ", "Study_design", "Direct_driver", "Indirect_driver","Georef_ind_driver","Threat","Title"]
+
+    # check missing
+    for c in key_cols:
+        assert c in df.columns, f"Column {c} missing"
 
 def test_no_missing_in_key_columns_if_present():
     # this is a “soft” test: checks only columns that exist
-    ridley_file = list(DATA_DIR.glob("*ridley*.csv"))[0]
-    df = pd.read_csv(ridley_file)
+    query = "SELECT * FROM processed;"
+    df = pd.read_sql(query,conn)
 
-    key_cols = ["ArticleID", "Country", "Continent_Ocean", "country_eez"]
+    key_cols = ["ArticleID", "Authors", "Year", "Continent_Ocean", "Country_EEZ", "Study_design", "Direct_driver", "Indirect_driver","Georef_ind_driver","Threat","Title"]
     existing = [c for c in key_cols if c in df.columns]
 
     # if none exist, test should fail because dataset doesn't match expectations
