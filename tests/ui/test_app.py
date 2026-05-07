@@ -3,6 +3,8 @@ import time
 from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 def test_app_starts(dash_duo):
     dash_duo.start_server(app)
@@ -16,8 +18,9 @@ def test_title_present(dash_duo):
 def test_graph_exists(dash_duo):
     dash_duo.start_server(app)
     dash_duo.multiple_click("#change_views_left",1)
-    time.sleep(0.5)
-    charts_button = dash_duo.driver.find_element(By.XPATH, "//*[text()='Charts']")
+    driver = dash_duo.driver
+    wait = WebDriverWait(driver, 10)
+    charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
     charts_button.click()
     graph = dash_duo.find_element("#threat-chart_left")
     assert graph is not None
@@ -33,9 +36,10 @@ def test_layout_rendered(dash_duo):
 def test_charts_exist(dash_duo):
     """Check that all main charts exist in layout"""
     dash_duo.start_server(app)
+    driver = dash_duo.driver
     dash_duo.multiple_click("#change_views_right",1)
-    time.sleep(0.5)
-    charts_button = dash_duo.driver.find_element(By.XPATH, "//*[text()='Charts']")
+    wait = WebDriverWait(driver, 10)
+    charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
     charts_button.click()
 
     # Threat chart
