@@ -2,7 +2,7 @@
 
 ## The Data
 
-The `master_countries.csv` and `small_countries.csv` files were compiled from public sources and a list of Plotly countries and their ISO codes. There is a chance they are not perfect, but they seem to work for now. 
+The `master_countries.csv` and `small_countries.csv` files were compiled from public sources, and a list of Plotly countries and their ISO codes. There is a chance they are not perfect, but they seem to work for now. 
 
 The marine borders data is the Flanders Marine Institute (2023), Maritime Boundaries Geodatabase, v12 -dataset. The source is cited and linked under the map. [Link to the Dataset](https://doi.org/10.14284/632)
 
