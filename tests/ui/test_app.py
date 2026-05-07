@@ -38,6 +38,7 @@ def test_layout_rendered(dash_duo):
 def test_charts_exist(dash_duo):
     """Check that all main charts exist in layout"""
     dash_duo.start_server(app)
+    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=10)
     driver = dash_duo.driver
     dash_duo.multiple_click("#change_views_right",1)
     wait = WebDriverWait(driver, 10)
