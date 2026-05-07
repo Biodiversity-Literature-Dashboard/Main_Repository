@@ -6,7 +6,11 @@ USE_PTY = platform != "win32"
 
 @task
 def start(ctx):
-    ctx.run("python3 app.py", pty=USE_PTY)
+    if platform == 'linux':
+        ctx.run("python3 app.py", pty=USE_PTY)
+    else:
+        ctx.run("python app.py", pty=USE_PTY)
+
 
 @task
 def test(ctx):
