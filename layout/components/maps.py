@@ -125,7 +125,7 @@ def create_world_map(df):
     full_country_data = pd.merge(master_countries, merged_counts, on="Country", how="left")
     full_country_data.fillna({"Studies": 0, "Terrestrial": 0, "Freshwater": 0, "Marine": 0}, inplace=True)
     
-    # Manual name fixes
+    # Manual name fixes (This might not be necessary anymore)
     marine_name_fixes = {
         "Comoros": "Comores",
         "Greenland": "Denmark",
