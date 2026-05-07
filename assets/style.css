@@ -149,7 +149,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Inner scrollable charts container */
 .charts-inner-scroll {
-    height: 520px;
+    height: 600px;
     overflow-y: scroll;
     overflow-x: hidden;
     display: flex;
@@ -207,6 +207,15 @@ h1, h2, h3, h4, h5, h6,
     height: 28px !important;
     padding: 0.15rem 0.5rem !important;
     border-radius: 999px !important;
+}
+
+/* Footer */
+.dashboard-footer {
+    margin-top: 2rem;
+    height: 80px;
+    background-color: #343a40;
+    border-radius: 0.375rem;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
 }
 
 /* Chart navigation pill bar */
