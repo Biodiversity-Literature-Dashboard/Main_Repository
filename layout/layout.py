@@ -20,6 +20,10 @@ def create_layout():
     right_bar = right_panel
     left_bar = left_panel
 
+    footer = html.Footer(
+        className="dashboard-footer"
+    )
+
     # Main container
     main_container = dbc.Container([
         banner,
@@ -30,8 +34,8 @@ def create_layout():
             dbc.Col(left_bar, id="left-col", className="col-6"),
             dbc.Col(right_bar, id="right-col", className="col-6"),
         ], className="mt-2 g-2"),
-
-    ], fluid=True, style={"marginBottom": "80px", "paddingLeft": "1.5rem", "paddingRight": "1.5rem"}) #added margin bottom 
+        footer,
+    ], fluid=True, style={"paddingLeft": "1.5rem", "paddingRight": "1.5rem"})
     
     # Combine navbar + container
     layout = html.Div([

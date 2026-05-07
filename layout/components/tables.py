@@ -12,10 +12,10 @@ def articles_datatable(df,side):
     ],
     data=df.to_dict('records'),
     filter_action='native',
-    page_size = 15, # show 15 rows per page
+    page_action='none',
     style_table={
-        'height': 500,
-        'overflowY': 'scroll',
+        'height': '600px',
+        'overflowY': 'auto',
     },
     style_data={
         'overflow': 'hidden',
