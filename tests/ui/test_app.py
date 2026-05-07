@@ -20,6 +20,7 @@ def test_graph_exists(dash_duo):
     dash_duo.start_server(app)
     dash_duo.wait_for_page(url=dash_duo.server_url, timeout=20)
     driver = dash_duo.driver
+    driver.set_window_size(1400, 900)
     wait = WebDriverWait(driver, 20)
     dash_duo.multiple_click("#change_views_left",1)
     charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
@@ -41,6 +42,7 @@ def test_charts_exist(dash_duo):
     dash_duo.start_server(app)
     dash_duo.wait_for_page(url=dash_duo.server_url, timeout=20)
     driver = dash_duo.driver
+    driver.set_window_size(1400, 900)
     dash_duo.multiple_click("#change_views_right",1)
     wait = WebDriverWait(driver, 20)
     charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
