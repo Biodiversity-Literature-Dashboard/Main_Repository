@@ -5,6 +5,7 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 def test_app_starts(dash_duo):
     dash_duo.start_server(app)
@@ -47,17 +48,21 @@ def test_charts_exist(dash_duo):
 
     # Threat chart
     threat_chart = dash_duo.find_element("#threat-chart_right")
+    driver.execute_script("arguments[0].scrollIntoView();", threat_chart)
     assert threat_chart is not None
 
     # Study Design chart
     study_chart = dash_duo.find_element("#study-design-chart_right")
+    driver.execute_script("arguments[0].scrollIntoView();", study_chart)
     assert study_chart is not None
 
-    study_chart = dash_duo.find_element("#driver-sankey_right")
-    assert study_chart is not None
+    driver_sankey = dash_duo.find_element("#driver-sankey_right")
+    driver.execute_script("arguments[0].scrollIntoView();", driver_sankey)
+    assert driver_sankey is not None
 
     # Wordcloud chart
     wordcloud_chart = dash_duo.find_element("#wordcloud-chart_right")
+    driver.execute_script("arguments[0].scrollIntoView();", wordcloud_chart)
     assert wordcloud_chart is not None
 
 #Map exist test
