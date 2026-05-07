@@ -18,6 +18,8 @@ def test_title_present(dash_duo):
 def test_graph_exists(dash_duo):
     dash_duo.start_server(app)
     dash_duo.multiple_click("#change_views_left",1)
+    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=10)
+
     driver = dash_duo.driver
     wait = WebDriverWait(driver, 10)
     charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
