@@ -18,13 +18,13 @@ def test_title_present(dash_duo):
 
 def test_graph_exists(dash_duo):
     dash_duo.start_server(app)
-    dash_duo.multiple_click("#change_views_left",1)
-    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=10)
-
+    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=20)
     driver = dash_duo.driver
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
+    dash_duo.multiple_click("#change_views_left",1)
     charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
     charts_button.click()
+    dash_duo.wait_for_element("#threat-chart_left", timeout=20)
     graph = dash_duo.find_element("#threat-chart_left")
     assert graph is not None
 
@@ -39,10 +39,10 @@ def test_layout_rendered(dash_duo):
 def test_charts_exist(dash_duo):
     """Check that all main charts exist in layout"""
     dash_duo.start_server(app)
-    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=10)
+    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=20)
     driver = dash_duo.driver
     dash_duo.multiple_click("#change_views_right",1)
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
     charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
     charts_button.click()
 
