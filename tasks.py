@@ -1,16 +1,12 @@
 from invoke import task
 from subprocess import call
-from sys import platform
+from sys import platform, executable
 
 USE_PTY = platform != "win32"
 
 @task
 def start(ctx):
-    if platform == 'linux':
-        ctx.run("python3 app.py", pty=USE_PTY)
-    else:
-        ctx.run("python app.py", pty=USE_PTY)
-
+    ctx.run(f"{executable} app.py", pty=USE_PTY)
 
 @task
 def test(ctx):

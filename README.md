@@ -33,16 +33,20 @@ Windows:
 python -m venv venv
 ```
 
-3. open virtual environment:
+3. Open virtual environment:
 
 Linux:
+
 ```bash
 source venv/bin/activate
 ```
-Windows:
-```bash
-venv\Scripts\activate
+
+Windows (PowerShell):
+
+```powershell
+.\venv\Scripts\Activate.ps1
 ```
+
 4. Install Python dependencies
 
 ```bash
@@ -51,9 +55,11 @@ pip install -r requirements.txt
 
 ## Setting up SQLite database and data cleaning
 
-Go to the set_up folder. First you may check that it is using the excel file of your choice and run the data_exploration_excel.ipynb file to test it.
+Go to the `set_up_and_data_exploration` folder. First, check that the notebook is using the Excel file of your choice and run `data_exploration_excel.ipynb` to inspect the data.
 
-After this carefully go through and run the set_up ipynb file to set up SQLite database for your data and make sure you are converting the correct file!
+After this, carefully go through and run `set_up.ipynb` to set up the SQLite database for your data. Make sure you are converting the correct file.
+
+Additional CSV setup scripts are located in the `set_up_csv` folder.
 
 ## Running the program
 
@@ -61,6 +67,12 @@ After this carefully go through and run the set_up ipynb file to set up SQLite d
 
 ```bash
 invoke start
+```
+
+On Windows, if `invoke` is not recognized, use:
+
+```bash
+python -m invoke start
 ```
 
 ## Running tests
@@ -75,6 +87,8 @@ Make sure Chromedriver or Geckodriver (Firefox) is installed!!
 
 
 (make sure you have opened the virtual environment, it should say venv in the corner)
+
+On Windows, if `invoke` is not recognized, replace `invoke` with `python -m invoke` in the commands below.
 
 1. Run non-ui tests on terminal:
 
