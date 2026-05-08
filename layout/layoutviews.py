@@ -80,7 +80,7 @@ def filters_view():
                         dbc.Col(
                             html.Div([
                         # Threat Category filter
-                        html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
+                        html.Label("IUCN Threat Category:", className="fw-bold mb-2 mt-3"),
                         threat_category_filter,
                             ]
                             )
@@ -179,7 +179,7 @@ def table_view(side, selected_view="Map"):
 
 def charts_view(side, selected_view="Map"):
     chart_order = [
-        ('threat-chart_' + side,       'Threat Categories',  '360px', '410px'),
+        ('threat-chart_' + side,       'IUCN Threat Categories',  '360px', '410px'),
         ('driver-sankey_' + side,      'Driver Pathways',    '620px', '680px'),
         ('study-design-chart_' + side, 'Study Design',       '360px', '410px'),
         ('wordcloud-chart_' + side,    'Key Terms',          '360px', '410px'),
