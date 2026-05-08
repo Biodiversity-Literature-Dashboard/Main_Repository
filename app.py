@@ -19,5 +19,5 @@ register_callbacks(app)
 # Run server
 if __name__ == "__main__":
     print("Starting Dashboard...")
-    print("Open browser at: http://127.0.0.1:8050")
-    app.run(debug=DEBUG_MODE)
+    print("Open browser at: http://127.0.0.1:8768")
+    app.run(debug=DEBUG_MODE, host="0.0.0.0", port=8768)
