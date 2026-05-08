@@ -36,7 +36,7 @@ with open(THREAT_CODES_JSON, 'r', encoding='utf-8') as f:
 
 # App settings
 APP_TITLE = "Biodiversity Interactive Dashboard"
-DEBUG_MODE = True
+DEBUG_MODE = False # this should be False in production, set to True for development to enable hot-reloading and debug info
 
 # Wordcloud settings — modify these to customise the word cloud without touching chart code
 WORDCLOUD_MAX_WORDS = 80
