@@ -46,10 +46,10 @@ sequenceDiagram
     participant T as tasks.py
     participant A as app.py
     participant L as /layout
+    participant B as Browser
     participant Ut as /utils
     participant SQL as /database
     participant C as /callbacks
-    participant B as Browser
 
     U->>T: invoke start
     T->>A: python app.py
