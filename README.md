@@ -2,9 +2,8 @@
 
 Project done for the Data Science Project course (DATA 11004) at the University of Helsinki.
 Building an interactive dashboard for indirect threats to biodiversity.
-- [In depth description](https://github.com/Biodiversity-Literature-Dashboard/Main_Repository/blob/64-code-cleanupreorganizing/documentation/PROJECT_DESCRIPTION.md)
-- [Architecture](https://github.com/Biodiversity-Literature-Dashboard/Main_Repository/blob/64-code-cleanupreorganizing/documentation/ARCHITECTURE.md)
-
+- [In depth description](documentation/PROJECT_DESCRIPTION.md)
+- [Architecture](documentation/ARCHITECTURE.md)
 - [Product backlog](https://github.com/orgs/Biodiversity-Literature-Dashboard/projects/2)
 - [Sprint backlogs](https://github.com/orgs/Biodiversity-Literature-Dashboard/projects)
 
@@ -64,6 +63,12 @@ Additional CSV setup scripts are located in the `set_up_csv` folder.
 
 ```bash
 invoke start
+```
+
+On Windows, if `invoke` is not recognized, use:
+
+```bash
+python -m invoke start
 ```
 
 ## Running tests
