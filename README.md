@@ -55,7 +55,7 @@ Go to the `set_up_and_data_exploration` folder. First, check that the notebook i
 
 After this, carefully go through and run `set_up.ipynb` to set up the SQLite database for your data. Make sure you are converting the correct file.
 
-Additional CSV setup scripts are located in the `set_up_csv` folder.
+The legacy CSV setup scripts have been removed; use the notebooks in `set_up_and_data_exploration` instead.
 
 ## Running the program
 
