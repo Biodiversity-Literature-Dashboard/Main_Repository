@@ -1,12 +1,13 @@
 import os
 import sys
+import sqlite3 as lite
 from pathlib import Path
 import pandas as pd
 
 # Add parent directory to path to import config
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from config import GROSSI_CSV, RIDLEY_CSV, THREAT_CATEGORIES, THREAT_CODES, RIDLEY_BIB
+from config import THREAT_CATEGORIES, THREAT_CODES
 from utils.logic.filters import continent_filter, ecoregion_filter, study_design_filter, threat_category_filter
 
 def load_csv_data(csv):
@@ -14,10 +15,19 @@ def load_csv_data(csv):
     dataf.columns = dataf.columns.str.strip()
     return dataf
 
+def load_sql_data(connection,table):
+    conn = lite.connect(connection)
+    query = f"SELECT * FROM {table}; "
+    dataf = pd.read_sql(query,conn)
+    dataf.columns = dataf.columns.str.strip()
+    conn.close()
+    return dataf
+
+
+
 # Load datasets on import
-df_grossi = load_csv_data(GROSSI_CSV)
-df = load_csv_data(RIDLEY_CSV) # MAIN DATAFRAME
-df_ridley_bib = load_csv_data(RIDLEY_BIB)
+df = load_sql_data("./database/database.db","processed") # MAIN DATAFRAME
+df_threats = load_sql_data("./database/database.db","Threats_Clean") # THREATS TABLE
 
 
 def get_threat_categories():
@@ -78,7 +88,6 @@ def filter_data(dataframe=df,continent='all', ecoregions=None, study_designs=Non
         Filtered dataframe
     """
     dataf = dataframe.copy()
-
     dataf =continent_filter(dataf,continent)
 
     dataf= ecoregion_filter(dataf, ecoregions)
@@ -92,7 +101,5 @@ def filter_data(dataframe=df,continent='all', ecoregions=None, study_designs=Non
 
 # Test if run directly
 if __name__ == "__main__":
-    print(f"Grossi: {len(df_grossi)} rows, {len(df_grossi.columns)} columns")
-    print(f"   Columns: {df_grossi.columns.tolist()[:5]}")
     print(f"\nRidley: {len(df)} rows, {len(df.columns)} columns")
     print(f"   Columns: {df.columns.tolist()[:5]}")

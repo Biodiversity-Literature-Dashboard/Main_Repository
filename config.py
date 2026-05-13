@@ -2,6 +2,7 @@
 # Define data paths, constants, and application settings here
 
 import os
+import json
 
 # Data paths
 DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
@@ -27,7 +28,6 @@ FILTER_DEFAULTS = {
 }
 
 # Load threat code mappings from JSON
-import json
 THREAT_CODES_JSON = os.path.join(PROCESSED_DIR, 'threat_codes.json')
 with open(THREAT_CODES_JSON, 'r', encoding='utf-8') as f:
     _threat_data = json.load(f)
@@ -36,6 +36,27 @@ with open(THREAT_CODES_JSON, 'r', encoding='utf-8') as f:
 
 # App settings
 APP_TITLE = "Biodiversity Interactive Dashboard"
-DEBUG_MODE = True
+DEBUG_MODE = False # this should be False in production, set to True for development to enable hot-reloading and debug info
 
-
+# Wordcloud settings — modify these to customise the word cloud without touching chart code
+WORDCLOUD_MAX_WORDS = 80
+WORDCLOUD_COLORMAP = 'viridis'   # any matplotlib colormap name, e.g. 'Blues', 'plasma', 'magma'
+WORDCLOUD_STOPWORDS = {
+    # Generic academic words
+    'study', 'studies', 'using', 'based', 'analysis', 'data', 'results',
+    'effect', 'effects', 'impact', 'impacts', 'new', 'also', 'one', 'two',
+    'three', 'across', 'within', 'among', 'due', 'associated', 'used',
+    'review', 'systematic', 'evidence', 'literature', 'paper', 'research',
+    'different', 'high', 'low', 'large', 'small', 'use', 'show', 'shows',
+    # Domain-generic (too common to be informative)
+    'marine', 'terrestrial', 'freshwater', 'environmental', 'biodiversity',
+    'species', 'population', 'habitat', 'area', 'global', 'local',
+    'change', 'changes', 'management', 'conservation',
+}
+# Text columns available for wordcloud source — add new columns here if dataset grows
+WORDCLOUD_SOURCE_COLS = {
+    'Title': 'Article Titles',
+    'Direct_driver': 'Direct Drivers',
+    'Indirect_driver': 'Indirect Drivers',
+    'Threat': 'Threats',
+}

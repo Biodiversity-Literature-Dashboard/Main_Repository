@@ -2,7 +2,8 @@
 from utils.data_loader import filter_data
 from layout.layoutviews import map_view, charts_view, table_view
 from layout.components.maps import create_world_map
-from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart
+from layout.components.charts import create_threat_distribution_chart, create_study_design_chart, create_wordcloud_chart, create_driver_sankey
+from utils.data_loader import df_threats
 
 
 
@@ -34,16 +35,13 @@ def update_article_table(df, continent, ecoregions, study_designs, threat_catego
 
     filtered_df = apply_filters(df,continent,ecoregions,study_designs,threat_category,year_range,search_value)
 
-    # Generate visualizations
-
-    table_df = filtered_df[['Authors', 'Year', 'Title']]
     # Create tooltip data for the Title column only
     tooltip_data = [
         {
             'Title': {'value': row['Title'], 'type': 'text'} 
-        } for _, row in table_df.iterrows()
+        } for _, row in filtered_df.iterrows()
     ]
-    return [table_df.to_dict('records'), tooltip_data]
+    return [filtered_df.to_dict('records'), tooltip_data]
 
 def update_map(df, continent, ecoregions, study_designs, threat_category, year_range, search_value):
     filtered_df = apply_filters(df,
@@ -75,11 +73,12 @@ def update_charts(df, continent, ecoregions, study_designs, threat_category, yea
                         search_value)
 
     # Generate visualizations
-    threat_fig = create_threat_distribution_chart(filtered_df)
-    design_fig = create_study_design_chart(filtered_df)
+    threat_fig    = create_threat_distribution_chart(filtered_df)
+    design_fig    = create_study_design_chart(filtered_df)
     wordcloud_fig = create_wordcloud_chart(filtered_df)
+    sankey_fig    = create_driver_sankey(filtered_df, df_threats)
 
-    return threat_fig, design_fig, wordcloud_fig
+    return threat_fig, design_fig, wordcloud_fig, sankey_fig
 
 
 def year_range_filter(year_range, filtered_df):
@@ -100,12 +99,12 @@ def search_value_filter(search_value,filtered_df):
 
 def change_views(view,side):
     if view == "Charts":
-        return charts_view(side)
+        return charts_view(side, selected_view=view)
     if view == "Article_Table":
-        return table_view(side)
+        return table_view(side, selected_view=view)
     if view == "Map":
-        return map_view(side)
+        return map_view(side, selected_view=view)
     if side == "right":
-        return table_view(side)
+        return table_view(side, selected_view="Article_Table")
     if side == "left":
-        return map_view(side)
+        return map_view(side, selected_view="Map")

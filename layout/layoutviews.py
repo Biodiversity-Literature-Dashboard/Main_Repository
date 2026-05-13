@@ -7,18 +7,47 @@ from layout.components.search_and_filters import (continent_filter,
                                                     ecoregion_filter,
                                                     study_design_filter,
                                                     threat_category_filter,
-                                                    year_range_slider,
-                                                    search_bar)
+                                                    year_range_slider)
 from layout.components.tables import articles_datatable_right, articles_datatable_left
-from layout.components.navigation import change_views_left, change_views_right
+from layout.components.navigation import create_change_views_button
 
 
 # FILTER
 
 def filters_view():
     filters_container = dbc.Card([
-            dbc.CardHeader("Filters", style={"fontWeight": "bold"}),
-            dbc.CardBody([
+            dbc.CardHeader(
+                dbc.Row([
+                    dbc.Col(html.Span("Filters", style={"fontWeight": "bold"}), width="auto"),
+                    dbc.Col(
+                        dbc.Input(
+                            id="searchbar",
+                            type="search",
+                            debounce=True,
+                            placeholder="Search articles...",
+                            size="sm",
+                        ),
+                        width=6,
+                    ),
+                    dbc.Col(
+                        dbc.Button("Apply Filters", id="apply-filters-btn", color="primary",
+                                   size="sm", style={"minWidth": "120px"}),
+                        width="auto",
+                    ),
+                    dbc.Col(
+                        dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary",
+                                   size="sm", style={"minWidth": "120px"}, n_clicks=0),
+                        width="auto",
+                    ),
+                    dbc.Col(
+                        dbc.Button("▼ Hide Filters", id="toggle-filter-btn", size="sm",
+                                   color="link", className="p-0 ms-auto"),
+                        className="ms-auto", width="auto"
+                    ),
+                ], align="center", className="g-2 flex-nowrap"),
+            ),
+            dbc.Collapse(
+                dbc.CardBody([
                 # Continent filter
             html.Div(
             [
@@ -51,7 +80,7 @@ def filters_view():
                         dbc.Col(
                             html.Div([
                         # Threat Category filter
-                        html.Label("Threat Category:", className="fw-bold mb-2 mt-3"),
+                        html.Label("IUCN Threat Category:", className="fw-bold mb-2 mt-3"),
                         threat_category_filter,
                             ]
                             )
@@ -68,22 +97,10 @@ def filters_view():
                 ),
             ]
             ),
-            html.Div(
-            [
-                dbc.Row(
-                    [
-                        search_bar,
-                        dbc.Col(
-                            html.Div([
-                                # Apply button (will wire up in callbacks later)
-                                dbc.Button("Apply Filters", id="apply-filters-btn", color="primary", className="w-100 mt-2"),
-                                #reset button
-                                dbc.Button("Reset Filters", id="reset-filters-btn", color="secondary", className="w-100 mt-2", n_clicks=0)
-                                ])
-                            )
-                    ]),
-            ]),
             ], className= "filter-bar"),
+                id="filter-collapse",
+                is_open=True,
+            ),
         ], className="h-100")
     return filters_container
 
@@ -99,17 +116,12 @@ filters_view = filters_view()
 
 
 
-def map_view(side):
+def map_view(side, selected_view="Map"):
     if side == "left":
-        change_views = change_views_left
         map_side = map_left
     else:
-        change_views = change_views_right
         map_side = map_right
     map_container = dbc.CardBody([
-        html.Div(
-            change_views,
-        ),
         # Result counter
         html.Div(
             id='result-counter_'+side,
@@ -117,10 +129,22 @@ def map_view(side):
             className="mb-2",
             style={'fontSize': '14px', 'color': '#666', 'fontWeight': '500'}
         ),
-        
-        # Map section
-        html.H5("Study Locations Map", className="mb-3"),
-        map_side,
+
+        # Cite marine boundaries data source
+        html.Div([
+            map_side,
+            html.Div([
+                html.Small([
+                    html.I("Marine boundaries data source: "),
+                    "Flanders Marine Institute (2023). ",
+                    html.A("Maritime Boundaries Geodatabase, v12.",
+                        href="https://doi.org/10.14284/632",
+                        target="_blank",
+                        style={"color": "#6c757d", "textDecoration": "underline"}
+                    )
+                ], style={"fontSize": "10px", "color": "#6c757d"})
+            ], style={"marginTop": "-10px", "textAlign": "right"})
+        ])
     ])
     return map_container
 
@@ -134,19 +158,12 @@ def map_view(side):
 
 
 
-def table_view(side):
+def table_view(side, selected_view="Map"):
     if side == "right":
-        change_views = change_views_right
         articles_datatable = articles_datatable_right
-
     else:
-        change_views = change_views_left
         articles_datatable = articles_datatable_left
     tables = dbc.CardBody([
-        html.Div(
-            change_views,
-        ),
-        html.H5("Article table", className="mt-4 mb-3"),
             dbc.Col([
                 articles_datatable,
             ], ),
@@ -159,32 +176,91 @@ def table_view(side):
 # CHARTS
 
 
-def charts_view(side):
-    if side == "right":
-        change_views = change_views_right
-    else:
-        change_views = change_views_left
+
+def charts_view(side, selected_view="Map"):
+    chart_order = [
+        ('threat-chart_' + side,       'IUCN Threat Categories',  '360px', '410px'),
+        ('driver-sankey_' + side,      'Driver Pathways',    '620px', '680px'),
+        ('study-design-chart_' + side, 'Study Design',       '360px', '410px'),
+        ('wordcloud-chart_' + side,    'Key Terms',          '360px', '410px'),
+    ]
+
+    chart_items = [
+        html.Div([
+            html.P(label, className="chart-card-title"),
+            dcc.Graph(
+                id=graph_id,
+                style={'height': graph_h, 'width': '100%'},
+                config={'responsive': False},
+            ),
+        ], className="chart-card", id='anchor-' + graph_id,
+           style={'minHeight': card_h})
+        for graph_id, label, graph_h, card_h in chart_order
+    ]
+
     charts = dbc.CardBody([
-        html.Div(change_views),
-        html.H5("Analysis Charts", className="mt-4 mb-3"),
-        dbc.Row([
-        dbc.Col(dcc.Graph(id='threat-chart_'+side), width=12)
-        ]),
-        dbc.Row([
-        dbc.Col(dcc.Graph(id='study-design-chart_'+side), width=6),
-        dbc.Col(dcc.Graph(id='wordcloud-chart_'+side), width=6)
-    ]),
+        html.Div(chart_items, className="charts-inner-scroll", id='charts-scroll-' + side),
     ])
     return charts
 
 
 def left_view():
-    current_view = html.Div(map_view("left"),id="left_view")
+    current_view = html.Div(map_view("left", selected_view="Map"), id="left_view")
     return current_view
 
 def right_view():
-    current_view = html.Div(table_view("right"),id="right_view")
+    current_view = html.Div(table_view("right", selected_view="Article_Table"), id="right_view")
     return current_view
 
 left_view = left_view()
 right_view = right_view()
+
+
+# PANEL WRAPPERS (collapsible cards around left/right views)
+
+def left_panel():
+    panel = dbc.Card([
+        dbc.CardHeader(
+            dbc.Row([
+                dbc.Col(
+                    create_change_views_button("_left", value="Map"),
+                ),
+                dbc.Col(
+                    dbc.Button("▼ Hide", id="toggle-left-btn", size="sm",
+                               color="link", className="p-0"),
+                    width="auto"
+                ),
+            ], align="center", className="g-2"),
+        ),
+        dbc.Collapse(
+            left_view,
+            id="left-collapse",
+            is_open=True,
+        ),
+    ])
+    return panel
+
+def right_panel():
+    panel = dbc.Card([
+        dbc.CardHeader(
+            dbc.Row([
+                dbc.Col(
+                    create_change_views_button("_right", value="Article_Table"),
+                ),
+                dbc.Col(
+                    dbc.Button("▼ Hide", id="toggle-right-btn", size="sm",
+                               color="link", className="p-0"),
+                    width="auto"
+                ),
+            ], align="center", className="g-2"),
+        ),
+        dbc.Collapse(
+            right_view,
+            id="right-collapse",
+            is_open=True,
+        ),
+    ])
+    return panel
+
+left_panel = left_panel()
+right_panel = right_panel()

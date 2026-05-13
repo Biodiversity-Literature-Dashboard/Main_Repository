@@ -1,7 +1,6 @@
-
 from dash import dash_table
 
-from sections.dataframes import ridley_bib_table
+from utils.dataframes import bib_table
 
 def articles_datatable(df,side):
     table = dash_table.DataTable(
@@ -13,10 +12,10 @@ def articles_datatable(df,side):
     ],
     data=df.to_dict('records'),
     filter_action='native',
-    page_size = 15, # show 15 rows per page
+    page_action='none',
     style_table={
-        'height': 500,
-        'overflowY': 'scroll',
+        'height': '600px',
+        'overflowY': 'auto',
     },
     style_data={
         'overflow': 'hidden',
@@ -28,19 +27,18 @@ def articles_datatable(df,side):
          'maxWidth': '100px',
          'minWidth': '100px'},
         {'if': {'column_id': 'Year'},
-         'width': '30px',
-         'maxWidth': '30px',
-         'minWidth': '30px'},
+         'width': '50px',
+         'maxWidth': '50px',
+         'minWidth': '50px'},
         {'if': {'column_id': 'Title'},
-         'width': '100px',
+         'width': '200px',
          'maxWidth': '200px',
-         'minWidth': '100px'},
+         'minWidth': '200px'}
     ],
     tooltip_data =[],# start with empty tooltip data, will be populated by callback
     tooltip_duration = None #tooltip stays until user moves mouse away
     )
     return table
 
-articles_datatable_right = articles_datatable(ridley_bib_table,"_right")
-articles_datatable_left = articles_datatable(ridley_bib_table,"_left")
-
+articles_datatable_right = articles_datatable(bib_table, "_right")
+articles_datatable_left = articles_datatable(bib_table, "_left")

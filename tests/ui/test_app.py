@@ -1,6 +1,11 @@
 from app import app
 import time
+from selenium import webdriver
 from selenium.common.exceptions import StaleElementReferenceException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 def test_app_starts(dash_duo):
     dash_duo.start_server(app)
@@ -9,13 +14,20 @@ def test_app_starts(dash_duo):
 
 def test_title_present(dash_duo):
     dash_duo.start_server(app)
-    dash_duo.wait_for_text_to_equal(".navbar-brand", "Interactive Biodiversity Dashboard")
+    dash_duo.wait_for_text_to_equal(".navbar-brand", "What is the evidence on indirect drivers of biodiversity loss? A systematic map")
 
-# FIX!!!
-# def test_graph_exists(dash_duo):
-#     dash_duo.start_server(app)
-#     graph = dash_duo.find_element("#threat-chart")
-#     assert graph is not None
+def test_graph_exists(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=20)
+    driver = dash_duo.driver
+    driver.set_window_size(1400, 900)
+    wait = WebDriverWait(driver, 20)
+    dash_duo.multiple_click("#change_views_left",1)
+    charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
+    charts_button.click()
+    dash_duo.wait_for_element("#threat-chart_left", timeout=20)
+    graph = dash_duo.find_element("#threat-chart_left")
+    assert graph is not None
 
 def test_layout_rendered(dash_duo):
     dash_duo.start_server(app)
@@ -25,23 +37,35 @@ def test_layout_rendered(dash_duo):
     main_container = dash_duo.find_element(".container-fluid")
     assert main_container is not None
 
-# Graphs exist test, FIX!!!!
+def test_charts_exist(dash_duo):
+    """Check that all main charts exist in layout"""
+    dash_duo.start_server(app)
+    dash_duo.wait_for_page(url=dash_duo.server_url, timeout=20)
+    driver = dash_duo.driver
+    driver.set_window_size(1400, 900)
+    dash_duo.multiple_click("#change_views_right",1)
+    wait = WebDriverWait(driver, 20)
+    charts_button = wait.until(EC.element_to_be_clickable((By.XPATH, "//*[text()='Charts']")))
+    charts_button.click()
 
-# def test_charts_exist(dash_duo):
-#     """Check that all main charts exist in layout"""
-#     dash_duo.start_server(app)
+    # Threat chart
+    threat_chart = dash_duo.find_element("#threat-chart_right")
+    driver.execute_script("arguments[0].scrollIntoView();", threat_chart)
+    assert threat_chart is not None
 
-#     # Threat chart
-#     threat_chart = dash_duo.find_element("#threat-chart")
-#     assert threat_chart is not None
+    # Study Design chart
+    study_chart = dash_duo.find_element("#study-design-chart_right")
+    driver.execute_script("arguments[0].scrollIntoView();", study_chart)
+    assert study_chart is not None
 
-#     # Study Design chart
-#     study_chart = dash_duo.find_element("#study-design-chart")
-#     assert study_chart is not None
+    driver_sankey = dash_duo.find_element("#driver-sankey_right")
+    driver.execute_script("arguments[0].scrollIntoView();", driver_sankey)
+    assert driver_sankey is not None
 
-#     # Wordcloud chart
-#     wordcloud_chart = dash_duo.find_element("#wordcloud-chart")
-#     assert wordcloud_chart is not None
+    # Wordcloud chart
+    wordcloud_chart = dash_duo.find_element("#wordcloud-chart_right")
+    driver.execute_script("arguments[0].scrollIntoView();", wordcloud_chart)
+    assert wordcloud_chart is not None
 
 #Map exist test
 

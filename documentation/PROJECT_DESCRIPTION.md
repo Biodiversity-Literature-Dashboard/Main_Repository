@@ -18,16 +18,18 @@ Build an interactive dashboard to visualize and explore systematic literature on
 - 27 columns including: threats, taxonomic groups, ecological levels, spatial scale, study design
 - Contains extracted text fields (indirect drivers, spatial scale sources)
 - Keywords already extracted and saved in Excel sheets (Bibliography, Typologies, Extended definitions)
-- **Status:** Ready for dashboard development
+- **Status:** Used for setup, exploration, and dashboard development
 
 ### 2. Ridley et al. - 13750_2022_279_MOESM4_ESM
-- CSV format
-- **Status:** Needs exploration and integration
+- Main biodiversity literature dataset used for dashboard development
+- Processed and cleaned for dashboard use
+- Integrated into the SQLite database workflow
+- **Status:** Integrated into the dashboard data pipeline
 
 ## Scope
 
-**Current Scale:** ~20 articles  
-**Target Scale:** 250-500 articles, 25+ data categories
+**Current Scale:** More than 1,000 processed records used in the dashboard workflow  
+**Target Scale:** 250-500 reviewed articles and 25+ data categories
 
 ## Core Features
 
@@ -43,7 +45,7 @@ Build an interactive dashboard to visualize and explore systematic literature on
 - Plotly Dash 4.0.0
 - Pandas for data processing
 - Plotly for visualizations
-- Excel/CSV data sources
+- Excel source files, processed datasets, and SQLite database
 
 ## Success Criteria
 

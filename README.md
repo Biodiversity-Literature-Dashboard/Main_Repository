@@ -2,14 +2,10 @@
 
 Project done for the Data Science Project course (DATA 11004) at the University of Helsinki.
 Building an interactive dashboard for indirect threats to biodiversity.
-- [In depth description](https://github.com/Biodiversity-Literature-Dashboard/Main_Repository/blob/64-code-cleanupreorganizing/documentation/PROJECT_DESCRIPTION.md)
-- [Architecture](https://github.com/Biodiversity-Literature-Dashboard/Main_Repository/blob/64-code-cleanupreorganizing/documentation/ARCHITECTURE.md)
-- [Staging server]()
-- [Changelog]()
+- [In depth description](documentation/PROJECT_DESCRIPTION.md)
+- [Architecture](documentation/ARCHITECTURE.md)
 - [Product backlog](https://github.com/orgs/Biodiversity-Literature-Dashboard/projects/2)
 - [Sprint backlogs](https://github.com/orgs/Biodiversity-Literature-Dashboard/projects)
-- [Coding conduct]()
-- [Definition of done]()
 
 ## Setting up repository
 
@@ -33,27 +29,46 @@ Windows:
 python -m venv venv
 ```
 
-3. open virtual environment:
+3. Open virtual environment:
 
 Linux:
+
 ```bash
 source venv/bin/activate
 ```
-Windows:
-```bash
-venv\Scripts\activate
+
+Windows (PowerShell):
+
+```powershell
+.\venv\Scripts\Activate.ps1
 ```
+
 4. Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
+
+## Setting up SQLite database and data cleaning
+
+Go to the `set_up_and_data_exploration` folder. First, check that the notebook is using the Excel file of your choice and run `data_exploration_excel.ipynb` to inspect the data.
+
+After this, carefully go through and run `set_up.ipynb` to set up the SQLite database for your data. Make sure you are converting the correct file.
+
+The legacy CSV setup scripts have been removed; use the notebooks in `set_up_and_data_exploration` instead.
+
 ## Running the program
 
 (make sure you have opened the virtual environment, it should say venv in the corner)
 
 ```bash
 invoke start
+```
+
+On Windows, if `invoke` is not recognized, use:
+
+```bash
+python -m invoke start
 ```
 
 ## Running tests
@@ -68,6 +83,8 @@ Make sure Chromedriver or Geckodriver (Firefox) is installed!!
 
 
 (make sure you have opened the virtual environment, it should say venv in the corner)
+
+On Windows, if `invoke` is not recognized, replace `invoke` with `python -m invoke` in the commands below.
 
 1. Run non-ui tests on terminal:
 
